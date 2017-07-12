@@ -1,0 +1,36 @@
+package com.app.presenter;
+
+import com.app.presenter.IDataPresenter.RequestListener;
+import com.app.presenter.impl.request.HttpClientRequest;
+
+/**
+ * 布局管理代理类
+ * @author xinjun
+ *
+ */
+public class IRequestPresenterBridge extends IPresenterBridge<IRequestPresenter> implements IRequestPresenter{
+
+	@Override
+	public void request(RequestInfo requestInfo) {
+		mSource.request(requestInfo);
+	}
+
+	@Override
+	public void addRequestStatusListenner(String requestName,
+			RequestListener listener) {
+		mSource.addRequestStatusListenner(requestName, listener);
+	}
+
+	@Override
+	protected IRequestPresenter deffaultSource() {
+		return new HttpClientRequest();
+	}
+
+	@Override
+	public void setSource(IRequestPresenter source) {
+		mSource=source;
+	}
+
+
+	
+}
