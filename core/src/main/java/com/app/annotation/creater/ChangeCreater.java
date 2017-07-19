@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ChangeCreater {
 
-	int viewID();
+	int targetId();
 	Class<? extends Annotation> action();
 	BindLayoutCreater creater();
 

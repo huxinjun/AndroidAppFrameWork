@@ -4,19 +4,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
 import com.app.annotation.Interpreter;
-import com.app.annotation.LayoutDataType;
-import com.app.annotation.LayoutResource;
-import com.app.annotation.creater.BindLayoutCreater;
-import com.app.annotation.fragment.ChangeFragment;
-import com.app.annotation.fragment.ChangeFragments;
-import com.app.annotation.fragment.Fragment;
 import com.app.presenter.impl.annotation.AnnotationPresenter;
-import com.app.presenter.impl.annotation.BindLayoutCreaterInterpreter;
-import com.app.presenter.impl.annotation.ChangeFragmentsInterpreter;
-import com.app.presenter.impl.annotation.FragmentInterpreter;
-import com.app.presenter.impl.annotation.ChangeFragmentInterpreter;
-import com.app.presenter.impl.annotation.LayoutDataTypeInterpreter;
-import com.app.presenter.impl.annotation.LayoutResourceInterpreter;
 
 /**
  * 布局管理代理类

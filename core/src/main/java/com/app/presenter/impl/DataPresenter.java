@@ -30,8 +30,11 @@ import com.app.presenter.IRequestPresenter.RequestInfo;
  * @author xinjun
  *
  */
-public class DataPresenter implements IDataPresenter {
+public class DataPresenter implements IDataPresenter,Runnable {
 
+	public DataPresenter(){
+		new Thread(this).start();
+	}
 	/**
 	 * 内部数据请求指令集合
 	 */
@@ -45,10 +48,10 @@ public class DataPresenter implements IDataPresenter {
 	@Override
 	public void sendRequestDataCommand(RequestDataCommand command) {
 		mCommands.add(command);
-		dispatchCommand();
 	}
 
-	private void dispatchCommand() {
+	@Override
+	public void run() {
 		while(mCommands.peek()!=null){
 			RequestDataCommand command = mCommands.peek();
 			Iterator<Entry<String, RequestInfo>> dataIterator = mDatas.entrySet().iterator();
@@ -57,8 +60,9 @@ public class DataPresenter implements IDataPresenter {
 				Entry<String, RequestInfo> entry = dataIterator.next();
 				if(entry.getKey().equals(command.getRequestName())){
 					//这个命令需要的数据来自这个entry的value中
-			
-					
+					RequestInfo requestInfo = entry.getValue();
+					command.getCallBack().onDataComming(command,requestInfo.mServerResult);
+					mCommands.remove();
 					//TODO 在entry.value对象中查找命令需要的数据类型,完成后为其创建代理对象
 				}
 			}
@@ -109,10 +113,13 @@ public class DataPresenter implements IDataPresenter {
 			public void onCacheComming(Object object) {
 				super.onCacheComming(object);
 				mInfo.mDiscResult=object;
+
+				//TODO 暂时不实现缓存
 				//缓存的实体来了
 				//1.如果是第一次请求该名称的数据，先创建代理对象
-				if(mInfo.mDataProxy==null)
-					mInfo.mDataProxy=getProxyManager().creatJavaProxy(mInfo.mEntityType, mInfo.mDiscResult);
+//				if(mInfo.mDataProxy==null)
+//					mInfo.mDataProxy=getProxyManager().creatJavaProxy(mInfo.mEntityType, mInfo.mDiscResult);
+
 				//2.如果已经有代理对象，检查数据是替换还是追加
 				
 				//3.如果是替换...
@@ -122,6 +129,8 @@ public class DataPresenter implements IDataPresenter {
 			
 			@Override
 			public void onDataComming(Object object) {
+				mInfo.mServerResult=object;
+				//TODO 暂时不实现缓存
 				//服务器最新的数据来了
 				//1.检查是否有缓存数据，没有缓存时再查看是否有该类的代理，如果没有：创建代理，如果有：检查数据是替换还是追加
 				

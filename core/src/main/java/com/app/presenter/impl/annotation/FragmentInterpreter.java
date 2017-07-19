@@ -35,7 +35,7 @@ public class FragmentInterpreter extends AnnotationPresenter{
 	@Override
 	public void interpreter(Annotation annotation,InterpreterCallBack callBack, Object... context) {
 		Fragment fragment=(Fragment) annotation;
-		FragmentInfo fInfo=new FragmentInfo(fragment.container(),fragment.clazz());
+		FragmentInfo fInfo=new FragmentInfo(fragment.containerId(),fragment.clazz());
 		callBack.onCompleted(annotation.getClass(),fInfo);
 	}
 	

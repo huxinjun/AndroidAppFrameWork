@@ -128,7 +128,8 @@ public abstract class RequestPresenter implements IRequestPresenter {
 			if(mInfo.isUseTempleteData){
 				String data=getTempleteData(mInfo.mTempleteDataPackage, mInfo.mTempleteDataFileName);
 				Object parse = getParser().parse(data, mInfo.mEntityType);
-				return parse;
+				if(mInfo.mDiscResult!=null)
+					mInfo.mCallBack.onCacheComming(mInfo.mDiscResult);
 			}
 			Object result=null;
 			if(mInfo.mResultType==ResultType.STRING){

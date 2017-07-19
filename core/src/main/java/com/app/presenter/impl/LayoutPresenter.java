@@ -137,10 +137,6 @@ public class LayoutPresenter implements ILayoutPresenter {
 			init();
 		}
 		/**
-		 * 视图创建完成
-		 */
-		public abstract void onViewCreated();
-		/**
 		 * 数据注入完成
 		 */
 		public abstract void onDataPrepared();
@@ -347,26 +343,27 @@ public class LayoutPresenter implements ILayoutPresenter {
 					//step1-----------------------------------------------------------------------------------------
 					//在createrClass发现了BindLayoutCreater注解了
 					//经过解析后会将创建好的LayoutCreater放入可变参数中
-					LayoutCreater creater=(LayoutCreater) results[0];
-					
-					
-					//step2-----------------------------------------------------------------------------------------
-					//2.然后给声明的视图配置常量字段中声明了@BindLayoutCreater的视图创建数据请求命令
-					Field[] declaredFields = creater.getClass().getDeclaredFields();
-					if(declaredFields!=null && declaredFields.length>0){
-						for(Field field:declaredFields){
-							field.setAccessible(true);
-							int viewid;
-							try {
-								viewid = field.getInt(null);
-								getAnnotationPresenter().interpreter(field, null, creater,viewid);
-							} catch (Exception e1) {
-								e1.printStackTrace();
+					final LayoutCreater creater=(LayoutCreater) results[0];
+
+					getAnnotationPresenter().interpreter(creater.getClass(), new InterpreterCallBack() {
+						@Override
+						public void onCompleted(Class<? extends Annotation> anno, Object... results) {
+							//step2-----------------------------------------------------------------------------------------
+							//2.然后给声明的视图配置常量字段中声明了@BindLayoutCreater的视图创建数据请求命令
+							Field[] declaredFields = creater.getClass().getDeclaredFields();
+							if(declaredFields!=null && declaredFields.length>0){
+								for(final Field field:declaredFields){
+									field.setAccessible(true);
+									try {
+										getAnnotationPresenter().interpreter(field,null, creater,field);
+									} catch (Exception e1) {
+										e1.printStackTrace();
+									}
+
+								}
 							}
-							
 						}
-					}
-					
+					},creater);
 					//all done-----------------------------------------------------------------------------------------
 					callBack.onCompleted(creater);
 					
@@ -381,7 +378,7 @@ public class LayoutPresenter implements ILayoutPresenter {
 
 	/**
 	 * 寻找指定id所在的布局创建器
-	 * @param viewId 指定id(在一个view树下这个id必须是唯一的)
+	 * @param viewID 指定id(在一个view树下这个id必须是唯一的)
 	 * @return 指定id对应的创建器
 	 */
 	public LayoutCreater findCreaterByViewId(LayoutCreater curr,int viewID){

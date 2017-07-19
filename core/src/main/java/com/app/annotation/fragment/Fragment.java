@@ -19,7 +19,7 @@ import com.app.presenter.impl.annotation.FragmentInterpreter;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Fragment {
 
-	int container() default 0;
+	int containerId() default 0;
 	/**
 	 * 要切换的fragment类
 	 * @return

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="EasyJsonRelease">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/core/libs/EasyJsonRelease.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
