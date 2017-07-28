@@ -1,6 +1,7 @@
 package com.app.annotation.creater;
 
 import com.app.annotation.Interpreter;
+import com.app.presenter.impl.annotation.BindViewInterpreter;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

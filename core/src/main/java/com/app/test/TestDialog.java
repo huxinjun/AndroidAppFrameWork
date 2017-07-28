@@ -42,11 +42,6 @@ public class TestDialog extends SmartDialog {
 			// TODO Auto-generated method stub
 			
 		}
-		@Override
-		public void onViewCreated() {
-			// TODO Auto-generated method stub
-			
-		}
 	}
 
 	

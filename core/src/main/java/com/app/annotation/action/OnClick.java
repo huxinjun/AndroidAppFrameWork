@@ -1,5 +1,9 @@
 package com.app.annotation.action;
 
+import com.app.annotation.Interpreter;
+import com.app.presenter.impl.annotation.OnClickInterpreter;
+
+import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -9,11 +13,11 @@ import java.lang.annotation.Target;
  * @author xinjun
  *
  */
-@Target({ElementType.FIELD})
+@Interpreter(OnClickInterpreter.class)
+@Target({ElementType.FIELD,ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface OnClick {
 
-
-	int viewID() default 0;
-	String methodName() default "";
+	String value() default "";
+	int viewId() default 0;
 }

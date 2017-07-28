@@ -2,6 +2,7 @@ package com.app.presenter.impl;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -48,7 +49,7 @@ public class LayoutPresenter implements ILayoutPresenter {
 	 * @author xinjun
 	 *
 	 */
-	public static abstract class LayoutCreater implements DataChangedHandler{
+	public static abstract class LayoutCreater<T> implements DataChangedHandler{
 		
 		/**TAG起始索引,小于这个索引Android系统中的View.setTag(int,Object)将不认为是有效的键值*/
 		private static final int TAG_START_INDEX=(int) Math.pow(2, 25);
@@ -114,12 +115,12 @@ public class LayoutPresenter implements ILayoutPresenter {
 		/**
 		 * 这个布局对应的数据类型
 		 */
-		private Class<?> mContentDataType;
+		private Class<T> mContentDataType;
 		
 		/**
 		 * 这个布局对应的数据
 		 */
-		private Object mContentData;
+		private T mContentData;
 		
 		/**
 		 * 这个布局在父布局中的索引(-1表示这个布局不处于AdapterView或者其他适配器视图中,是一个单独的布局)
@@ -186,21 +187,19 @@ public class LayoutPresenter implements ILayoutPresenter {
 		/**
 		 * 内部注入
 		 * @param bindFieldName 绑定的JAVABEAN字段名称
-		 * @param viewIdField 声明Annotation的常量字段
+		 * @param viewField 声明Annotation的view对象
 		 */
-		private void injection(String bindFieldName,Field viewIdField){
+		private void injection(String bindFieldName,Field viewField){
 			//视图id
-			int viewId = 0;
 			try {
-				viewId=viewIdField.getInt(null);
 
 				//视图映射的实体字段
 				Field javaBeanField = getContentData().getClass().getDeclaredField(bindFieldName);
 				if(javaBeanField==null)
-					throw new RuntimeException("在"+this.getClass().getName()+"类的"+viewIdField.getName()+"字段中配置的BindFieldName上找不到映射的JavaBean字段:"+bindFieldName);
+					throw new RuntimeException("在"+this.getClass().getName()+"类的"+viewField.getName()+"字段中配置的BindFieldName上找不到映射的JavaBean字段:"+bindFieldName);
 				
 				//视图映射的实体字段值
-				View view=getContentView().findViewById(viewId);
+				View view= (View) viewField.getType().newInstance();
 				Object viewData = javaBeanField.get(getContentData());
 				//当beforeInject中将javaBeanField字段的值修改了的话,说明viewData现在已经是旧数据了,不需要再注入了
 				if(!viewData.equals(javaBeanField.get(getContentData())))
@@ -295,16 +294,16 @@ public class LayoutPresenter implements ILayoutPresenter {
 		public void setRequestName(String mRequestName) {
 			this.mRequestName = mRequestName;
 		}
-		public Class<?> getContentDataType() {
+		public Class<T> getContentDataType() {
 			return mContentDataType;
 		}
 		public void setContentDataType(Class<?> mContentDataType) {
-			this.mContentDataType = mContentDataType;
+			this.mContentDataType = (Class<T>) mContentDataType;
 		}
-		public Object getContentData() {
+		public T getContentData() {
 			return mContentData;
 		}
-		public void setContentData(Object mContentData) {
+		public void setContentData(T mContentData) {
 			this.mContentData = mContentData;
 			dataPrepared();
 		}
@@ -356,6 +355,18 @@ public class LayoutPresenter implements ILayoutPresenter {
 									field.setAccessible(true);
 									try {
 										getAnnotationPresenter().interpreter(field,null, creater,field);
+									} catch (Exception e1) {
+										e1.printStackTrace();
+									}
+
+								}
+							}
+							Method[] declaredMethods = creater.getClass().getDeclaredMethods();
+							if(declaredMethods!=null && declaredMethods.length>0){
+								for(final Method method:declaredMethods){
+									method.setAccessible(true);
+									try {
+										getAnnotationPresenter().interpreter(method,null, creater,method);
 									} catch (Exception e1) {
 										e1.printStackTrace();
 									}

@@ -5,8 +5,6 @@ import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 
 import com.app.annotation.Injector;
-import com.app.annotation.fragment.ChangeFragment;
-import com.app.annotation.fragment.Fragment;
 import com.app.presenter.IInjectionPresenter;
 import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
 

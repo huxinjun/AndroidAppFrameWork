@@ -26,7 +26,7 @@ public class TestFragment extends SmartFragment {
 	
 	@LayoutDataType(TestModel.class)
 	@BindView(R.layout.activity_list_item)
-	public static class TestCreater extends LayoutCreater {
+	public static class TestCreater extends LayoutCreater<TestModel> {
 		
 		
 		@BindFieldName("abc")
@@ -59,11 +59,7 @@ public class TestFragment extends SmartFragment {
 		@Override
 		public void onDataPrepared() {
 			// TODO Auto-generated method stub
-		}
-		@Override
-		public void onViewCreated() {
-			// TODO Auto-generated method stub
-			
+			TestModel contentData = getContentData();
 		}
 	}
 
