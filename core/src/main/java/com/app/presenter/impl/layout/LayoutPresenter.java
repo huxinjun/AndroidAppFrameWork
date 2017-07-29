@@ -43,7 +43,7 @@ public class LayoutPresenter implements ILayoutPresenter {
         try {
             creater = createrClass.newInstance();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("不能实例化["+createrClass.getName()+"],请确保类和类的默认构造器可访问,如果是内部类:请声明为static类型!!!");
         }
         final LayoutCreater finalCreater = creater;
 

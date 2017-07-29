@@ -26,7 +26,7 @@ public class MainActivity extends SmartActivity {
     }
 
     @BindView(R.layout.activity_main)
-    public class MainActivityCreater extends LayoutCreater {
+    public static class MainActivityCreater extends LayoutCreater {
 
         @Fragment(clazz=Fragment_1.class)
         @BindView(R.id.fl_container)

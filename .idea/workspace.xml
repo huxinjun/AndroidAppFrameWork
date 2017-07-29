@@ -11,142 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="010e6bd1-014f-4f1d-a5f5-32274eac7cde" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/mipmap-hdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/mipmap-hdpi/ic_launcher_round.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/mipmap-mdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/mipmap-mdpi/ic_launcher_round.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/mipmap-xhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/mipmap-xhdpi/ic_launcher_round.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/ViewInjector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutCreater.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutPresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/test/ULog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/proguard-rules.pro" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/androidTest/java/com/example/test/ExampleInstrumentedTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_1.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/utils/ULog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/layout/activity_main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/layout/fragment_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/layout/fragment_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/values/colors.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/values/strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/res/values/styles.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/test/java/com/example/test/ExampleUnitTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/build/generated/source/r/androidTest/debug/android/app/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/build/generated/source/r/androidTest/debug/android/support/test/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/build/generated/source/r/androidTest/debug/android/support/test/espresso/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/build/generated/source/r/androidTest/debug/android/support/test/espresso/idling/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/build/generated/source/r/androidTest/debug/android/support/test/rule/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/libs/android-support-v4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/LayoutPresenter.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/core/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/outputs/aar/core-debug.aar" afterPath="$PROJECT_DIR$/core/build/outputs/aar/core-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build.gradle" afterPath="$PROJECT_DIR$/core/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/generated/source/r/androidTest/debug/android/support/v7/appcompat/R.java" afterPath="$PROJECT_DIR$/core/build/generated/source/r/androidTest/debug/android/support/v7/appcompat/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/generated/source/r/androidTest/debug/com/example/core/R.java" afterPath="$PROJECT_DIR$/core/build/generated/source/r/androidTest/debug/com/example/core/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/generated/source/r/androidTest/debug/com/example/core/test/R.java" afterPath="$PROJECT_DIR$/core/build/generated/source/r/androidTest/debug/com/example/core/test/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/generated/source/r/debug/android/support/v7/appcompat/R.java" afterPath="$PROJECT_DIR$/core/build/generated/source/r/debug/android/support/v7/appcompat/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/generated/source/r/debug/com/example/core/R.java" afterPath="$PROJECT_DIR$/core/build/generated/source/r/debug/com/example/core/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/blame/res/androidTest/debug/single/color.json" afterPath="$PROJECT_DIR$/core/build/intermediates/blame/res/androidTest/debug/single/color.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/core/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/blame/res/androidTest/debug/single/drawable.json" afterPath="$PROJECT_DIR$/core/build/intermediates/blame/res/androidTest/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/blame/res/androidTest/debug/single/layout.json" afterPath="$PROJECT_DIR$/core/build/intermediates/blame/res/androidTest/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/blame/res/debug/single/color.json" afterPath="$PROJECT_DIR$/core/build/intermediates/blame/res/debug/single/color.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/core/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" afterPath="$PROJECT_DIR$/core/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/core/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/blame/res/debug/single/drawable.json" afterPath="$PROJECT_DIR$/core/build/intermediates/blame/res/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/core/build/intermediates/blame/res/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/bundles/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/core/build/intermediates/bundles/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/bundles/debug/R.txt" afterPath="$PROJECT_DIR$/core/build/intermediates/bundles/debug/R.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/core/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="$PROJECT_DIR$/core/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/core/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/core/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/core/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/manifests/aapt/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/core/build/intermediates/manifests/aapt/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/symbols/androidTest/debug/R.txt" afterPath="$PROJECT_DIR$/core/build/intermediates/symbols/androidTest/debug/R.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/core.iml" afterPath="$PROJECT_DIR$/core/core.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/SmartAbsListAdapter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/SmartAbsListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/SmartActivity.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/SmartActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/SmartDialog.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/SmartDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/SmartFragment.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/SmartFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/SmartViewPagerSameTemplaterAdapter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/SmartViewPagerSameTemplaterAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/creater/BindLayoutCreater.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/creater/BindLayoutCreater.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/creater/BindLayoutCreaterFooter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/creater/BindLayoutCreaterFooter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/creater/BindLayoutCreaterHeader.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/creater/BindLayoutCreaterHeader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/creater/BindLayoutCreaterLoading.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/creater/BindLayoutCreaterLoading.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IActivityPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IActivityPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IActivityPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IActivityPresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IAnnotationPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IAnnotationPresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IDataPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IDataPresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IEntityProxyPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IEntityProxyPresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IFragmentPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IFragmentPresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IImagePresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IImagePresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IInjectionPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IInjectionPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IInjectionPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IInjectionPresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/ILayoutPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/ILayoutPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/ILayoutPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/ILayoutPresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IMD5PresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IMD5PresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/INetWorkPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/INetWorkPresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IParserPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IParserPresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IPersistentPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IPersistentPresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IPresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IStoragePresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IStoragePresenterBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/PresenterManager.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/PresenterManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ActivityPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ActivityPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/DataPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/DataPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/EntityProxyPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/EntityProxyPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/FragmentPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/FragmentPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImagePresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImagePresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/MD5Presenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/MD5Presenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/NetWorkPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/NetWorkPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/PersistentPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/PersistentPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/StoragePresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/StoragePresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/AnnotationPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/AnnotationPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/BindLayoutCreaterHeaderInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/BindLayoutCreaterHeaderInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/BindLayoutCreaterInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/BindLayoutCreaterInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/BindViewInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/BindViewInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/FragmentInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/FragmentInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/InjectorInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/InjectorInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/LayoutDataTypeInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/LayoutDataTypeInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/OnClickInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/OnClickInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/StorageRootInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/StorageRootInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/image/ImageAnnotationInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/image/ImageAnnotationInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlsPackageInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlsPackageInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/AdapterViewInjector.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/AdapterViewInjector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/ButtonInjector.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/ButtonInjector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/CheckBoxInjector.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/CheckBoxInjector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/ImageViewInjector.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/ImageViewInjector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/RadioButtonInjector.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/RadioButtonInjector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/RecycleViewInjector.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/RecycleViewInjector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/TextViewInjector.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/TextViewInjector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/ViewPagerInjector.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/ViewPagerInjector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/parser/JsonParser.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/parser/JsonParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/test/TestActivity.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/test/TestActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/test/TestDialog.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/test/TestDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/test/TestFragment.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/test/TestFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java" />
     </list>
     <ignored path="AndroidAppFrameWork.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -181,20 +52,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LayoutCreater.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutCreater.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="108" column="60" selection-start-line="108" selection-start-column="60" selection-end-line="108" selection-end-column="60" />
+            <state relative-caret-position="249">
+              <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -214,33 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Fragment_2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImagePresenter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImagePresenter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LayoutPresenter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+            <state relative-caret-position="223">
+              <caret line="47" column="51" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -263,6 +100,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="169">
               <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LayoutCreater.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutCreater.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="108" column="60" selection-start-line="108" selection-start-column="60" selection-end-line="108" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -2972,7 +2821,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/ButtonInjector.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/CheckBoxInjector.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/ImageViewInjector.java" />
@@ -3019,10 +2867,11 @@
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/test/TestFragment.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/SmartFragment.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImagePresenter.java" />
-        <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_1.java" />
         <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutCreater.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutPresenter.java" />
+        <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -3953,7 +3802,14 @@
       <option name="project" value="LOCAL" />
       <updated>1501234862889</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="1.添加测试项目&#10;2.调整PresenterManager获取Presenter的方法(加入Context参数),目的是让业务类能使用findPresenter时传入的Context对象&#10;3.提取LayoutCreater为单独的class文件">
+      <created>1501315539382</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1501315539382</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3966,7 +3822,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40625" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40625" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -4023,7 +3879,8 @@
     <confirmRemoveEmptyChangelist value="2" />
     <MESSAGE value="添加.gitignore" />
     <MESSAGE value="删除切换fragment相关的几个注解和其解释器&#10;完善LayoutPresenter创建LayoutCreater时对方法上注解的解释&#10;LayoutCreater加入数据类型的泛型&#10;优化OnClick注解&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="删除切换fragment相关的几个注解和其解释器&#10;完善LayoutPresenter创建LayoutCreater时对方法上注解的解释&#10;LayoutCreater加入数据类型的泛型&#10;优化OnClick注解&#10;" />
+    <MESSAGE value="1.添加测试项目&#10;2.调整PresenterManager获取Presenter的方法(加入Context参数),目的是让业务类能使用findPresenter时传入的Context对象&#10;3.提取LayoutCreater为单独的class文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.添加测试项目&#10;2.调整PresenterManager获取Presenter的方法(加入Context参数),目的是让业务类能使用findPresenter时传入的Context对象&#10;3.提取LayoutCreater为单独的class文件" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -4448,24 +4305,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImagePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="24" column="48" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="382">
@@ -4506,18 +4345,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImagePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+        <state relative-caret-position="223">
+          <caret line="47" column="51" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="24" column="48" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="249">
+          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
