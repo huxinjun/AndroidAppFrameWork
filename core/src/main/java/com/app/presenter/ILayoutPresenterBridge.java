@@ -1,9 +1,10 @@
 package com.app.presenter;
 
+import android.content.Context;
 import android.view.View;
 
-import com.app.presenter.impl.LayoutPresenter;
-import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
+import com.app.presenter.impl.layout.LayoutCreater;
+import com.app.presenter.impl.layout.LayoutPresenter;
 
 /**
  * 布局管理代理类
@@ -11,6 +12,16 @@ import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
  *
  */
 public class ILayoutPresenterBridge extends IPresenterBridge<ILayoutPresenter> implements ILayoutPresenter{
+
+	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
+	}
 
 	@Override
 	protected ILayoutPresenter deffaultSource() {
@@ -25,7 +36,7 @@ public class ILayoutPresenterBridge extends IPresenterBridge<ILayoutPresenter> i
 
 
 	@Override
-	public void inflate(Class<?> createrClass,InflateCallBack callBack) {
+	public void inflate(Class<? extends LayoutCreater> createrClass,InflateCallBack callBack) {
 		mSource.inflate(createrClass,callBack);
 	}
 

@@ -1,6 +1,7 @@
 package com.app;
 
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 
@@ -10,13 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.app.annotation.creater.BindLayoutCreater;
+import com.app.presenter.IAnnotationPresenter;
+import com.app.presenter.IAnnotationPresenterBridge;
 import com.app.presenter.IDataPresenter.DataInnerCallBack;
 import com.app.presenter.IDataPresenter.RequestDataCommand;
 import com.app.presenter.IDataPresenterBridge;
-import com.app.presenter.ILayoutPresenter.InflateCallBack;
-import com.app.presenter.ILayoutPresenterBridge;
 import com.app.presenter.PresenterManager;
-import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
+import com.app.presenter.impl.layout.LayoutCreater;
 
 public abstract class SmartFragment extends Fragment {
 
@@ -29,16 +31,16 @@ public abstract class SmartFragment extends Fragment {
 		if(mLayoutCreater!=null)
 			return mLayoutCreater.getContentView();
 		//根据类声明中的注解创建相应的LayoutCreater
-		PresenterManager.getInstance().findPresenter(ILayoutPresenterBridge.class).inflate(this.getClass(),new InflateCallBack() {
-			
+		PresenterManager.getInstance().findPresenter(getContext(), IAnnotationPresenterBridge.class).interpreter(this.getClass(), new IAnnotationPresenter.InterpreterCallBack() {
 			@Override
-			public void onCompleted(LayoutCreater instance) {
-				mLayoutCreater=instance;
+			public void onCompleted(Class<? extends Annotation> anno, Object... results) {
+				if (anno == BindLayoutCreater.class)
+					mLayoutCreater = (LayoutCreater) results[0];
 			}
 		});
 		
 		//数据
-		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(IDataPresenterBridge.class);
+		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(getActivity(),IDataPresenterBridge.class);
 		//为creater和关联布局下的子creater创建一个请求数据的命令并发送到DataPresenter中,然后静静的等待数据到来
 		dataPresenter.sendRequestDataCommand(new RequestDataCommand(mLayoutCreater.getRequestName(), mLayoutCreater.getContentDataType(), new DataInnerCallBack(){
 

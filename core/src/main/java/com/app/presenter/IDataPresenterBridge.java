@@ -1,5 +1,7 @@
 package com.app.presenter;
 
+import android.content.Context;
+
 import com.app.presenter.IRequestPresenter.ParamPool;
 import com.app.presenter.impl.DataPresenter;
 
@@ -24,6 +26,16 @@ public class IDataPresenterBridge extends IPresenterBridge<IDataPresenter>
 	@Override
 	public void setSource(IDataPresenter source) {
 		mSource=source;
+	}
+
+	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
 	}
 
 	@Override

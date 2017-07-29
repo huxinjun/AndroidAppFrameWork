@@ -1,6 +1,8 @@
 package com.app.presenter;
 
 
+import android.content.Context;
+
 /**
  * 业务代理类
  * 设计模式：桥接模式

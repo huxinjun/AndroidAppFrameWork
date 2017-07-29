@@ -21,7 +21,7 @@ public abstract class StorageRootInterpreter implements IAnnotationPresenter{
 		if(target.getClass()==Field.class){
 			
 			StorageRoot injector =getAnnotation(target, StorageRoot.class);
-			PresenterManager.getInstance().findPresenter(IStoragePresenterBridge.class).setRoot(injector.value());
+			PresenterManager.getInstance().findPresenter(getContext(),IStoragePresenterBridge.class).setRoot(injector.value());
 		}
 	}
 

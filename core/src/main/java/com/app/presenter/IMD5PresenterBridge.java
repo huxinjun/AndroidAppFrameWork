@@ -1,5 +1,7 @@
 package com.app.presenter;
 
+import android.content.Context;
+
 import java.io.File;
 
 import com.app.presenter.impl.MD5Presenter;
@@ -10,6 +12,16 @@ import com.app.presenter.impl.MD5Presenter;
  *
  */
 public class IMD5PresenterBridge extends IPresenterBridge<IMD5Presenter> implements IMD5Presenter{
+
+	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
+	}
 
 	@Override
 	public String getMd5(String str) {

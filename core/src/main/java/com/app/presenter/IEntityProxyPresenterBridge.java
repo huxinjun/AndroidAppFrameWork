@@ -1,5 +1,7 @@
 package com.app.presenter;
 
+import android.content.Context;
+
 /**
  * 实体代理桥接
  * @author xinjun
@@ -15,6 +17,16 @@ public class IEntityProxyPresenterBridge extends IPresenterBridge<IEntityProxyPr
 	@Override
 	public void setSource(IEntityProxyPresenter source) {
 		mSource=source;
+	}
+
+	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
 	}
 
 	@Override

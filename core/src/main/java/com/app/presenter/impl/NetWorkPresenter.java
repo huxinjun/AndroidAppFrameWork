@@ -12,8 +12,23 @@ import com.app.presenter.IActivityPresenterBridge;
 import com.app.presenter.INetWorkPresenter;
 import com.app.presenter.PresenterManager;
 
+import java.lang.ref.WeakReference;
+
 public class NetWorkPresenter implements INetWorkPresenter {
-	
+
+	private WeakReference<Context> mContext;
+
+	@Override
+	public void setContext(Context context) {
+		mContext=new WeakReference<Context>(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return mContext.get();
+	}
+
+
 	/**
 	 * 代理IP
 	 */
@@ -48,8 +63,6 @@ public class NetWorkPresenter implements INetWorkPresenter {
 	
 	/**
 	 * 读取APN配置信息
-	 * 
-	 * @param context
 	 */
 	@SuppressWarnings("deprecation")
 	private void readAPN() {
@@ -74,9 +87,6 @@ public class NetWorkPresenter implements INetWorkPresenter {
 	
 	/**
 	 * 判断MOBILE可以连接
-	 * 
-	 * @param context
-	 * @return
 	 */
 	@SuppressWarnings("deprecation")
 	private boolean isMOBILECon() {
@@ -95,9 +105,6 @@ public class NetWorkPresenter implements INetWorkPresenter {
 
 	/**
 	 * 判断WIFI可以连接
-	 * 
-	 * @param context
-	 * @return
 	 */
 	@SuppressWarnings("deprecation")
 	private boolean isWIFICon() {
@@ -122,9 +129,5 @@ public class NetWorkPresenter implements INetWorkPresenter {
 	@Override
 	public int getProxyPort() {
 		return PROXY_PORT;
-	}
-
-	private Context getContext(){
-		return PresenterManager.getInstance().findPresenter(IActivityPresenterBridge.class).getContext();
 	}
 }

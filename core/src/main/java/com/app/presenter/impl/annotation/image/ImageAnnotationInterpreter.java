@@ -3,14 +3,13 @@ package com.app.presenter.impl.annotation.image;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
 
 import android.widget.ImageView;
 
 import com.app.presenter.IImagePresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.IImagePresenter.Option;
-import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
+import com.app.presenter.impl.layout.LayoutCreater;
 import com.app.presenter.impl.annotation.AnnotationPresenter;
 
 /**
@@ -32,15 +31,15 @@ public abstract class ImageAnnotationInterpreter extends AnnotationPresenter{
 			option = (Option) targetImage.getTag(LayoutCreater.TAG_IMAGE_OPTION);
 			if(option==null)
 				try {
-					targetImage.setTag(LayoutCreater.TAG_IMAGE_OPTION, PresenterManager.getInstance().findPresenter(IImagePresenterBridge.class).getGlobleOption().clone());
+					targetImage.setTag(LayoutCreater.TAG_IMAGE_OPTION, PresenterManager.getInstance().findPresenter(getContext(),IImagePresenterBridge.class).getGlobleOption().clone());
 				} catch (CloneNotSupportedException e) {
 					e.printStackTrace();
 				}
 			option = (Option) targetImage.getTag(LayoutCreater.TAG_IMAGE_OPTION);
 			
-		}else if(target.getClass()==Type.class){
+		}else if(target.getClass()==Class.class){
 			//配置在类上，一般会配置在Application上
-			option = PresenterManager.getInstance().findPresenter(IImagePresenterBridge.class).getGlobleOption();
+			option = PresenterManager.getInstance().findPresenter(getContext(),IImagePresenterBridge.class).getGlobleOption();
 		}
 		setValue(option, anno);
 	}

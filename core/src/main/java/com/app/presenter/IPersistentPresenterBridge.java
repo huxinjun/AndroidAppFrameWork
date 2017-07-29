@@ -1,5 +1,6 @@
 package com.app.presenter;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 
 import com.app.presenter.IImagePresenter.Rect;
@@ -11,6 +12,16 @@ import com.app.presenter.impl.PersistentPresenter;
  *
  */
 public class IPersistentPresenterBridge extends IPresenterBridge<IPersistentPresenter> implements IPersistentPresenter{
+
+	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
+	}
 
 	@Override
 	public void saveObject(String name, Object target) {

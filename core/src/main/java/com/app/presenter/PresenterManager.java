@@ -44,24 +44,23 @@ public class PresenterManager {
 	 * @return 业务代理类
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends IPresenterBridge<?>> T findPresenter(Class<T> clazz){
-		if(mPresenters.containsKey(clazz))
-			return (T) mPresenters.get(clazz);
+	public <T extends IPresenterBridge<?>> T findPresenter(Context context,Class<T> clazz){
+		if(mPresenters.containsKey(clazz)) {
+			T instance=(T) mPresenters.get(clazz);
+			instance.setContext(context);
+			return instance;
+		}
 		IPresenterBridge<T> presenterImpl = null;
 		try {
 			presenterImpl = (IPresenterBridge<T>) clazz.newInstance();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if(presenterImpl instanceof IActivityPresenterBridge){
-			IActivityPresenterBridge activityPresenter=(IActivityPresenterBridge) presenterImpl;
-			activityPresenter.bindApplicationContext(context);
-		}
 		//设置默认的业务处理器
 		presenterImpl.setSource(presenterImpl.deffaultSource());
 		//将业务代理类存放起来
 		mPresenters.put((Class<IPresenterBridge<?>>) clazz, presenterImpl);
-		return findPresenter(clazz);
+		return findPresenter(context,clazz);
 	}
 	
 	/**

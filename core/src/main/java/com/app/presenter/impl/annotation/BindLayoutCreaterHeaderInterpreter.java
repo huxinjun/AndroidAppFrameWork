@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.app.annotation.creater.BindLayoutCreaterHeader;
 import com.app.presenter.ILayoutPresenter.InflateCallBack;
-import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
+import com.app.presenter.impl.layout.LayoutCreater;
 
 public class BindLayoutCreaterHeaderInterpreter extends AnnotationPresenter{
 

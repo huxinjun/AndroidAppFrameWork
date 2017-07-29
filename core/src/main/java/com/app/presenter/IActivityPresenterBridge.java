@@ -24,6 +24,17 @@ public class IActivityPresenterBridge extends IPresenterBridge<IActivityPresente
 	}
 
 	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
+	}
+
+
+	@Override
 	public IActivityPresenter startActivity(Class<? extends SmartActivity> clazz) {
 		return mSource.startActivity(clazz);
 	}
@@ -38,18 +49,5 @@ public class IActivityPresenterBridge extends IPresenterBridge<IActivityPresente
 		mSource.go();
 	}
 
-	@Override
-	public void bindApplicationContext(Context context) {
-		mSource.bindApplicationContext(context);
-	}
 
-
-	@Override
-	public Context getContext() {
-		return mSource.getContext();
-	}
-
-	
-
-	
 }

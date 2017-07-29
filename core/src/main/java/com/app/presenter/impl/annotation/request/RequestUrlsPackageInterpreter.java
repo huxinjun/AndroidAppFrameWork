@@ -29,7 +29,7 @@ public class RequestUrlsPackageInterpreter extends AnnotationPresenter {
 	}
 	
 	public IRequestPresenter getRequester(){
-		return PresenterManager.getInstance().findPresenter(IRequestPresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IRequestPresenterBridge.class);
 	}
 
 }

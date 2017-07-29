@@ -3,7 +3,7 @@ package com.app.presenter.impl.injector;
 import android.view.View;
 import com.app.presenter.IInjectionPresenter;
 
-public class RecycleViewInjector implements IInjectionPresenter {
+public class RecycleViewInjector extends ViewInjector {
 
 
 	@Override

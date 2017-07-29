@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Bitmap.CompressFormat;
@@ -24,6 +26,18 @@ import com.app.presenter.IStoragePresenter.DIR;
 import com.easyjson.EasyJson;
 
 public class PersistentPresenter implements IPersistentPresenter {
+
+	private WeakReference<Context> mContext;
+
+	@Override
+	public void setContext(Context context) {
+		mContext=new WeakReference<Context>(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return mContext.get();
+	}
 
 	@Override
 	public void saveObject(String name, Object target) {
@@ -129,15 +143,15 @@ public class PersistentPresenter implements IPersistentPresenter {
 	
 	
 	public IMD5Presenter getMd5Manager() {
-		return PresenterManager.getInstance().findPresenter(IMD5PresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IMD5PresenterBridge.class);
 
 	}
 	
 	private IStoragePresenter getStorage(){
-		return PresenterManager.getInstance().findPresenter(IStoragePresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IStoragePresenterBridge.class);
 	}
 	private IImagePresenter getImageManager(){
-		return PresenterManager.getInstance().findPresenter(IImagePresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IImagePresenterBridge.class);
 	}
 
 }

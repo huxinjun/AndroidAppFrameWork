@@ -1,6 +1,7 @@
 package com.app.presenter.impl;
 
 import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -14,6 +15,18 @@ import com.app.presenter.IStoragePresenter;
 import com.app.presenter.PresenterManager;
 
 public class StoragePresenter implements IStoragePresenter {
+
+	private WeakReference<Context> mContext;
+
+	@Override
+	public void setContext(Context context) {
+		mContext=new WeakReference<Context>(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return mContext.get();
+	}
 
 	private String mRootDirName="/";
 	
@@ -105,12 +118,5 @@ public class StoragePresenter implements IStoragePresenter {
 	public void setRoot(String root) {
 		mRootDirName=root;
 	}
-	
-	private Context getContext(){
-		return PresenterManager.getInstance().findPresenter(IActivityPresenterBridge.class).getContext();
-	}
-
-
-	
 
 }

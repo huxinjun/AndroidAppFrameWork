@@ -1,5 +1,6 @@
 package com.app.presenter.impl;
 
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -8,6 +9,7 @@ import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.app.annotation.request.RequestUrl;
@@ -31,6 +33,18 @@ import com.app.presenter.IRequestPresenter.RequestInfo;
  *
  */
 public class DataPresenter implements IDataPresenter,Runnable {
+
+	private WeakReference<Context> mContext;
+
+	@Override
+	public void setContext(Context context) {
+		mContext=new WeakReference<Context>(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return mContext.get();
+	}
 
 	public DataPresenter(){
 		new Thread(this).start();
@@ -219,13 +233,13 @@ public class DataPresenter implements IDataPresenter,Runnable {
 	
 	
 	public IAnnotationPresenter getAnnotaionManager(){
-		return PresenterManager.getInstance().findPresenter(IAnnotationPresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IAnnotationPresenterBridge.class);
 	}
 	public IRequestPresenter getRequester(){
-		return PresenterManager.getInstance().findPresenter(IRequestPresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IRequestPresenterBridge.class);
 	}
 	public IEntityProxyPresenter getProxyManager(){
-		return PresenterManager.getInstance().findPresenter(IEntityProxyPresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IEntityProxyPresenterBridge.class);
 	}
 
 }

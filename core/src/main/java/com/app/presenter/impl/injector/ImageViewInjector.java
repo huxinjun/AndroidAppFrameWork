@@ -3,7 +3,7 @@ package com.app.presenter.impl.injector;
 import android.view.View;
 import com.app.presenter.IInjectionPresenter;
 
-public class ImageViewInjector implements IInjectionPresenter {
+public class ImageViewInjector extends ViewInjector {
 
 
 	@Override

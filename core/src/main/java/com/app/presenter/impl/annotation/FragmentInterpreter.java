@@ -8,7 +8,7 @@ import com.app.annotation.fragment.Fragment;
 import com.app.presenter.IFragmentPresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.IFragmentPresenter.FragmentInfo;
-import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
+import com.app.presenter.impl.layout.LayoutCreater;
 
 public class FragmentInterpreter extends AnnotationPresenter{
 
@@ -25,7 +25,7 @@ public class FragmentInterpreter extends AnnotationPresenter{
 			Fragment fragment =getAnnotation(target, Fragment.class);
 			FragmentInfo fInfo=new FragmentInfo(viewID,fragment.clazz());
 			//切换到此fragment
-			PresenterManager.getInstance().findPresenter(IFragmentPresenterBridge.class).changeFragment(fInfo);
+			PresenterManager.getInstance().findPresenter(getContext(),IFragmentPresenterBridge.class).changeFragment(fInfo);
 		}
 		
 		

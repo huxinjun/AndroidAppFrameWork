@@ -1,5 +1,6 @@
 package com.app.presenter.impl;
 
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayDeque;
@@ -30,7 +31,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 
 import com.app.annotation.request.AccessSettings.RequestMethods;
-import com.app.presenter.IActivityPresenterBridge;
 import com.app.presenter.IImagePresenter;
 import com.app.presenter.IPersistentPresenter;
 import com.app.presenter.IPersistentPresenterBridge;
@@ -38,7 +38,7 @@ import com.app.presenter.IRequestPresenter.RequestInfo;
 import com.app.presenter.IRequestPresenter.ResultType;
 import com.app.presenter.IRequestPresenterBridge;
 import com.app.presenter.PresenterManager;
-import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
+import com.app.presenter.impl.layout.LayoutCreater;
 import com.app.presenter.impl.request.RequestPresenter;
 
 /**
@@ -47,6 +47,19 @@ import com.app.presenter.impl.request.RequestPresenter;
  *
  */
 public class ImagePresenter implements IImagePresenter {
+
+
+	private WeakReference<Context> mContext;
+
+	@Override
+	public void setContext(Context context) {
+		mContext=new WeakReference<Context>(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return mContext.get();
+	}
 
 	private Option globleOption=new Option();
 	private MyLruCache mMemoryCache;
@@ -307,10 +320,6 @@ public class ImagePresenter implements IImagePresenter {
 	
 	/**
 	 * 设置图片
-	 * @param target 目标控件
-	 * @param url 目标url
-	 * @param animation 设置时的动画
-	 * @param rect 缩放区域
 	 */
 	public void setImage(final ImageView target, final String url,final Option option) {
 		if (url == null || "".equals(url))
@@ -476,10 +485,6 @@ public class ImagePresenter implements IImagePresenter {
 	
 	/**
 	 * 同步加载本地图片
-	 * @param uri
-	 * @param maxWidth
-	 * @param maxHeight
-	 * @return
 	 */
 	private Bitmap getBitmapInCache(String url,Rect rect) {
 		if (getBitmapFromMemCache(url) != null) {
@@ -566,10 +571,6 @@ public class ImagePresenter implements IImagePresenter {
 	 * 
 	 * opts.inJustDecodeBounds = false; 设置加载图片分配内存 Bitmap bitmap =
 	 * BitmapFactory.decodeFile(imageUrl, opts); 将参数传入.
-	 * 
-	 * @param options
-	 * @param reqWidth
-	 * @param reqHeight
 	 * @return
 	 */
 	public int calculateInSampleSize(int outWidth, int outHeight, int reqWidth, int reqHeight) {
@@ -618,7 +619,7 @@ public class ImagePresenter implements IImagePresenter {
 	 *            要处理用的图片
 	 * @param width
 	 *            所选用图片的宽度
-	 * @param height所选用图片的高度
+	 * @param height 所选用图片的高度
 	 * @return 处理之后的图片
 	 */
 	public Bitmap zoomBitmap(Bitmap bitmap, int width, int height) {
@@ -638,9 +639,6 @@ public class ImagePresenter implements IImagePresenter {
 	
 	/**
 	 * 屏幕宽度
-	 * 
-	 * @param context
-	 * @return
 	 */
 	public int getDisplayWidth() {
 		DisplayMetrics outMetrics = new DisplayMetrics();
@@ -651,9 +649,6 @@ public class ImagePresenter implements IImagePresenter {
 
 	/**
 	 * 屏幕高度
-	 * 
-	 * @param context
-	 * @return
 	 */
 	public int getDisplayHeight() {
 		DisplayMetrics outMetrics = new DisplayMetrics();
@@ -696,7 +691,7 @@ public class ImagePresenter implements IImagePresenter {
 	
 	
 	private RequestPresenter getRequester(){
-		IRequestPresenterBridge findPresenter = PresenterManager.getInstance().findPresenter(IRequestPresenterBridge.class);
+		IRequestPresenterBridge findPresenter = PresenterManager.getInstance().findPresenter(getContext(),IRequestPresenterBridge.class);
 		Method deffaultSource;
 		try {
 			deffaultSource = findPresenter.getClass().getMethod("deffaultSource");
@@ -708,10 +703,7 @@ public class ImagePresenter implements IImagePresenter {
 		return null;
 	}
 	private IPersistentPresenter getPersistent(){
-		return PresenterManager.getInstance().findPresenter(IPersistentPresenterBridge.class);
-	}
-	private Context getContext(){
-		return PresenterManager.getInstance().findPresenter(IActivityPresenterBridge.class).getContext();
+		return PresenterManager.getInstance().findPresenter(getContext(),IPersistentPresenterBridge.class);
 	}
 
 

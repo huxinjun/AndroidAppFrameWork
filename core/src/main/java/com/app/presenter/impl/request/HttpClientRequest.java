@@ -268,9 +268,9 @@ public class HttpClientRequest extends RequestPresenter {
 	
 	
 	private INetWorkPresenter getNetUtil(){
-		return PresenterManager.getInstance().findPresenter(INetWorkPresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),INetWorkPresenterBridge.class);
 	}
 	private IParserPresenter getParser(){
-		return PresenterManager.getInstance().findPresenter(IParserPresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IParserPresenterBridge.class);
 	}
 }

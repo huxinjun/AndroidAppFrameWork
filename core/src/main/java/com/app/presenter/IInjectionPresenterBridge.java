@@ -4,23 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import android.support.v4.view.ViewPager;
+import android.content.Context;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.TextView;
 
-import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
-import com.app.presenter.impl.injector.AdapterViewInjector;
-import com.app.presenter.impl.injector.ButtonInjector;
-import com.app.presenter.impl.injector.CheckBoxInjector;
-import com.app.presenter.impl.injector.ImageViewInjector;
-import com.app.presenter.impl.injector.RadioButtonInjector;
-import com.app.presenter.impl.injector.TextViewInjector;
-import com.app.presenter.impl.injector.ViewPagerInjector;
+import com.app.presenter.impl.layout.LayoutCreater;
 
 /**
  * 布局管理代理类
@@ -30,14 +17,14 @@ import com.app.presenter.impl.injector.ViewPagerInjector;
  */
 public class IInjectionPresenterBridge extends IPresenterBridge<IInjectionPresenter> implements IInjectionPresenter{
 
-	static{
-		DEFAULT_INJECTOR.put(TextView.class, TextViewInjector.class);
-		DEFAULT_INJECTOR.put(ImageView.class, ImageViewInjector.class);
-		DEFAULT_INJECTOR.put(Button.class, ButtonInjector.class);
-		DEFAULT_INJECTOR.put(CheckBox.class, CheckBoxInjector.class);
-		DEFAULT_INJECTOR.put(RadioButton.class, RadioButtonInjector.class);
-		DEFAULT_INJECTOR.put(AdapterView.class, AdapterViewInjector.class);
-		DEFAULT_INJECTOR.put(ViewPager.class, ViewPagerInjector.class);
+	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
 	}
 
 	@Override

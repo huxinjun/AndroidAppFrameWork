@@ -1,5 +1,7 @@
 package com.app.presenter;
 
+import android.content.Context;
+
 import com.app.presenter.IDataPresenter.RequestListener;
 import com.app.presenter.impl.request.HttpClientRequest;
 
@@ -10,6 +12,15 @@ import com.app.presenter.impl.request.HttpClientRequest;
  */
 public class IRequestPresenterBridge extends IPresenterBridge<IRequestPresenter> implements IRequestPresenter{
 
+	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
+	}
 	@Override
 	public void request(RequestInfo requestInfo) {
 		mSource.request(requestInfo);

@@ -1,5 +1,6 @@
 package com.app.presenter;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
@@ -12,6 +13,16 @@ import com.app.presenter.impl.ImagePresenter;
  */
 public class IImagePresenterBridge extends IPresenterBridge<IImagePresenter> implements IImagePresenter{
 
+
+	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
+	}
 
 	@Override
 	protected IImagePresenter deffaultSource() {

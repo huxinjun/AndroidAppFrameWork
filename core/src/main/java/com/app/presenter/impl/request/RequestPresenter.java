@@ -3,6 +3,7 @@ package com.app.presenter.impl.request;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -25,7 +26,19 @@ public abstract class RequestPresenter implements IRequestPresenter {
 	public abstract Bitmap getImage(RequestInfo requestInfo);
 	public abstract File getFile(RequestInfo requestInfo);
 	public abstract Object getData(RequestInfo requestInfo);
-	
+
+
+	private WeakReference<Context> mContext;
+
+	@Override
+	public void setContext(Context context) {
+		mContext=new WeakReference<Context>(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return mContext.get();
+	}
 	
 	/**
 	 * 获取模板数据字符串
@@ -184,18 +197,15 @@ public abstract class RequestPresenter implements IRequestPresenter {
 	
 	
 	public IPersistentPresenter getPersistenter() {
-		return PresenterManager.getInstance().findPresenter(IPersistentPresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IPersistentPresenterBridge.class);
 		
 	}
 	public IMD5Presenter getMd5Manager() {
-		return PresenterManager.getInstance().findPresenter(IMD5PresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IMD5PresenterBridge.class);
 
 	}
 	private IParserPresenterBridge getParser(){
-		return PresenterManager.getInstance().findPresenter(IParserPresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IParserPresenterBridge.class);
 	}
-	private Context getContext(){
-		return PresenterManager.getInstance().findPresenter(IActivityPresenterBridge.class).getContext();
-	}
-	
+
 }

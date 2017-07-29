@@ -6,7 +6,7 @@ import com.app.annotation.LayoutDataType;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.annotation.creater.BindView;
 import com.app.annotation.request.BindUploadProgress;
-import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
+import com.app.presenter.impl.layout.LayoutCreater;
 import com.app.test.TestDialog.TestCreater;
 
 import android.R;

@@ -1,5 +1,7 @@
 package com.app.presenter;
 
+import android.content.Context;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
@@ -13,6 +15,8 @@ import com.app.presenter.impl.annotation.AnnotationPresenter;
  *
  */
 public class IAnnotationPresenterBridge extends IPresenterBridge<IAnnotationPresenter> implements IAnnotationPresenter{
+
+
 
 
 	@Override
@@ -36,6 +40,17 @@ public class IAnnotationPresenterBridge extends IPresenterBridge<IAnnotationPres
 	@Override
 	public void setSource(IAnnotationPresenter source) {
 		mSource=source;
+	}
+
+
+	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
 	}
 
 	@Override
@@ -66,7 +81,7 @@ public class IAnnotationPresenterBridge extends IPresenterBridge<IAnnotationPres
 		for(Annotation anno:annotations){
 			if(anno==null)
 				continue;
-			Interpreter interpreter = getAnnotation(anno.getClass(), Interpreter.class);
+			Interpreter interpreter = getAnnotation(anno.annotationType(), Interpreter.class);
 			if(interpreter==null)
 				throw new RuntimeException("请为"+anno.getClass().getName()+"配置@Interpreter注解,指名改注解使用的解释器类型!");
 			try {

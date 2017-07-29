@@ -15,14 +15,6 @@ import com.app.SmartActivity;
  */
 public interface IActivityPresenter extends IPresenter {
 
-	
-	public abstract Context getContext();
-	/**
-	 * IActivityPresenter管理着Context
-	 * 但是自己又不能凭空创建一个Context,所以他的创建方式有别于其他的Presenter们
-	 */
-	public abstract void bindApplicationContext(Context context);
-	
 	public abstract IActivityPresenter startActivity(Class<? extends SmartActivity> clazz);
 	
 	public abstract IActivityPresenter putParam(String key,Object value);

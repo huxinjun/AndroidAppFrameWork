@@ -1,5 +1,7 @@
 package com.app.presenter;
 
+import android.content.Context;
+
 import com.app.presenter.impl.NetWorkPresenter;
 
 /**
@@ -8,6 +10,16 @@ import com.app.presenter.impl.NetWorkPresenter;
  *
  */
 public class INetWorkPresenterBridge extends IPresenterBridge<INetWorkPresenter> implements INetWorkPresenter{
+
+	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
+	}
 
 	@Override
 	public int checkNetWork() {

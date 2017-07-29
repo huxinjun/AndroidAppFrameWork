@@ -1,6 +1,9 @@
 package com.app.presenter.impl;
 
+import android.content.Context;
+
 import java.io.Serializable;
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -16,6 +19,18 @@ import net.sf.cglib.proxy.MethodProxy;
 import com.app.presenter.IEntityProxyPresenter;
 
 public class EntityProxyPresenter implements IEntityProxyPresenter {
+
+	private WeakReference<Context> mContext;
+
+	@Override
+	public void setContext(Context context) {
+		mContext=new WeakReference<Context>(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return mContext.get();
+	}
 
 	@Override
 	public BeanProxyInfo findJavaBeanProxy(BeanProxyInfo root,Object proxy){
@@ -233,7 +248,7 @@ public class EntityProxyPresenter implements IEntityProxyPresenter {
 	/**
 	 * 给一个对象创建代理和方法拦截回调
 	 * @param proxy 对象代理描述类
-	 * @param clazz 源对象类型
+	 * @param beanClass 源对象类型
 	 */
 	private void createObjectHandler(final BeanProxyInfo proxy,Class<?> beanClass){
 		Enhancer enhancer=new Enhancer();

@@ -1,5 +1,7 @@
 package com.app.presenter;
 
+import android.content.Context;
+
 import com.app.presenter.impl.FragmentPresenter;
 
 /**
@@ -10,6 +12,16 @@ import com.app.presenter.impl.FragmentPresenter;
  */
 public class IFragmentPresenterBridge extends IPresenterBridge<IFragmentPresenter> implements IFragmentPresenter{
 
+
+	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
+	}
 
 	@Override
 	protected IFragmentPresenter deffaultSource() {

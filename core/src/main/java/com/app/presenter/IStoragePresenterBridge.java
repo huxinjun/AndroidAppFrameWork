@@ -1,5 +1,7 @@
 package com.app.presenter;
 
+import android.content.Context;
+
 import java.io.File;
 
 import com.app.presenter.impl.StoragePresenter;
@@ -21,6 +23,16 @@ public class IStoragePresenterBridge extends IPresenterBridge<IStoragePresenter>
 		deffDir.put(DIR.CUSTOMER1, DIR.CUSTOMER1.toString());
 		deffDir.put(DIR.CUSTOMER2, DIR.CUSTOMER2.toString());
 		deffDir.put(DIR.CUSTOMER3, DIR.CUSTOMER3.toString());
+	}
+
+	@Override
+	public void setContext(Context context) {
+		this.mSource.setContext(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return this.mSource.getContext();
 	}
 	
 	@Override

@@ -10,7 +10,7 @@ import com.app.annotation.creater.BindLayoutCreaters;
 import com.app.annotation.creater.BindView;
 import com.app.annotation.creater.ChangeCreater;
 import com.app.annotation.request.BindUploadProgress;
-import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
+import com.app.presenter.impl.layout.LayoutCreater;
 import com.app.test.TestFragment.TestCreater;
 
 import android.R;

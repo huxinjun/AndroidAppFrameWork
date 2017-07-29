@@ -1,6 +1,7 @@
 package com.app.presenter.impl.annotation;
 
 import java.lang.annotation.Annotation;
+import java.lang.ref.WeakReference;
 import java.lang.reflect.AnnotatedElement;
 
 import android.content.Context;
@@ -19,6 +20,19 @@ import com.app.presenter.PresenterManager;
  */
 public abstract class AnnotationPresenter implements IAnnotationPresenter{
 
+	private static WeakReference<Context> mContext;
+
+	@Override
+	public void setContext(Context context) {
+		mContext=new WeakReference<Context>(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return mContext.get();
+	}
+
+
 	/**
 	 * 具体此方法的实现逻辑由众多解释器来做,这样也便于以后支持新的注解
 	 */
@@ -30,21 +44,18 @@ public abstract class AnnotationPresenter implements IAnnotationPresenter{
 			Class<T> annoType) {
 		T annotation = target.getAnnotation(annoType);
 		if(annotation==null)
-			throw new RuntimeException("在"+target.getClass().getName()+"中未找到"+annoType.getName()+"注解");
+			throw new RuntimeException("在"+target+"中未找到"+annoType.getName()+"注解");
 		return annotation;
 	}
 
 	
-	protected Context getContext(){
-		return PresenterManager.getInstance().findPresenter(IActivityPresenterBridge.class).getContext();
-	}
-	
+
 	protected IDataPresenter getDataPresenter(){
-		return PresenterManager.getInstance().findPresenter(IDataPresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IDataPresenterBridge.class);
 	}
 	
 	protected ILayoutPresenter getLayoutPresenter(){
-		return PresenterManager.getInstance().findPresenter(ILayoutPresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),ILayoutPresenterBridge.class);
 	}
 	
 }

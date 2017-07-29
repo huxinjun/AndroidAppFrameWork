@@ -6,14 +6,14 @@ import android.view.View;
 import com.app.SmartViewPagerSameTemplaterAdapter;
 import com.app.presenter.IInjectionPresenter;
 
-public class ViewPagerInjector implements IInjectionPresenter {
+public class ViewPagerInjector extends ViewInjector {
 
 
 	@Override
 	public void inject(View target, Object value) {
 		//ViewPager每一页都是一样的
 		ViewPager pagerView=(ViewPager) target;
-		pagerView.setAdapter(new SmartViewPagerSameTemplaterAdapter(pagerView));
+		pagerView.setAdapter(new SmartViewPagerSameTemplaterAdapter(getContext(),pagerView));
 	}
 
 }

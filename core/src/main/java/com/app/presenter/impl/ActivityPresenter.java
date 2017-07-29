@@ -1,6 +1,7 @@
 package com.app.presenter.impl;
 
 import java.io.Serializable;
+import java.lang.ref.WeakReference;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,8 +17,18 @@ import com.app.presenter.PresenterManager;
 
 public class ActivityPresenter implements IActivityPresenter {
 
-	private Context appContext;
-	
+	private WeakReference<Context> mContext;
+
+	@Override
+	public void setContext(Context context) {
+		mContext=new WeakReference<Context>(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return mContext.get();
+	}
+
 	/**
 	 * 记录启动信息
 	 * @author xinjun
@@ -78,29 +89,15 @@ public class ActivityPresenter implements IActivityPresenter {
 
 	@Override
 	public void go() {
-		Intent intent=new Intent(appContext, startActivityInfo.clazz);
-		this.appContext.startActivity(intent, startActivityInfo.bundle);
+		Intent intent=new Intent(getContext(), startActivityInfo.clazz);
+		this.getContext().startActivity(intent, startActivityInfo.bundle);
 	}
 
-	@Override
-	public void bindApplicationContext(Context context) {
-		this.appContext=context;
-		getAnnotaionManager().interpreter(context.getClass(), null);
-	}
-
-	@Override
-	public Context getContext() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
-	
-	
 	
 	public IAnnotationPresenter getAnnotaionManager(){
-		return PresenterManager.getInstance().findPresenter(IAnnotationPresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(),IAnnotationPresenterBridge.class);
 	}
+
+
 
 }

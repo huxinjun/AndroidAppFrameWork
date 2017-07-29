@@ -10,8 +10,9 @@ import com.app.presenter.ILayoutPresenter.InflateCallBack;
 import com.app.presenter.IDataPresenterBridge;
 import com.app.presenter.ILayoutPresenterBridge;
 import com.app.presenter.PresenterManager;
-import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
+import com.app.presenter.impl.layout.LayoutCreater;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -36,9 +37,12 @@ public class SmartAbsListAdapter extends BaseAdapter {
 	 * 使用的视图创建器模板类型
 	 */
 	private Class<? extends LayoutCreater> mItemCreaterType;
+
+	private Context context;
 	
 	@SuppressWarnings("unchecked")
-	public SmartAbsListAdapter(AdapterView<BaseAdapter> parent) {
+	public SmartAbsListAdapter(Context context,AdapterView<BaseAdapter> parent) {
+		this.context=context;
 		this.mAdapterView=new WeakReference<AdapterView<BaseAdapter>>(parent);
 		if(mAdapterView.get()!=null){
 			mAllDatas=(List<Object>) mAdapterView.get().getTag(LayoutCreater.TAG_ITEMS_DATA);
@@ -66,7 +70,7 @@ public class SmartAbsListAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position,  final View convertView, ViewGroup parent) {
 		if(convertView==null){
-			PresenterManager.getInstance().findPresenter(ILayoutPresenterBridge.class).inflate(mItemCreaterType, new InflateCallBack() {
+			PresenterManager.getInstance().findPresenter(context,ILayoutPresenterBridge.class).inflate(mItemCreaterType, new InflateCallBack() {
 				
 				@Override
 				public void onCompleted(LayoutCreater instance) {
@@ -86,7 +90,7 @@ public class SmartAbsListAdapter extends BaseAdapter {
 		
 		//TODO 下面的逻辑需要转移到LayoutCreater中
 		//数据
-		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(IDataPresenterBridge.class);
+		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(context,IDataPresenterBridge.class);
 		dataPresenter.sendRequestDataCommand(new RequestDataCommand(tempCreater.getRequestName(), tempCreater.getContentDataType(), new DataInnerCallBack(){
 
 			@Override

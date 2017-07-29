@@ -1,8 +1,9 @@
 package com.app.presenter;
 
-import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
 
 import android.view.View;
+
+import com.app.presenter.impl.layout.LayoutCreater;
 
 /**
  * 布局管理类
@@ -33,7 +34,7 @@ public interface ILayoutPresenter extends IPresenter {
 	 * @param createrClass 配置了@BindLayoutCreater注解的class
 	 * @param callBack 当注解解释成功并根据注解创建了相应的LayoutCreate时发起的回调,回调中方可拿到LayoutCreater实例
 	 */
-	public void inflate(Class<?> createrClass,InflateCallBack callBack);
+	public void inflate(Class<? extends LayoutCreater> createrClass,InflateCallBack callBack);
 	
 	/**
 	 * 寻找一个creater下的某个视图

@@ -10,8 +10,9 @@ import com.app.presenter.PresenterManager;
 import com.app.presenter.IDataPresenter.DataInnerCallBack;
 import com.app.presenter.IDataPresenter.RequestDataCommand;
 import com.app.presenter.ILayoutPresenter.InflateCallBack;
-import com.app.presenter.impl.LayoutPresenter.LayoutCreater;
+import com.app.presenter.impl.layout.LayoutCreater;
 
+import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -32,10 +33,13 @@ public class SmartViewPagerSameTemplaterAdapter extends PagerAdapter {
 	 * 使用的视图创建器模板类型
 	 */
 	private Class<? extends LayoutCreater> mItemCreaterType;
-	
+
+
+	private Context context;
 	
 	@SuppressWarnings("unchecked")
-	public SmartViewPagerSameTemplaterAdapter(ViewPager pagerView) {
+	public SmartViewPagerSameTemplaterAdapter(Context context,ViewPager pagerView) {
+		this.context=context;
 		mAdapterView=new WeakReference<ViewPager>(pagerView);
 		if(mAdapterView.get()!=null){
 			mAllDatas=(List<Object>) mAdapterView.get().getTag(LayoutCreater.TAG_ITEMS_DATA);
@@ -58,7 +62,7 @@ public class SmartViewPagerSameTemplaterAdapter extends PagerAdapter {
 	private LayoutCreater tempCreater;
 	@Override
 	public Object instantiateItem(ViewGroup container,int position){
-		PresenterManager.getInstance().findPresenter(ILayoutPresenterBridge.class).inflate(mItemCreaterType, new InflateCallBack() {
+		PresenterManager.getInstance().findPresenter(context,ILayoutPresenterBridge.class).inflate(mItemCreaterType, new InflateCallBack() {
 			
 			@Override
 			public void onCompleted(LayoutCreater instance) {
@@ -69,7 +73,7 @@ public class SmartViewPagerSameTemplaterAdapter extends PagerAdapter {
 		});
 		
 		//数据
-		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(IDataPresenterBridge.class);
+		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(context,IDataPresenterBridge.class);
 		dataPresenter.sendRequestDataCommand(new RequestDataCommand(tempCreater.getRequestName(), tempCreater.getContentDataType(), new DataInnerCallBack(){
 
 			@Override

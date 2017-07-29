@@ -1,13 +1,28 @@
 package com.app.presenter.impl;
 
+import android.content.Context;
+
 import java.io.File;
 import java.io.FileInputStream;
+import java.lang.ref.WeakReference;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import com.app.presenter.IMD5Presenter;
 
 public class MD5Presenter implements IMD5Presenter {
+
+	private WeakReference<Context> mContext;
+
+	@Override
+	public void setContext(Context context) {
+		mContext=new WeakReference<Context>(context);
+	}
+
+	@Override
+	public Context getContext() {
+		return mContext.get();
+	}
 
 	@Override
 	public String getMd5(String str) {
