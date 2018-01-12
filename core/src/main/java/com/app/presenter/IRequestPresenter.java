@@ -36,10 +36,10 @@ public interface IRequestPresenter extends IPresenter {
 	public class Setting{
 		
 		/**配置请求的类全路径名*/
-		public String datasPackage;
+		public Class dataClass;
 		
 		/**配置请求url段的类全路径名*/
-		public String urlPackage;
+		public Class urlClass;
 		
 		/**配置json协议模板的类全路径名*/
 		public String localJsonPackage;

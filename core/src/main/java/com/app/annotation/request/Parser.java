@@ -5,7 +5,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import com.app.annotation.Interpreter;
 import com.app.presenter.IParserPresenter;
+import com.app.presenter.impl.annotation.request.ParserInterpreter;
 
 /**
  * 给一个Request指定数据解析器
@@ -14,6 +16,7 @@ import com.app.presenter.IParserPresenter;
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
+@Interpreter(ParserInterpreter.class)
 public @interface Parser{
 
 	Class<? extends IParserPresenter> value();

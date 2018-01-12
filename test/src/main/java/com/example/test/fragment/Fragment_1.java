@@ -8,11 +8,11 @@ import com.app.annotation.LayoutDataType;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.annotation.creater.BindView;
 import com.app.presenter.impl.layout.LayoutCreater;
-import com.app.test.Datas;
 import com.app.test.TestModel;
 import com.example.test.R;
+import com.example.test.global.Datas;
 
-@BindLayoutCreater(creater=Fragment_1.MyCreater.class, requestName = Datas.DATA_GET_CODE)
+@BindLayoutCreater(creater=Fragment_1.MyCreater.class, requestName = Datas.data_account_list)
 public class Fragment_1 extends SmartFragment {
 
 	

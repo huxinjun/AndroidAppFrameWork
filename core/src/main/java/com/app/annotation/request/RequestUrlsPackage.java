@@ -19,5 +19,5 @@ import com.app.presenter.impl.annotation.request.RequestUrlsPackageInterpreter;
 @Interpreter(RequestUrlsPackageInterpreter.class)
 public @interface RequestUrlsPackage {
 
-	String value();
+	Class value();
 }

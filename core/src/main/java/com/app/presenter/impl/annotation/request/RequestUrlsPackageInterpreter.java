@@ -25,7 +25,7 @@ public class RequestUrlsPackageInterpreter extends AnnotationPresenter {
 	public void interpreter(AnnotatedElement target,
 			InterpreterCallBack callBack, Object... context) {
 		RequestUrlsPackage rPackage = getAnnotation(target, RequestUrlsPackage.class);
-		IRequestPresenter.GLOBLE.urlPackage=rPackage.value();
+		IRequestPresenter.GLOBLE.urlClass =rPackage.value();
 	}
 	
 	public IRequestPresenter getRequester(){

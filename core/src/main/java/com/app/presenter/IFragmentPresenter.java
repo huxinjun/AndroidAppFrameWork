@@ -20,9 +20,8 @@ public interface IFragmentPresenter extends IPresenter {
 	 *
 	 */
 	public static class FragmentInfo{
-		int viewID;
-		Class<? extends SmartFragment> clazz;
-		SmartFragment fragment;
+		public int viewID;
+		public Class<? extends SmartFragment> clazz;
 		public FragmentInfo(int viewID, Class<? extends SmartFragment> clazz) {
 			super();
 			this.viewID = viewID;

@@ -10,6 +10,7 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.text.TextUtils;
 
 import com.app.annotation.request.RequestUrl;
@@ -66,7 +67,11 @@ public class DataPresenter implements IDataPresenter,Runnable {
 
 	@Override
 	public void run() {
-		while(mCommands.peek()!=null){
+		while(true){
+			if(mCommands.peek()==null){
+				SystemClock.sleep(100);
+				continue;
+			}
 			RequestDataCommand command = mCommands.peek();
 			Iterator<Entry<String, RequestInfo>> dataIterator = mDatas.entrySet().iterator();
 			
@@ -80,7 +85,7 @@ public class DataPresenter implements IDataPresenter,Runnable {
 					//TODO 在entry.value对象中查找命令需要的数据类型,完成后为其创建代理对象
 				}
 			}
-			
+
 		}
 	}
 
@@ -88,36 +93,24 @@ public class DataPresenter implements IDataPresenter,Runnable {
 	public void request(String requestName, Option option, ParamPool paramPool) {
 		
 		//请求网络，组装RequestInfo对象
-		if(TextUtils.isEmpty(IRequestPresenter.GLOBLE.datasPackage))
-			throw new RuntimeException("请在Application类声明上配置@DatasPackage注解，指明数据容器配置的类路径！");
+		if(IRequestPresenter.GLOBLE.dataClass==null)
+			throw new RuntimeException("请在Application类声明上配置@DatasDeclareClass注解，指明数据容器配置的类路径！");
 		
-		final RequestInfo mInfo=new RequestInfo();
-		Class<?> datasPackageClass;
-		try {
-			datasPackageClass = Class.forName(IRequestPresenter.GLOBLE.datasPackage);
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("没有找到@DatasPackage注解指向的类！请检查");
-		}
 		//解释请求配置类，上面可能配置了@RequestUrlsPackage注解
-		getAnnotaionManager().interpreter(datasPackageClass,null);
-		
-		if(TextUtils.isEmpty(IRequestPresenter.GLOBLE.urlPackage))
+		getAnnotaionManager().interpreter(IRequestPresenter.GLOBLE.dataClass,null);
+
+		if(IRequestPresenter.GLOBLE.urlClass==null)
 			throw new RuntimeException("请在配置请求的类声明上配置@RequestUrlsPackage注解，指明请求URL所在的类路径！");
-		Class<?> urlsPackageClass;
-		try {
-			urlsPackageClass = Class.forName(IRequestPresenter.GLOBLE.urlPackage);
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("没有找到@RequestUrlsPackage注解指向的类！请检查");
-		}
-		
+
 		//在数据配置类中查找到requestName相应的字段
-		Field dataField = getFieldInClassByStaticFieldValue(datasPackageClass, requestName);
+		Field dataField = getFieldInClassByStaticFieldValue(IRequestPresenter.GLOBLE.dataClass, requestName);
 		RequestUrl requestUrl = getAnnotaionManager().getAnnotation(dataField, RequestUrl.class);
-		
-		
+
+		final RequestInfo mInfo=new RequestInfo();
+
 		//在url请求配置类中查找到@RequestUrl对应的字段
-		Field urlField = getFieldInClassByStaticFieldValue(urlsPackageClass, requestUrl.value());
-		
+		Field urlField = getFieldInClassByStaticFieldValue(IRequestPresenter.GLOBLE.urlClass, requestUrl.value());
+
 		getAnnotaionManager().interpreter(urlField, null,mInfo);
 		getAnnotaionManager().interpreter(dataField, null,mInfo);
 		

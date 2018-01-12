@@ -1,8 +1,13 @@
 package com.app.presenter.impl;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
 import com.app.presenter.IFragmentPresenter;
+import com.app.test.ULog;
 
 import java.lang.ref.WeakReference;
 
@@ -28,9 +33,19 @@ public class FragmentPresenter implements IFragmentPresenter {
 
 
 	@Override
-	public void changeFragment(FragmentInfo... fragments) {
-		// TODO Auto-generated method stub
-		
+	public void changeFragment(FragmentInfo... fragments){
+		ULog.out("切换fragment到："+fragments[0].clazz.getName());
+		FragmentActivity activity = (FragmentActivity) getContext();
+		FragmentManager fm =activity.getSupportFragmentManager();
+		FragmentTransaction ft = fm.beginTransaction();
+		for(FragmentInfo info:fragments){
+			try {
+				ft.replace(info.viewID,info.clazz.newInstance());
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
+		ft.commitAllowingStateLoss();
 	}
 
 }

@@ -43,6 +43,8 @@ import com.app.presenter.PresenterManager;
 import com.app.presenter.IDataPresenter.RequestListener;
 import com.app.presenter.impl.request.CustomMultipartEntity.ProgressInfo;
 import com.app.presenter.impl.request.CustomMultipartEntity.ProgressListener;
+import com.app.test.ULog;
+
 /**
  * 使用HttpClient实现请求网络数据功能
  * @author xinjun
@@ -108,7 +110,7 @@ public class HttpClientRequest extends RequestPresenter {
 				// Entity转换JSON格式
 				result = EntityUtils.toString(response.getEntity(),ENCODING);
 				//转换为实体
-				
+				ULog.out("请求的数据："+result);
 				
 				Object parseObj = getParser().parse(result, info.mEntityType);
 				return parseObj;

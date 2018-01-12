@@ -10,7 +10,6 @@ import com.app.annotation.request.RequestUrlsPackage;
 import com.app.annotation.request.UseDiscCache;
 import com.app.presenter.impl.parser.JsonParser;
 
-@RequestUrlsPackage("com.app.test.RequestUrlPattener")
 public class Datas {
 
 	@Description("获取验证码")

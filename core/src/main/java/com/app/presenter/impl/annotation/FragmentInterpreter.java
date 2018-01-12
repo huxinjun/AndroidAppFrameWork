@@ -1,5 +1,7 @@
 package com.app.presenter.impl.annotation;
 
+import android.view.View;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
@@ -20,8 +22,20 @@ public class FragmentInterpreter extends AnnotationPresenter{
 		if(target.getClass()==Field.class){
 			@SuppressWarnings("unused")
 			LayoutCreater creater=(LayoutCreater) context[0];
-			int viewID=(Integer)context[1];
-			
+			int viewID=0;
+
+			Field targetField= (Field) context[1];
+			Fragment annotation = targetField.getAnnotation(Fragment.class);
+			Class clazz=annotation.clazz();
+			try {
+				View view= (View) targetField.get(creater);
+				viewID=view.getId();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
+
+
+
 			Fragment fragment =getAnnotation(target, Fragment.class);
 			FragmentInfo fInfo=new FragmentInfo(viewID,fragment.clazz());
 			//切换到此fragment

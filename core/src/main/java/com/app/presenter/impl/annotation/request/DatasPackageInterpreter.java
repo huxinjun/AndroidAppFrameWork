@@ -3,7 +3,7 @@ package com.app.presenter.impl.annotation.request;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
-import com.app.annotation.request.DatasPackage;
+import com.app.annotation.request.DatasDeclareClass;
 import com.app.presenter.IRequestPresenter;
 import com.app.presenter.impl.annotation.AnnotationPresenter;
 /**
@@ -22,8 +22,8 @@ public class DatasPackageInterpreter extends AnnotationPresenter {
 	@Override
 	public void interpreter(AnnotatedElement target,
 			InterpreterCallBack callBack, Object... context) {
-		DatasPackage rPackage = getAnnotation(target, DatasPackage.class);
-		IRequestPresenter.GLOBLE.datasPackage=rPackage.value();
+		DatasDeclareClass rPackage = getAnnotation(target, DatasDeclareClass.class);
+		IRequestPresenter.GLOBLE.dataClass=rPackage.value();
 	}
 	
 	

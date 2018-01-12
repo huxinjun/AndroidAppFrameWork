@@ -21,7 +21,7 @@ public class Fragment_2 extends SmartFragment {
 	}
 
 	@LayoutDataType(TestModel.class)
-	@BindView(R.layout.fragment_1)
+	@BindView(R.layout.fragment_2)
 	public static class MyCreater extends LayoutCreater<TestModel> {
 
 
