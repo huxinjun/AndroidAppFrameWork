@@ -58,7 +58,7 @@ public class LayoutPresenter implements ILayoutPresenter {
                 try {
                     getAnnotationPresenter().interpreter(field, null, finalCreater, field);
                 } catch (Exception e1) {
-                    e1.printStackTrace();
+                    throw new RuntimeException(e1);
                 }
 
             }

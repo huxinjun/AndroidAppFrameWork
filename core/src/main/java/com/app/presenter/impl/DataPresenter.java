@@ -27,6 +27,7 @@ import com.app.presenter.IRequestPresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.IRequestPresenter.ParamPool;
 import com.app.presenter.IRequestPresenter.RequestInfo;
+import com.app.test.ULog;
 
 /**
  * 数据处理器
@@ -54,7 +55,7 @@ public class DataPresenter implements IDataPresenter,Runnable {
 	/**
 	 * 内部数据请求指令集合
 	 */
-	private Queue<RequestDataCommand> mCommands=new LinkedBlockingDeque<IDataPresenter.RequestDataCommand>();
+	private LinkedBlockingDeque<RequestDataCommand> mCommands=new LinkedBlockingDeque<IDataPresenter.RequestDataCommand>();
 	/**
 	 * 所有的数据
 	 * Map<网络数据请求编号,请求的所有信息>
@@ -63,28 +64,27 @@ public class DataPresenter implements IDataPresenter,Runnable {
 	
 	@Override
 	public void sendRequestDataCommand(RequestDataCommand command) {
-		mCommands.add(command);
+		try {
+			mCommands.putLast(command);
+			ULog.out("DataPresenter.sendRequestDataCommand:"+command);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void run() {
 		while(true){
-			if(mCommands.peek()==null){
-				SystemClock.sleep(100);
-				continue;
-			}
-			RequestDataCommand command = mCommands.peek();
-			Iterator<Entry<String, RequestInfo>> dataIterator = mDatas.entrySet().iterator();
-			
-			while(dataIterator.hasNext()){
-				Entry<String, RequestInfo> entry = dataIterator.next();
-				if(entry.getKey().equals(command.getRequestName())){
-					//这个命令需要的数据来自这个entry的value中
-					RequestInfo requestInfo = entry.getValue();
-					command.getCallBack().onDataComming(command,requestInfo.mServerResult);
+			try {
+				RequestDataCommand command = mCommands.takeFirst();
+				RequestInfo findInfo = mDatas.get(command.getRequestName());
+				if(findInfo!=null){
+					command.getCallBack().onDataComming(command,findInfo.mServerResult);
 					mCommands.remove();
 					//TODO 在entry.value对象中查找命令需要的数据类型,完成后为其创建代理对象
 				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 
 		}
@@ -112,6 +112,12 @@ public class DataPresenter implements IDataPresenter,Runnable {
 		RequestUrl requestUrl = getAnnotaionManager().getAnnotation(dataField, RequestUrl.class);
 
 		final RequestInfo mInfo=new RequestInfo();
+
+		try {
+			mInfo.mRequestName= (String) dataField.get(null);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
 
 		//在url请求配置类中查找到@RequestUrl对应的字段
 		Field urlField = getFieldInClassByStaticFieldValue(IRequestPresenter.GLOBLE.urlClass, requestUrl.value());
@@ -150,6 +156,7 @@ public class DataPresenter implements IDataPresenter,Runnable {
 			@Override
 			public void onDataComming(Object object) {
 				mInfo.mServerResult=object;
+				mDatas.put(mInfo.mRequestName,mInfo);
 				//TODO 暂时不实现缓存
 				//服务器最新的数据来了
 				//1.检查是否有缓存数据，没有缓存时再查看是否有该类的代理，如果没有：创建代理，如果有：检查数据是替换还是追加

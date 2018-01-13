@@ -9,7 +9,7 @@ import com.app.annotation.request.RequestUrl;
 import com.app.annotation.request.RequestUrls;
 import com.app.annotation.request.UseDiscCache;
 import com.app.presenter.impl.parser.JsonParser;
-import com.app.test.TestDialog;
+import com.example.test.dialog.LoadingDialog;
 
 @RequestUrls(com.example.test.global.RequestUrls.class)
 public class Datas {
@@ -17,7 +17,7 @@ public class Datas {
 	@Description("获取账单列表")
 	@Params({@Param(key="TEST")})
 	@RequestUrl(com.example.test.global.RequestUrls.PATTERN_ACCOUNTS_GET_ALL)
-	@Dialog(TestDialog.class)
+	@Dialog(LoadingDialog.class)
 	@Parser(JsonParser.class)
 	@UseDiscCache
 	public static final String data_account_list = "get_all";

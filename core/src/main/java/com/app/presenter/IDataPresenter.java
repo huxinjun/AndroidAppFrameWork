@@ -96,6 +96,19 @@ public interface IDataPresenter extends IPresenter {
 		public Object getTag() {
 			return tag;
 		}
+
+
+		@Override
+		public String toString() {
+			return "RequestDataCommand{" + "\n" +
+					"requestName='" + requestName + '\'' +"\n" +
+					", atomicType=" + atomicType +"\n" +
+					", type=" + type +"\n" +
+					", listIndex=" + listIndex +"\n" +
+					", mCallBack=" + mCallBack +"\n" +
+					", tag=" + tag +
+					'}';
+		}
 	}
 	
 	/**
