@@ -366,7 +366,6 @@ public class ImagePresenter implements IImagePresenter {
 							info.mRequestMethod=RequestMethods.GET;
 							info.mResultType=ResultType.IMAGE;
 							info.mExcuteCount=option.getRetryCount();
-							info.mBaseUrl="";
 							info.mUrlPattener="";
 							
 							bitmap = getRequester().getImage(info);

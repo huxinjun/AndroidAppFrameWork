@@ -4,6 +4,7 @@ import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Queue;
@@ -96,8 +97,12 @@ public class DataPresenter implements IDataPresenter,Runnable {
 		if(IRequestPresenter.GLOBLE.dataClass==null)
 			throw new RuntimeException("请在Application类声明上配置@DatasDeclareClass注解，指明数据容器配置的类路径！");
 		
-		//解释请求配置类，上面可能配置了@RequestUrlsPackage注解
+		//解释数据配置类，上面可能配置了@RequestUrlsPackage注解
 		getAnnotaionManager().interpreter(IRequestPresenter.GLOBLE.dataClass,null);
+
+
+		//解释请求配置类，上面配置了@RequestBaseUrl,LocalJsonPackage注解
+		getAnnotaionManager().interpreter(IRequestPresenter.GLOBLE.urlClass,null);
 
 		if(IRequestPresenter.GLOBLE.urlClass==null)
 			throw new RuntimeException("请在配置请求的类声明上配置@RequestUrlsPackage注解，指明请求URL所在的类路径！");
@@ -113,7 +118,15 @@ public class DataPresenter implements IDataPresenter,Runnable {
 
 		getAnnotaionManager().interpreter(urlField, null,mInfo);
 		getAnnotaionManager().interpreter(dataField, null,mInfo);
-		
+
+		List<IRequestPresenter.Param> params = mInfo.mParamPool.getParams();
+		boolean hasFileParam=false;
+		for(IRequestPresenter.Param param:params)
+			if(param.getType()== IRequestPresenter.ParamType.FILE){
+				hasFileParam=true;
+				break;
+			}
+		mInfo.mResultType= hasFileParam?IRequestPresenter.ResultType.FILE:IRequestPresenter.ResultType.STRING;
 		mInfo.mCallBack=new DataCallBack() {
 			
 			@Override

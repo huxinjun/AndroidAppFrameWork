@@ -1,5 +1,8 @@
 package com.app.presenter.impl.annotation.request;
 
+import com.app.annotation.request.Dialog;
+import com.app.annotation.request.MappingLocalJson;
+import com.app.presenter.IRequestPresenter;
 import com.app.presenter.impl.annotation.AnnotationPresenter;
 
 import java.lang.annotation.Annotation;
@@ -21,7 +24,10 @@ public class MappingLocalJsonInterpreter extends AnnotationPresenter {
 	@Override
 	public void interpreter(AnnotatedElement target,
 			InterpreterCallBack callBack, Object... context) {
-		//Ignore
+		IRequestPresenter.RequestInfo info= (IRequestPresenter.RequestInfo) context[0];
+		MappingLocalJson annotation = getAnnotation(target, MappingLocalJson.class);
+		info.isUseTempleteData=annotation.useTempleteJson();
+		info.mTempleteDataFileName=annotation.fileName();
 	}
 	
 	

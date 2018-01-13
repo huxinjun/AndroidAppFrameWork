@@ -1,5 +1,7 @@
 package com.app.annotation;
 
+import com.app.presenter.impl.annotation.BindFieldNameInterpreter;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,6 +13,7 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
+@Interpreter(BindFieldNameInterpreter.class)
 public @interface BindFieldName {
 
 	String value();

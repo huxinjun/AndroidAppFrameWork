@@ -68,9 +68,13 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
      */
     public static final int TAG_INJECTOR_CLASS = TAG_START_INDEX + 0x8;
     /**
+     * view数据注入使用的数据字段
+     */
+    public static final int TAG_INJECTOR_FIELD = TAG_START_INDEX + 0x9;
+    /**
      * 图片加载需要的参数
      */
-    public static final int TAG_IMAGE_OPTION = TAG_START_INDEX + 0x9;
+    public static final int TAG_IMAGE_OPTION = TAG_START_INDEX + 0x10;
 
     private Context mContext;
     /**
@@ -177,7 +181,7 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
                 throw new RuntimeException("在" + this.getClass().getName() + "类的" + viewField.getName() + "字段中配置的BindFieldName上找不到映射的JavaBean字段:" + bindFieldName);
 
             //视图映射的实体字段值
-            View view = (View) viewField.getType().newInstance();
+            View view = (View) viewField.get(this);
             Object viewData = javaBeanField.get(getContentData());
             //当beforeInject中将javaBeanField字段的值修改了的话,说明viewData现在已经是旧数据了,不需要再注入了
             if (!viewData.equals(javaBeanField.get(getContentData())))

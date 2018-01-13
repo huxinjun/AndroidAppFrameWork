@@ -5,6 +5,8 @@ import java.util.Map;
 
 import android.content.Context;
 
+import com.app.test.ULog;
+
 /**
  * 业务类的管理器,负责创建,销毁业务类
  * @author xinjun
@@ -25,6 +27,8 @@ public class PresenterManager {
 			mInstance=new ThreadLocal<PresenterManager>();
 			mInstance.set(new PresenterManager());
 		}
+		if(mInstance.get()==null)
+			mInstance.set(new PresenterManager());
 		return mInstance.get();
 	}
 	/**

@@ -39,6 +39,7 @@ import com.app.presenter.INetWorkPresenter;
 import com.app.presenter.INetWorkPresenterBridge;
 import com.app.presenter.IParserPresenter;
 import com.app.presenter.IParserPresenterBridge;
+import com.app.presenter.IRequestPresenter;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.IDataPresenter.RequestListener;
 import com.app.presenter.impl.request.CustomMultipartEntity.ProgressInfo;
@@ -55,7 +56,8 @@ public class HttpClientRequest extends RequestPresenter {
 
 	@Override
 	public Bitmap getImage(RequestInfo info) {
-		HttpGet get = new HttpGet(info.mBaseUrl+info.mUrlPattener);
+		ULog.out("getImage:"+info);
+		HttpGet get = new HttpGet(IRequestPresenter.GLOBLE.requestBaseUrl+info.mUrlPattener);
 		HttpResponse response = null;
 
 		HttpParams httpParams = new BasicHttpParams();
@@ -89,12 +91,14 @@ public class HttpClientRequest extends RequestPresenter {
 
 	@Override
 	public File getFile(RequestInfo info) {
-		return null;
+		//TODO
+		return  null;
 	}
 
 	@Override
 	public Object getData(RequestInfo info) {
-		
+		ULog.out("getData:"+info);
+		ULog.out("getData:"+IRequestPresenter.GLOBLE);
 		HttpRequestBase method=null;
 		if(info.mRequestMethod==RequestMethods.GET)
 			method = getGet(info);
@@ -174,7 +178,7 @@ public class HttpClientRequest extends RequestPresenter {
 	
 	
 	private HttpGet getGet(RequestInfo info){
-		StringBuffer urlStr = new StringBuffer(info.mBaseUrl + info.mUrlPattener);
+		StringBuffer urlStr = new StringBuffer(IRequestPresenter.GLOBLE.requestBaseUrl + info.mUrlPattener);
 		
 		List<Param> params = info.mParamPool.getParams();
 		if (info.mParamPool.getParams().size() > 0) {
@@ -204,7 +208,7 @@ public class HttpClientRequest extends RequestPresenter {
 	
 	
 	private HttpPost getPost(final RequestInfo requestInfo){
-		HttpPost post = new HttpPost(requestInfo.mBaseUrl+requestInfo.mUrlPattener);
+		HttpPost post = new HttpPost(IRequestPresenter.GLOBLE.requestBaseUrl+requestInfo.mUrlPattener);
 		HttpParams httpParams = new BasicHttpParams();
 		httpParams = new BasicHttpParams();
 		HttpConnectionParams.setConnectionTimeout(httpParams, requestInfo.mConnectionTimeOut);

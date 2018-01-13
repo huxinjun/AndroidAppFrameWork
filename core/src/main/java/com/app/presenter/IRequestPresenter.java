@@ -43,6 +43,20 @@ public interface IRequestPresenter extends IPresenter {
 		
 		/**配置json协议模板的类全路径名*/
 		public String localJsonPackage;
+
+		/**配置json协议模板的类全路径名*/
+		public String requestBaseUrl;
+
+
+		@Override
+		public String toString() {
+			return "Setting{" +
+					"dataClass=" + dataClass + "\n"+
+					", urlClass=" + urlClass + "\n"+
+					", localJsonPackage='" + localJsonPackage + '\'' +"\n"+
+					", requestBaseUrl='" + requestBaseUrl + '\'' +
+					'}';
+		}
 	}
 	/**
 	 * 一次具体的请求包含的所有信息
@@ -71,7 +85,9 @@ public interface IRequestPresenter extends IPresenter {
 		
 		/**请求时显示的dialog,null时不显示*/
 		public SmartDialog mDialog;
-		
+		/**是否显示dialog*/
+		public boolean isShowDialog;
+
 		/**关联的请求字段配置名称*/
 		public String mRequestSettingName;
 		
@@ -90,10 +106,7 @@ public interface IRequestPresenter extends IPresenter {
 		
 		/**是否使用磁盘缓存*/
 		public boolean isUseDiscCache;
-		
-		/**请求的基地址*/
-		public String mBaseUrl;
-		
+
 		/**请求的地址*/
 		public String mUrlPattener;
 		
@@ -139,13 +152,38 @@ public interface IRequestPresenter extends IPresenter {
 			return super.clone();
 		}
 
-
 		@Override
 		public String toString() {
-			return "RequestInfo [mRequestName=" + mRequestName
-					+ ", mParamPool=" + mParamPool + "]";
+			return "RequestInfo{" +
+					"mHandler=" + mHandler + "\n"+
+					", mResultType=" + mResultType +"\n"+
+					", mRequestMethod=" + mRequestMethod +"\n"+
+					", mDescription='" + mDescription + '\'' +"\n"+
+					", mRequestName='" + mRequestName + '\'' +"\n"+
+					", mParamPool=" + mParamPool +"\n"+
+					", mDialog=" + mDialog +"\n"+
+					", isShowDialog=" + isShowDialog +"\n"+
+					", mRequestSettingName='" + mRequestSettingName + '\'' +"\n"+
+					", isUseTempleteData=" + isUseTempleteData +"\n"+
+					", mTempleteDataPackage='" + mTempleteDataPackage + '\'' +"\n"+
+					", mTempleteDataFileName='" + mTempleteDataFileName + '\'' +"\n"+
+					", isPersistence=" + isPersistence +"\n"+
+					", isUseDiscCache=" + isUseDiscCache +"\n"+
+					", mUrlPattener='" + mUrlPattener + '\'' +"\n"+
+					", mListeners=" + mListeners +"\n"+
+					", mEntityType=" + mEntityType +"\n"+
+					", mAppendType=" + mAppendType +"\n"+
+					", mParser=" + mParser +"\n"+
+					", mCallBack=" + mCallBack +"\n"+
+					", mConnectionTimeOut=" + mConnectionTimeOut +"\n"+
+					", mServerTimeOut=" + mServerTimeOut +"\n"+
+					", mRetryCount=" + mRetryCount +"\n"+
+					", mExcuteCount=" + mExcuteCount +"\n"+
+					", mDiscResult=" + mDiscResult +"\n"+
+					", mServerResult=" + mServerResult +"\n"+
+					", mDataProxy=" + mDataProxy +
+					'}';
 		}
-		
 	}
 	
 	/**
@@ -229,7 +267,15 @@ public interface IRequestPresenter extends IPresenter {
 		public void setType(ParamType type) {
 			this.type = type;
 		}
-		
+
+		@Override
+		public String toString() {
+			return "Param{" +
+					"key='" + key + '\'' +
+					", value='" + value + '\'' +
+					", type=" + type +
+					'}';
+		}
 	}
 	
 	/**

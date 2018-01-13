@@ -13,7 +13,7 @@ import android.R;
 import android.content.Context;
 import android.widget.ImageView;
 
-@BindLayoutCreater(creater=TestCreater.class,requestName = Datas.DATA_GET_CODE)
+@BindLayoutCreater(creater=TestCreater.class)
 public class TestDialog extends SmartDialog {
 
 	
@@ -27,7 +27,6 @@ public class TestDialog extends SmartDialog {
 	public static class TestCreater extends LayoutCreater {
 		
 		
-		@BindUploadProgress(paramName="image",format="已经上传${#.##}%")
 		@BindView(R.anim.accelerate_decelerate_interpolator)
 		public ImageView iv1;
 		

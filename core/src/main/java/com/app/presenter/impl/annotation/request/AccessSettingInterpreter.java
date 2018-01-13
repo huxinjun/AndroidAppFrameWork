@@ -1,5 +1,6 @@
 package com.app.presenter.impl.annotation.request;
 
+import com.app.annotation.request.AccessSettings;
 import com.app.annotation.request.DatasDeclareClass;
 import com.app.presenter.IRequestPresenter;
 import com.app.presenter.impl.annotation.AnnotationPresenter;
@@ -23,7 +24,11 @@ public class AccessSettingInterpreter extends AnnotationPresenter {
 	@Override
 	public void interpreter(AnnotatedElement target,
 			InterpreterCallBack callBack, Object... context) {
-		//Ignore
+		IRequestPresenter.RequestInfo info= (IRequestPresenter.RequestInfo) context[0];
+		AccessSettings annotation = getAnnotation(target, AccessSettings.class);
+		info.mRequestMethod=annotation.accessMethod();
+		info.isPersistence=annotation.persistence();
+		info.isShowDialog=annotation.showDialog();
 	}
 	
 	

@@ -45,7 +45,6 @@ public class TestFragment extends SmartFragment {
 		@BindView(R.anim.accelerate_decelerate_interpolator)
 		public ImageView iv3;
 		
-		@BindUploadProgress(requestName=Datas.DATA_GET_CODE,paramName="image",format="已经上传${#.##}%")
 		@BindView(R.anim.accelerate_decelerate_interpolator)
 		public ImageView iv4;
 		

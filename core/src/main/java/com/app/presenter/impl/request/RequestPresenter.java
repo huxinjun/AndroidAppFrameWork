@@ -20,6 +20,7 @@ import com.app.presenter.IPersistentPresenter;
 import com.app.presenter.IPersistentPresenterBridge;
 import com.app.presenter.IRequestPresenter;
 import com.app.presenter.PresenterManager;
+import com.app.test.ULog;
 
 public abstract class RequestPresenter implements IRequestPresenter {
 
@@ -149,12 +150,9 @@ public abstract class RequestPresenter implements IRequestPresenter {
 				result=getData(mInfo);
 				mInfo.mServerResult=result;
 				//检查本地和网络数据是否相同
-				if(mInfo.mDiscResult.equals(mInfo.mServerResult))
-					return null;
-				else
+				if(mInfo.mServerResult!=null && !mInfo.mServerResult.equals(mInfo.mDiscResult))
 					//不同时会返回最新的数据
 					mInfo.mCallBack.onDataComming(result);
-				
 			}
 			else if(mInfo.mResultType==ResultType.IMAGE){
 				result=getImage(mInfo);
@@ -205,7 +203,7 @@ public abstract class RequestPresenter implements IRequestPresenter {
 
 	}
 	private IParserPresenterBridge getParser(){
-		return PresenterManager.getInstance().findPresenter(getContext(),IParserPresenterBridge.class);
+		return PresenterManager.getInstance().findPresenter(getContext(), IParserPresenterBridge.class);
 	}
 
 }

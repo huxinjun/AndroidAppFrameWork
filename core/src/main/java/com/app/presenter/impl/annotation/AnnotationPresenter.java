@@ -7,6 +7,7 @@ import java.lang.reflect.AnnotatedElement;
 import android.content.Context;
 import com.app.presenter.IActivityPresenterBridge;
 import com.app.presenter.IAnnotationPresenter;
+import com.app.presenter.IAnnotationPresenterBridge;
 import com.app.presenter.IDataPresenter;
 import com.app.presenter.IDataPresenterBridge;
 import com.app.presenter.ILayoutPresenter;
@@ -56,6 +57,10 @@ public abstract class AnnotationPresenter implements IAnnotationPresenter{
 	
 	protected ILayoutPresenter getLayoutPresenter(){
 		return PresenterManager.getInstance().findPresenter(getContext(),ILayoutPresenterBridge.class);
+	}
+
+	protected IAnnotationPresenter getAnnotationPresenter(){
+		return PresenterManager.getInstance().findPresenter(getContext(),IAnnotationPresenterBridge.class);
 	}
 	
 }

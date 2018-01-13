@@ -1,5 +1,8 @@
 package com.app.presenter.impl.annotation.request;
 
+import com.app.annotation.request.Parser;
+import com.app.annotation.request.RequestBaseUrl;
+import com.app.presenter.IRequestPresenter;
 import com.app.presenter.impl.annotation.AnnotationPresenter;
 
 import java.lang.annotation.Annotation;
@@ -21,7 +24,8 @@ public class RequestBaseUrlInterpreter extends AnnotationPresenter {
 	@Override
 	public void interpreter(AnnotatedElement target,
 			InterpreterCallBack callBack, Object... context) {
-		//Ignore
+		RequestBaseUrl annotation = getAnnotation(target, RequestBaseUrl.class);
+		IRequestPresenter.GLOBLE.requestBaseUrl=annotation.value();
 	}
 	
 	

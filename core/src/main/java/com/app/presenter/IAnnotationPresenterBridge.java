@@ -97,7 +97,7 @@ public class IAnnotationPresenterBridge extends IPresenterBridge<IAnnotationPres
 
 	@Override
 	public void interpreter(Annotation annotation,InterpreterCallBack callBack,Object... context) {
-		Interpreter interpreter = getAnnotation(annotation.getClass(), Interpreter.class);
+		Interpreter interpreter = getAnnotation(annotation.annotationType(), Interpreter.class);
 		if(interpreter==null)
 			throw new RuntimeException("请为"+annotation.getClass().getName()+"配置@Interpreter注解,指名改注解使用的解释器类型!");
 		try {

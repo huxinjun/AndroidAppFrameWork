@@ -6,67 +6,48 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="warn" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="line" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="010e6bd1-014f-4f1d-a5f5-32274eac7cde" name="Default" comment="解决layoutcreater不能实例化的问题,是因为继承layoutcreater的类是一个内部非静态类,导致无法访问其构造器">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/AccessSettingInterpreter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ConnectionSetInterpreter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DescriptionInterpreter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DialogInterpreter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/MappingLocalJsonInterpreter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParamsInterpreter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParserInterpreter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestBaseUrlInterpreter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlInterpreter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/UseDiscCacheInterpreter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/global/Datas.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/global/RequestUrls.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/espresso_core_2_2_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/espresso_idling_resource_2_2_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/exposed_instrumentation_api_publish_0_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/hamcrest_integration_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/hamcrest_library_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/javawriter_2_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/javax_annotation_api_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/jsr305_2_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/rules_0_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/runner_0_5.xml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/DatasPackage.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/DatasDeclareClass.java" />
+    <list default="true" id="010e6bd1-014f-4f1d-a5f5-32274eac7cde" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestUrlsPackage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlsPackageInterpreter.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/core.iml" afterPath="$PROJECT_DIR$/core/core.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/SmartActivity.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/SmartActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/Description.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/Description.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/AccessSettings.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/AccessSettings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/ConnectionSet.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/ConnectionSet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Dialog.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Dialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/MappingLocalJson.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/MappingLocalJson.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Params.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Params.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Parser.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Parser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestBaseUrl.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestBaseUrl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestUrl.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestUrl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestUrlsPackage.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestUrlsPackage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/core/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/SmartDialog.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/SmartDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/BindFieldName.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/BindFieldName.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/BindUploadProgress.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/BindUploadProgress.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Param.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Param.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/UseDiscCache.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/UseDiscCache.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IFragmentPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IFragmentPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IAnnotationPresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IAnnotationPresenterBridge.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/PresenterManager.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/PresenterManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/DataPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/DataPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/FragmentPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/FragmentPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/FragmentInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/FragmentInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/OnClickInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/OnClickInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DatasPackageInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DatasPackageInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlsPackageInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlsPackageInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImagePresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImagePresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/AnnotationPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/AnnotationPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/AccessSettingInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/AccessSettingInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ConnectionSetInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ConnectionSetInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DescriptionInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DescriptionInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DialogInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DialogInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/MappingLocalJsonInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/MappingLocalJsonInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParamsInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParamsInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParserInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParserInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestBaseUrlInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestBaseUrlInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/UseDiscCacheInterpreter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/UseDiscCacheInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutCreater.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutCreater.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/test/Datas.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/test/Datas.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_1.java" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/test/TestDialog.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/test/TestDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/test/TestFragment.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/test/TestFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/main/java/com/example/test/global/Datas.java" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/global/Datas.java" />
     </list>
     <ignored path="AndroidAppFrameWork.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -98,25 +79,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DataPresenter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DataPresenter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/DataPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="113" column="44" selection-start-line="113" selection-start-column="44" selection-end-line="113" selection-end-column="44" />
-              <folding>
-                <element signature="e#1648#1668#0" expanded="true" />
-                <element signature="e#1749#1750#0" expanded="true" />
-                <element signature="e#1778#1779#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="59">
+              <caret line="99" column="14" selection-start-line="99" selection-start-column="14" selection-end-line="99" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccessSettingInterpreter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/AccessSettingInterpreter.java">
+      <file leaf-file-name="RequestPresenter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="16" />
+            <state relative-caret-position="6">
+              <caret line="153" column="33" selection-start-line="153" selection-start-column="33" selection-end-line="153" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpClientRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -125,8 +112,8 @@
       <file leaf-file-name="IRequestPresenter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+            <state relative-caret-position="212">
+              <caret line="56" column="66" selection-start-line="56" selection-start-column="66" selection-end-line="56" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -135,8 +122,8 @@
       <file leaf-file-name="Datas.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/global/Datas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+            <state relative-caret-position="84">
+              <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -145,8 +132,8 @@
       <file leaf-file-name="RequestUrls.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/global/RequestUrls.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+            <state relative-caret-position="105">
+              <caret line="11" column="17" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -2854,57 +2841,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/InjectorInterpreter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/LayoutDataTypeInterpreter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/SmartAbsListAdapter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/SmartViewPagerSameTemplaterAdapter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/test/TestFragment.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/SmartFragment.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImagePresenter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutCreater.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutPresenter.java" />
-        <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/global/RequestUrlPattener.java" />
-        <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_1.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/FragmentInterpreter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/OnClickInterpreter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/SmartActivity.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/FragmentPresenter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IFragmentPresenter.java" />
-        <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/DatasPackage.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/DatasDeclareClass.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestUrlsPackage.java" />
-        <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/global/Datas.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlsPackageInterpreter.java" />
         <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DatasPackageInterpreter.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/test/Datas.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/LocalJsonPackage.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/DataPresenter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/AnnotationPresenter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/AccessSettingInterpreter.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/AccessSettings.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ConnectionSetInterpreter.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/ConnectionSet.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/MappingLocalJsonInterpreter.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/MappingLocalJson.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/BaseUrlInterpreter.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestBaseUrl.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DescriptionInterpreter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParamsInterpreter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlInterpreter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DialogInterpreter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParserInterpreter.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/UseDiscCacheInterpreter.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/Description.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Params.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestUrl.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Dialog.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Parser.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/AccessSettingInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ConnectionSetInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DescriptionInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/MappingLocalJsonInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/AnnotationPresenter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParserInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestBaseUrlInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlsPackageInterpreter.java" />
+        <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/global/Datas.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestUrls.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/UseDiscCache.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/UseDiscCacheInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImagePresenter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DialogInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/SmartDialog.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/BindUploadProgress.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/BindUploadProgressInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/BindFieldNameInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutCreater.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/BindFieldNameInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Param.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParamsInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IAnnotationPresenterBridge.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/BindFieldName.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/test/TestFragment.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/test/TestDialog.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParamInterpreter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/PresenterManager.java" />
+        <option value="$PROJECT_DIR$/core/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/DataPresenter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java" />
       </list>
     </option>
   </component>
@@ -2939,9 +2926,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -3582,149 +3570,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="injector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="annotation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="annotation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="request" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="annotation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="image" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3759,6 +3605,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="annotation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="request" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3840,24 +3690,23 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="AndroidView">
-        <subPane />
-      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="device.picker.selection" value="5c83b88c" />
+    <property name="device.picker.selection" value="AM49FYUGQC5LSOSW" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.app.presenter.impl.annotation.request" />
+      <recent name="com.app.presenter.impl.annotation" />
       <recent name="com.app.test" />
       <recent name="com.example.test.utils" />
       <recent name="com.app.presenter.impl.injector" />
-      <recent name="com.example.test.fragment" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\AndroidStudioProjects\opensource\AndroidAppFrameWork\test\src\main\java\com\example\test\global" />
@@ -4216,12 +4065,19 @@
       <option name="project" value="LOCAL" />
       <updated>1501315948382</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="点击事件注入，切换fragment简单实现，添加请求网络必须的注解解释器">
+      <created>1515761586485</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1515761586485</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4497768" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -4229,21 +4085,20 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58370537" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.58370537" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66629463" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30703625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2510661" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34598213" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4330357" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -4251,6 +4106,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -4288,14 +4144,23 @@
     <MESSAGE value="删除切换fragment相关的几个注解和其解释器&#10;完善LayoutPresenter创建LayoutCreater时对方法上注解的解释&#10;LayoutCreater加入数据类型的泛型&#10;优化OnClick注解&#10;" />
     <MESSAGE value="1.添加测试项目&#10;2.调整PresenterManager获取Presenter的方法(加入Context参数),目的是让业务类能使用findPresenter时传入的Context对象&#10;3.提取LayoutCreater为单独的class文件" />
     <MESSAGE value="解决layoutcreater不能实例化的问题,是因为继承layoutcreater的类是一个内部非静态类,导致无法访问其构造器" />
-    <option name="LAST_COMMIT_MESSAGE" value="解决layoutcreater不能实例化的问题,是因为继承layoutcreater的类是一个内部非静态类,导致无法访问其构造器" />
+    <MESSAGE value="点击事件注入，切换fragment简单实现，添加请求网络必须的注解解释器" />
+    <option name="LAST_COMMIT_MESSAGE" value="点击事件注入，切换fragment简单实现，添加请求网络必须的注解解释器" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java</url>
+          <line>108</line>
+          <properties />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="34" />
+      <option name="time" value="45" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="test">
@@ -4304,439 +4169,431 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/PresenterManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IFragmentPresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-          <folding>
-            <element signature="e#622#623#0" expanded="true" />
-            <element signature="e#662#663#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/test/TestFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="36" column="26" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IFragmentPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
-          <caret line="33" column="67" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/FragmentPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="40" column="41" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-            <element signature="e#677#678#0" expanded="true" />
-            <element signature="e#705#706#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/main/res/layout/fragment_2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/creater/BindLayoutCreater.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/SmartActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="37" column="36" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="14" column="79" selection-start-line="14" selection-start-column="79" selection-end-line="14" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IDataPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1655">
-          <caret line="50" column="15" selection-start-line="50" selection-start-column="15" selection-end-line="50" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/ILayoutPresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/SmartFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="44" column="32" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
-          <folding>
-            <element signature="e#1693#2624#0" expanded="true" />
-            <element signature="e#2623#2624#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IDataPresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/DevolopmentTools/AndroidStudio/Sdk/sources/android-25/java/util/Queue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="183" column="27" selection-start-line="183" selection-start-column="27" selection-end-line="183" selection-end-column="27" />
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/BindLayoutCreaterInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="128">
+          <caret line="28" column="77" selection-start-line="28" selection-start-column="77" selection-end-line="28" selection-end-column="77" />
           <folding>
-            <element signature="e#1344#1616#0" expanded="true" />
-            <element signature="e#1615#1616#0" expanded="true" />
+            <element signature="e#1344#1616#0" expanded="false" />
+            <element signature="e#1615#1616#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/creater/BindLayoutCreaters.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1995">
-          <caret line="122" column="12" selection-start-line="122" selection-start-column="12" selection-end-line="122" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/DatasDeclareClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DatasPackageInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="25" column="60" selection-start-line="25" selection-start-column="60" selection-end-line="25" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="26" column="18" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/LocalJsonPackageInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/test/Datas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IAnnotationPresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/AnnotationPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="46" column="82" selection-start-line="46" selection-start-column="82" selection-end-line="46" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ConnectionSetInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/ConnectionSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/MappingLocalJsonInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestBaseUrlInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/UseDiscCacheInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="231">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParserInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        <state relative-caret-position="420">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="27" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DialogInterpreter.java">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/MappingLocalJsonInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        <state relative-caret-position="420">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="27" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestBaseUrlInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="27" column="67" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestUrls.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlsInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/UseDiscCacheInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParamsInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DescriptionInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/Description.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Params.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestUrl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Dialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+        <state relative-caret-position="420">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="27" selection-end-column="72" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/UseDiscCache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        <state relative-caret-position="252">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestUrlsPackage.java">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IActivityPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        <state relative-caret-position="132">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IDataPresenterBridge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/BindUploadProgress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/RequestBaseUrl.java">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/SmartDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        <state relative-caret-position="378">
+          <caret line="30" column="58" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/LocalJsonPackage.java">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/BindViewInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/MappingLocalJson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <caret line="26" column="48" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/AccessSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/global/RequestUrls.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/AccessSettingInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/global/Datas.java">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/InjectorInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
-          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/RequestUrlsPackageInterpreter.java">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/injector/TextViewInjector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+        <state relative-caret-position="84">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/DialogInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="63" selection-start-line="35" selection-start-column="63" selection-end-line="35" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="39" column="97" selection-start-line="39" selection-start-column="97" selection-end-line="39" selection-end-column="97" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/test/TestActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-101">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/SmartActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="42" column="56" selection-start-line="29" selection-start-column="8" selection-end-line="42" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/SmartFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-336">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IInjectionPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="39" column="75" selection-start-line="39" selection-start-column="75" selection-end-line="39" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IInjectionPresenterBridge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="83" column="51" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/BindFieldNameInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutCreater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="655">
+          <caret line="184" column="38" selection-start-line="184" selection-start-column="38" selection-end-line="184" selection-end-column="38" />
+          <folding>
+            <element signature="e#8111#8112#0" expanded="true" />
+            <element signature="e#8146#8147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/AnnotationPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IAnnotationPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Param.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/Params.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParamsInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IAnnotationPresenterBridge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-38">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/BindFieldName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/test/TestFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/BindUploadProgressInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/test/TestDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-168">
+          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/ParamInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/DevolopmentTools/AndroidStudio/Sdk/sources/android-25/android/os/AsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="299" column="0" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/PresenterManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+          <folding>
+            <element signature="e#413#461#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IParserPresenterBridge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImagePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="364" column="45" selection-start-line="364" selection-start-column="45" selection-end-line="364" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenterBridge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding>
+            <element signature="e#560#561#0" expanded="true" />
+            <element signature="e#595#596#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="62" selection-start-line="5" selection-start-column="62" selection-end-line="5" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+        <state relative-caret-position="212">
+          <caret line="56" column="66" selection-start-line="56" selection-start-column="66" selection-end-line="56" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/global/Datas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/global/RequestUrls.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/DataPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="113" column="44" selection-start-line="113" selection-start-column="44" selection-end-line="113" selection-end-column="44" />
-          <folding>
-            <element signature="e#1648#1668#0" expanded="true" />
-            <element signature="e#1749#1750#0" expanded="true" />
-            <element signature="e#1778#1779#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="59">
+          <caret line="99" column="14" selection-start-line="99" selection-start-column="14" selection-end-line="99" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="153" column="33" selection-start-line="153" selection-start-column="33" selection-end-line="153" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
