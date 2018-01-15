@@ -2,6 +2,7 @@ package com.app.presenter.impl.layout;
 
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
@@ -25,6 +26,7 @@ import java.lang.reflect.Field;
  */
 public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHandler {
 
+    private Handler mHandler=new Handler();
     /**
      * TAG起始索引,小于这个索引Android系统中的View.setTag(int,Object)将不认为是有效的键值
      */
@@ -291,7 +293,12 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
 
     public void setContentData(T mContentData) {
         this.mContentData = mContentData;
-        dataPrepared();
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                dataPrepared();
+            }
+        });
     }
 
     public LayoutCreater getParentCreater() {

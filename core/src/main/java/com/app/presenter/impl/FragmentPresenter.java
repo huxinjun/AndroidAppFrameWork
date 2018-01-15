@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.app.ULog;
 import com.app.presenter.IFragmentPresenter;
-import com.app.test.ULog;
 
 import java.lang.ref.WeakReference;
 

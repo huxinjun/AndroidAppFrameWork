@@ -5,7 +5,6 @@ import com.app.presenter.IAnnotationPresenter;
 import com.app.presenter.IAnnotationPresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
-import com.app.test.ULog;
 
 import android.app.Dialog;
 import android.content.Context;

@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,13 +20,12 @@ import com.app.presenter.IDataPresenter.RequestDataCommand;
 import com.app.presenter.IDataPresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
-import com.app.test.ULog;
 
 public abstract class SmartFragment extends Fragment {
 
 	
 	private LayoutCreater mLayoutCreater;
-	
+	private Handler mHandler=new Handler();
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -46,9 +46,9 @@ public abstract class SmartFragment extends Fragment {
 		dataPresenter.sendRequestDataCommand(new RequestDataCommand(mLayoutCreater.getRequestName(), mLayoutCreater.getContentDataType(), new DataInnerCallBack(){
 
 			@Override
-			public void onDataComming(RequestDataCommand command,Object data) {
+			public void onDataComming(RequestDataCommand command, final Object data) {
 				//数据来了,这个数据已经有了,发出的请求数据命令只是为了获取到一个代理的对象而已,此方法会在getView返回之前调用
-				LayoutCreater creater=(LayoutCreater) command.getTag();
+				final LayoutCreater creater=(LayoutCreater) command.getTag();
 				creater.setContentData(data);
 			}
 			

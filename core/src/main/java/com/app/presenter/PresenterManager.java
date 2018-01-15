@@ -5,7 +5,6 @@ import java.util.Map;
 
 import android.content.Context;
 
-import com.app.test.ULog;
 
 /**
  * 业务类的管理器,负责创建,销毁业务类

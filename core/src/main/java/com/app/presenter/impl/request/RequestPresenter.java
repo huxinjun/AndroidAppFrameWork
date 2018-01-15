@@ -20,7 +20,6 @@ import com.app.presenter.IPersistentPresenter;
 import com.app.presenter.IPersistentPresenterBridge;
 import com.app.presenter.IRequestPresenter;
 import com.app.presenter.PresenterManager;
-import com.app.test.ULog;
 
 public abstract class RequestPresenter implements IRequestPresenter {
 

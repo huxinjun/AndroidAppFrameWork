@@ -34,6 +34,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 
+import com.app.ULog;
 import com.app.annotation.request.AccessSettings.RequestMethods;
 import com.app.presenter.INetWorkPresenter;
 import com.app.presenter.INetWorkPresenterBridge;
@@ -44,7 +45,6 @@ import com.app.presenter.PresenterManager;
 import com.app.presenter.IDataPresenter.RequestListener;
 import com.app.presenter.impl.request.CustomMultipartEntity.ProgressInfo;
 import com.app.presenter.impl.request.CustomMultipartEntity.ProgressListener;
-import com.app.test.ULog;
 
 /**
  * 使用HttpClient实现请求网络数据功能

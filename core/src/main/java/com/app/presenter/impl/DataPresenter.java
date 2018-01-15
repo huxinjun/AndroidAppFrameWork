@@ -2,6 +2,9 @@ package com.app.presenter.impl;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -11,9 +14,11 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 import android.content.Context;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.text.TextUtils;
 
+import com.app.ULog;
 import com.app.annotation.request.RequestUrl;
 import com.app.presenter.IAnnotationPresenter;
 import com.app.presenter.IAnnotationPresenterBridge;
@@ -27,7 +32,6 @@ import com.app.presenter.IRequestPresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.IRequestPresenter.ParamPool;
 import com.app.presenter.IRequestPresenter.RequestInfo;
-import com.app.test.ULog;
 
 /**
  * 数据处理器
@@ -61,7 +65,8 @@ public class DataPresenter implements IDataPresenter,Runnable {
 	 * Map<网络数据请求编号,请求的所有信息>
 	 */
 	private Map<String,RequestInfo> mDatas=new HashMap<String,RequestInfo>();
-	
+
+
 	@Override
 	public void sendRequestDataCommand(RequestDataCommand command) {
 		try {
@@ -81,9 +86,16 @@ public class DataPresenter implements IDataPresenter,Runnable {
 				//查询该命令的网络数据是否已经有了
 				RequestInfo findInfo = mDatas.get(command.getRequestName());
 				if(findInfo!=null){
-					//如果有了的话就通知监听器
-					command.getCallBack().onDataComming(command,findInfo.mServerResult);
-					//TODO 在entry.value对象中查找命令需要的数据类型,完成后为其创建代理对象
+					if(command.getType()==RequestDataCommand.TYPE_SINGLE_OBJECT){
+						//如果有了的话就通知监听器
+						command.getCallBack().onDataComming(command,findInfo.mServerResult);
+						//TODO 在entry.value对象中查找命令需要的数据类型,完成后为其创建代理对象
+					}else{
+						//查找类型为List的字段
+						ULog.out("11111111111111111111");
+//						List listObj = findListObj(findInfo.mServerResult, "");
+//						command.getCallBack().onDataComming(command,listObj);
+					}
 					continue;
 				}
 				//如果数据没有到来，那么将这个命令加到末尾继续等待网络数据的到来
@@ -94,6 +106,35 @@ public class DataPresenter implements IDataPresenter,Runnable {
 
 		}
 	}
+
+	private List findListObj(Object rootObj,String fields){
+		if(rootObj==null)
+			return null;
+		Class<?> rootObjClass = rootObj.getClass();
+		Field[] rootObjClassDeclaredFields = rootObjClass.getDeclaredFields();
+		for(Field field:rootObjClassDeclaredFields){
+			field.setAccessible(true);
+			ULog.out("DataPresenter:"+field.getName()+":"+field.getType());
+		}
+
+		return null;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	@Override
 	public void request(String requestName, Option option, ParamPool paramPool) {

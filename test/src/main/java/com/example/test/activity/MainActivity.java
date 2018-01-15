@@ -7,6 +7,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.app.SmartActivity;
+import com.app.ULog;
 import com.app.annotation.action.OnClick;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.annotation.creater.BindView;
@@ -22,7 +23,6 @@ import com.example.test.R;
 import com.example.test.fragment.Fragment_1;
 import com.example.test.fragment.Fragment_2;
 import com.example.test.global.Datas;
-import com.example.test.utils.ULog;
 
 @DatasDeclareClass(Datas.class)
 @BindLayoutCreater(creater=MainActivity.MainActivityCreater.class)

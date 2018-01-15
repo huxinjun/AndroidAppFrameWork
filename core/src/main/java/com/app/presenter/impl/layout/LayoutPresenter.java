@@ -7,7 +7,6 @@ import java.lang.reflect.Method;
 import android.content.Context;
 import android.view.View;
 
-import com.app.annotation.LayoutDataType;
 import com.app.presenter.IAnnotationPresenter;
 import com.app.presenter.IAnnotationPresenterBridge;
 import com.app.presenter.IDataPresenter;
@@ -21,7 +20,6 @@ import com.app.presenter.PresenterManager;
  *
  * @author xinjun
  */
-@LayoutDataType(LayoutPresenter.class)
 public class LayoutPresenter implements ILayoutPresenter {
 
     private static WeakReference<Context> mContext;
@@ -71,7 +69,7 @@ public class LayoutPresenter implements ILayoutPresenter {
                 try {
                     getAnnotationPresenter().interpreter(method, null, finalCreater, method);
                 } catch (Exception e1) {
-                    e1.printStackTrace();
+                    throw new RuntimeException(e1);
                 }
 
             }
