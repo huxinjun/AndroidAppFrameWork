@@ -177,6 +177,7 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
 
             //视图映射的实体字段
             Field javaBeanField = getContentData().getClass().getDeclaredField(bindFieldName);
+            javaBeanField.setAccessible(true);
             if (javaBeanField == null)
                 throw new RuntimeException("在" + this.getClass().getName() + "类的" + viewField.getName() + "字段中配置的BindFieldName上找不到映射的JavaBean字段:" + bindFieldName);
 

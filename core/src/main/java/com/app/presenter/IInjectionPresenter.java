@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -44,7 +46,8 @@ public interface IInjectionPresenter extends IPresenter {
 			put(Button.class, ButtonInjector.class);
 			put(CheckBox.class, CheckBoxInjector.class);
 			put(RadioButton.class, RadioButtonInjector.class);
-			put(AdapterView.class, AdapterViewInjector.class);
+			put(ListView.class, AdapterViewInjector.class);
+			put(GridView.class, AdapterViewInjector.class);
 			put(ViewPager.class, ViewPagerInjector.class);
 		}
 	};

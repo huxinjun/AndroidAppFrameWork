@@ -26,7 +26,7 @@ public class ParserInterpreter extends AnnotationPresenter {
 			InterpreterCallBack callBack, Object... context) {
 		IRequestPresenter.RequestInfo info= (IRequestPresenter.RequestInfo) context[0];
 		Parser annotation = getAnnotation(target, Parser.class);
-		info.mEntityType=annotation.value();
+		info.mParser=annotation.value();
 	}
 	
 	

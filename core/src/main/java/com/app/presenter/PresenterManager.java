@@ -31,17 +31,7 @@ public class PresenterManager {
 			mInstance.set(new PresenterManager());
 		return mInstance.get();
 	}
-	/**
-	 * 绑定一个Context
-	 * 这个方法必须在Application中调用
-	 * @param context
-	 * @return
-	 */
-	public PresenterManager bindApplicationContext(Context context){
-		this.context=context;
-		return this;
-	}
-	
+
 	/**
 	 * 获取一个业务代理类
 	 * @param clazz 业务代理类的class

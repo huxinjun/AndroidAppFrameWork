@@ -120,7 +120,7 @@ public interface IRequestPresenter extends IPresenter {
 		public Class<?> mAppendType;
 		
 		/**数据解析器*/
-		public IParserPresenter mParser;
+		public Class<? extends IParserPresenter> mParser;
 		
 		/**结果数据回调*/
 		public DataCallBack mCallBack;

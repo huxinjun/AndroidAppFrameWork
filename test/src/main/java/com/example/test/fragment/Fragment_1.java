@@ -11,6 +11,8 @@ import com.app.presenter.impl.layout.LayoutCreater;
 import com.app.test.TestModel;
 import com.example.test.R;
 import com.example.test.global.Datas;
+import com.example.test.model.Accounts;
+import com.example.test.utils.ULog;
 
 @BindLayoutCreater(creater=Fragment_1.MyCreater.class, requestName = Datas.data_account_list)
 public class Fragment_1 extends SmartFragment {
@@ -20,17 +22,19 @@ public class Fragment_1 extends SmartFragment {
 		
 	}
 	
-	@LayoutDataType(TestModel.class)
+	@LayoutDataType(Accounts.class)
 	@BindView(R.layout.fragment_1)
-	public static class MyCreater extends LayoutCreater<TestModel> {
+	public static class MyCreater extends LayoutCreater<Accounts> {
 		
 		
-		@BindFieldName("abc")
+		@BindFieldName("msg")
 		@BindView(R.id.tv_content)
 		public TextView tv_content;
 
 		@Override
 		public void onDataPrepared() {
+			Accounts contentData = getContentData();
+			ULog.out("Fragment_1.MyCreater.onDataPrepared:"+contentData);
 		}
 	}
 

@@ -76,13 +76,18 @@ public class DataPresenter implements IDataPresenter,Runnable {
 	public void run() {
 		while(true){
 			try {
+				//从头部取出一个数据命令
 				RequestDataCommand command = mCommands.takeFirst();
+				//查询该命令的网络数据是否已经有了
 				RequestInfo findInfo = mDatas.get(command.getRequestName());
 				if(findInfo!=null){
+					//如果有了的话就通知监听器
 					command.getCallBack().onDataComming(command,findInfo.mServerResult);
-					mCommands.remove();
 					//TODO 在entry.value对象中查找命令需要的数据类型,完成后为其创建代理对象
+					continue;
 				}
+				//如果数据没有到来，那么将这个命令加到末尾继续等待网络数据的到来
+				mCommands.offer(command);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

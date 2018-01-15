@@ -19,6 +19,7 @@ import com.app.presenter.IDataPresenter.RequestDataCommand;
 import com.app.presenter.IDataPresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
+import com.app.test.ULog;
 
 public abstract class SmartFragment extends Fragment {
 
@@ -49,13 +50,7 @@ public abstract class SmartFragment extends Fragment {
 				//数据来了,这个数据已经有了,发出的请求数据命令只是为了获取到一个代理的对象而已,此方法会在getView返回之前调用
 				LayoutCreater creater=(LayoutCreater) command.getTag();
 				creater.setContentData(data);
-				try {
-					Method method = creater.getClass().getMethod("dataPrepared");
-					if(method!=null)
-						method.invoke(creater);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				ULog.out("SmartFragment.onDataComming:"+data);
 			}
 			
 //			if(!methodName.startsWith("set"))
