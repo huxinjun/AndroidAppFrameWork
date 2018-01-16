@@ -23,7 +23,7 @@ public class SmartViewPagerSameTemplaterAdapter extends PagerAdapter {
 	/**
 	 * 相互引用使用弱引用
 	 */
-	private WeakReference<ViewPager> mAdapterView;
+	private ViewPager mAdapterView;
 	/**
 	 * 适配器包含的所有数据(数据真实类型是代理的)
 	 */
@@ -40,10 +40,10 @@ public class SmartViewPagerSameTemplaterAdapter extends PagerAdapter {
 	@SuppressWarnings("unchecked")
 	public SmartViewPagerSameTemplaterAdapter(Context context,ViewPager pagerView) {
 		this.context=context;
-		mAdapterView=new WeakReference<ViewPager>(pagerView);
-		if(mAdapterView.get()!=null){
-			mAllDatas=(List<Object>) mAdapterView.get().getTag(LayoutCreater.TAG_ITEMS_DATA);
-			mItemCreaterType=(Class<? extends LayoutCreater>) mAdapterView.get().getTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_CLASS);
+		mAdapterView=pagerView;
+		if(mAdapterView!=null){
+			mAllDatas=(List<Object>) mAdapterView.getTag(LayoutCreater.TAG_ITEMS_DATA);
+			mItemCreaterType=(Class<? extends LayoutCreater>) mAdapterView.getTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_CLASS);
 		}
 	}
 
@@ -67,14 +67,16 @@ public class SmartViewPagerSameTemplaterAdapter extends PagerAdapter {
 			@Override
 			public void onCompleted(LayoutCreater instance) {
 				tempCreater=instance;
-				tempCreater.setParentCreater((LayoutCreater) mAdapterView.get().getTag(LayoutCreater.TAG_LAYOUT_CRETAER_PARENT));
-				tempCreater.getContentView().setTag(new WeakReference<LayoutCreater>(tempCreater));
+				tempCreater.setParentCreater((LayoutCreater) mAdapterView.getTag(LayoutCreater.TAG_LAYOUT_CRETAER_PARENT));
+				tempCreater.getContentView().setTag(tempCreater);
 			}
 		});
-		
+
+		Object injectFieldPath = mAdapterView.getTag(LayoutCreater.TAG_INJECTOR_FIELD);
+		String fieldPath=injectFieldPath==null?null:injectFieldPath.toString();
 		//数据
 		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(context,IDataPresenterBridge.class);
-		dataPresenter.sendRequestDataCommand(new RequestDataCommand(tempCreater.getRequestName(), tempCreater.getContentDataType(), new DataInnerCallBack(){
+		dataPresenter.sendRequestDataCommand(new RequestDataCommand(tempCreater.getRequestName(),fieldPath, new DataInnerCallBack(){
 
 			@Override
 			public void onDataComming(RequestDataCommand command,Object data) {

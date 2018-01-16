@@ -4,7 +4,10 @@ import android.content.Context;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
+import java.util.ArrayList;
 
+import com.app.ULog;
+import com.app.annotation.BindFieldName;
 import com.app.annotation.Interpreter;
 import com.app.annotation.creater.BindView;
 import com.app.presenter.impl.annotation.AnnotationPresenter;
@@ -42,15 +45,16 @@ public class IAnnotationPresenterBridge extends IPresenterBridge<IAnnotationPres
 		mSource=source;
 	}
 
+	private Context mContext;
 
 	@Override
 	public void setContext(Context context) {
-		this.mSource.setContext(context);
+		this.mContext=context;
 	}
 
 	@Override
 	public Context getContext() {
-		return this.mSource.getContext();
+		return mContext;
 	}
 
 	@Override
@@ -59,26 +63,36 @@ public class IAnnotationPresenterBridge extends IPresenterBridge<IAnnotationPres
 		return mSource.getAnnotation(target, annoType);
 	}
 
+	private Annotation findAnnotation(Annotation[] annotations,Class annoClazz){
+		for (Annotation anno:annotations) {
+			if(anno.annotationType()==annoClazz)
+				return anno;
+		}
+		return null;
+	}
+
 	@Override
 	public void interpreter(AnnotatedElement target,InterpreterCallBack callBack,Object... context) {
 		Annotation[] annotations = target.getAnnotations();
 		if(annotations==null || annotations.length==0)
 			return;
-
 		//BindView优先于其他注解
+		//BindFieldName优先于其他注解，次于BindView
+		ArrayList<Annotation> annos=new ArrayList<>();
+		Annotation bindViewAnno = findAnnotation(annotations, BindView.class);
+		if(bindViewAnno!=null)
+			annos.add(bindViewAnno);
+		Annotation bindFieldNameAnno = findAnnotation(annotations, BindFieldName.class);
+		if(bindFieldNameAnno!=null)
+			annos.add(bindFieldNameAnno);
+
 		for(int i=0;i<annotations.length;i++){
-			if(annotations[i] instanceof BindView) {
-				if(i==0)
-					break;
-				//交换位置,使BindView第一个进行解释
-				Annotation tempAnno=annotations[0];
-				annotations[0]=annotations[i];
-				annotations[i]=tempAnno;
-				break;
-			}
+			if(!annos.contains(annotations[i]))
+				annos.add(annotations[i]);
 		}
+
 		//解释其他注解
-		for(Annotation anno:annotations){
+		for(Annotation anno:annos){
 			if(anno==null)
 				continue;
 			Interpreter interpreter = getAnnotation(anno.annotationType(), Interpreter.class);
@@ -87,8 +101,9 @@ public class IAnnotationPresenterBridge extends IPresenterBridge<IAnnotationPres
 			try {
 				//给定的目标class上有什么注解就创建相应的注解解释器去解释
 				setSource(interpreter.value().newInstance());
+				mSource.setContext(mContext);
 			} catch (Exception e) {
-				e.printStackTrace();
+				throw new RuntimeException(e);
 			}
 			mSource.interpreter(target, callBack, context);
 		}
@@ -103,6 +118,7 @@ public class IAnnotationPresenterBridge extends IPresenterBridge<IAnnotationPres
 		try {
 			//给定的目标class上有什么注解就创建相应的注解解释器去解释
 			setSource(interpreter.value().newInstance());
+			mSource.setContext(mContext);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

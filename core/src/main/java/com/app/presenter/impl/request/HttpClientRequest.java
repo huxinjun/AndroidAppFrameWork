@@ -57,7 +57,7 @@ public class HttpClientRequest extends RequestPresenter {
 	@Override
 	public Bitmap getImage(RequestInfo info) {
 		ULog.out("getImage:"+info);
-		HttpGet get = new HttpGet(IRequestPresenter.GLOBLE.requestBaseUrl+info.mUrlPattener);
+		HttpGet get = new HttpGet(info.mUrlPattener);
 		HttpResponse response = null;
 
 		HttpParams httpParams = new BasicHttpParams();
@@ -279,4 +279,6 @@ public class HttpClientRequest extends RequestPresenter {
 	private IParserPresenter getParser(){
 		return PresenterManager.getInstance().findPresenter(getContext(),IParserPresenterBridge.class);
 	}
+
+
 }

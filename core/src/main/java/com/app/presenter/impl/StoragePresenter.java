@@ -16,19 +16,19 @@ import com.app.presenter.PresenterManager;
 
 public class StoragePresenter implements IStoragePresenter {
 
-	private WeakReference<Context> mContext;
+	private Context mContext;
 
 	@Override
 	public void setContext(Context context) {
-		mContext=new WeakReference<Context>(context);
+		mContext=context;
 	}
 
 	@Override
 	public Context getContext() {
-		return mContext.get();
+		return mContext;
 	}
 
-	private String mRootDirName="/";
+	private static String mRootDirName="/";
 	
 	private String sencondaryPath = null;
 	private String externalPath = null;
@@ -37,7 +37,7 @@ public class StoragePresenter implements IStoragePresenter {
 	public File getCacheDir(DIR dirType) {
 		try {
 			String dirName=deffDir.get(dirType);
-			String dir=mRootDirName+dirName;
+			String dir=mRootDirName+"/"+dirName;
 			String extPath = getExtPath();
 			if (!TextUtils.isEmpty(extPath)) {
 				File myRoot = new File(extPath, dir);

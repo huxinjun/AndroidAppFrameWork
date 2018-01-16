@@ -20,16 +20,16 @@ import com.app.presenter.IEntityProxyPresenter;
 
 public class EntityProxyPresenter implements IEntityProxyPresenter {
 
-	private WeakReference<Context> mContext;
+	private Context mContext;
 
 	@Override
 	public void setContext(Context context) {
-		mContext=new WeakReference<Context>(context);
+		mContext=context;
 	}
 
 	@Override
 	public Context getContext() {
-		return mContext.get();
+		return mContext;
 	}
 
 	@Override

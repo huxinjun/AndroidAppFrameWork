@@ -17,16 +17,16 @@ import com.app.presenter.PresenterManager;
 
 public class ActivityPresenter implements IActivityPresenter {
 
-	private WeakReference<Context> mContext;
+	private Context mContext;
 
 	@Override
 	public void setContext(Context context) {
-		mContext=new WeakReference<Context>(context);
+		mContext=context;
 	}
 
 	@Override
 	public Context getContext() {
-		return mContext.get();
+		return mContext;
 	}
 
 	/**

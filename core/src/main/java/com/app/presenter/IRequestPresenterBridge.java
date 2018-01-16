@@ -27,6 +27,11 @@ public class IRequestPresenterBridge extends IPresenterBridge<IRequestPresenter>
 	}
 
 	@Override
+	public Object requestSync(RequestInfo requestInfo) {
+		return mSource.requestSync(requestInfo);
+	}
+
+	@Override
 	public void addRequestStatusListenner(String requestName,
 			RequestListener listener) {
 		mSource.addRequestStatusListenner(requestName, listener);

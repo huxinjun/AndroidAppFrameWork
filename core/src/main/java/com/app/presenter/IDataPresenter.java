@@ -22,11 +22,10 @@ public interface IDataPresenter extends IPresenter {
 		 */
 		private String requestName;
 		/**
-		 * 组成最小单位的数据类型
-		 * 如果目标是一个对象,那就是这个对象的类型
-		 * 如果目标是一个List,那这个就是List条目的类型
+		 * 需要的字段路径，比如：a.b.c
+		 * 暂时不支持数组中的数据
 		 */
-		private Class<?> atomicType;
+		private String fieldPath;
 		/**
 		 * 请求的是单个对象还是list中的元素或者整个list?
 		 */
@@ -48,17 +47,14 @@ public interface IDataPresenter extends IPresenter {
 		 */
 		private Object tag;
 		
-		public RequestDataCommand(String requestName,Class<?> atomicType,DataInnerCallBack dataCallBack) {
+		public RequestDataCommand(String requestName,String fieldPath,DataInnerCallBack dataCallBack) {
 			this.setRequestName(requestName);
-			this.setAtomicType(atomicType);
+			this.setFieldPath(fieldPath);
 			this.setCallBack(dataCallBack);
 			this.type=TYPE_SINGLE_OBJECT;
 			this.listIndex=-1;
 		}
 		//-----------------------setter----------------------
-		public void setAtomicType(Class<?> atomicType) {
-			this.atomicType = atomicType;
-		}
 		public RequestDataCommand setType(int type){
 			this.type=type;
 			return this;
@@ -66,6 +62,9 @@ public interface IDataPresenter extends IPresenter {
 		public RequestDataCommand setIndex(int listIndex){
 			this.listIndex=listIndex;
 			return this;
+		}
+		public void setFieldPath(String fieldPath) {
+			this.fieldPath = fieldPath;
 		}
 		public void setCallBack(DataInnerCallBack mCallBack) {
 			this.mCallBack = mCallBack;
@@ -77,15 +76,19 @@ public interface IDataPresenter extends IPresenter {
 			this.tag = tag;
 			return this;
 		}
+
+
+
+
 		//-----------------------getter----------------------
+		public String getFieldPath() {
+			return fieldPath;
+		}
 		public int getType(){
 			return type;
 		}
 		public int getIndex(){
 			return listIndex;
-		}
-		public Class<?> getAtomicType() {
-			return atomicType;
 		}
 		public DataInnerCallBack getCallBack() {
 			return mCallBack;
@@ -102,7 +105,7 @@ public interface IDataPresenter extends IPresenter {
 		public String toString() {
 			return "RequestDataCommand{" + "\n" +
 					"requestName='" + requestName + '\'' +"\n" +
-					", atomicType=" + atomicType +"\n" +
+					", fieldPath=" + fieldPath +"\n" +
 					", type=" + type +"\n" +
 					", listIndex=" + listIndex +"\n" +
 					", mCallBack=" + mCallBack +"\n" +

@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 
 import android.view.View;
 
+import com.app.ULog;
 import com.app.annotation.creater.BindView;
 import com.app.presenter.impl.layout.LayoutCreater;
 

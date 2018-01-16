@@ -30,10 +30,12 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 
+import com.app.ULog;
 import com.app.annotation.request.AccessSettings.RequestMethods;
 import com.app.presenter.IImagePresenter;
 import com.app.presenter.IPersistentPresenter;
 import com.app.presenter.IPersistentPresenterBridge;
+import com.app.presenter.IRequestPresenter;
 import com.app.presenter.IRequestPresenter.RequestInfo;
 import com.app.presenter.IRequestPresenter.ResultType;
 import com.app.presenter.IRequestPresenterBridge;
@@ -49,28 +51,25 @@ import com.app.presenter.impl.request.RequestPresenter;
 public class ImagePresenter implements IImagePresenter {
 
 
-	private WeakReference<Context> mContext;
+	private Context mContext;
 
 	@Override
 	public void setContext(Context context) {
-		mContext=new WeakReference<Context>(context);
+		mContext=context;
+		int maxMemory = ((ActivityManager) (getContext().getSystemService(Context.ACTIVITY_SERVICE))).getMemoryClass();
+		int cacheSize = maxMemory * 1024 * 1024 / 8;
+		mMemoryCache=new MyLruCache(cacheSize);
 	}
 
 	@Override
 	public Context getContext() {
-		return mContext.get();
+		return mContext;
 	}
 
 	private Option globleOption=new Option();
 	private MyLruCache mMemoryCache;
 	private NoRepeatTaskHashMap taskHistory = new NoRepeatTaskHashMap();
-	
-	public ImagePresenter() {
-		int maxMemory = ((ActivityManager) (getContext().getSystemService(Context.ACTIVITY_SERVICE))).getMemoryClass();
-		int cacheSize = maxMemory * 1024 * 1024 / 8;
-		mMemoryCache=new MyLruCache(cacheSize);
-	}
-	
+
 	
 	@Override
 	public void setMemorySize(long size) {
@@ -104,6 +103,7 @@ public class ImagePresenter implements IImagePresenter {
 			Rect maxRectByImageView = getMaxRectByImageView(target);
 			option.setRect(maxRectByImageView);
 		}
+		setImage(target,url,option);
 	}
 
 	
@@ -181,13 +181,13 @@ public class ImagePresenter implements IImagePresenter {
 		 */
 		public boolean checkSameUrl(String url,ImageView target){
 			if(containsKey(url)){
-				boolean hasDiffTarget=true;
-				for(ImageView iv:get(url).targets)
-					if(iv.equals(target)){
-						hasDiffTarget=false;
-						break;
-					}
-				if (hasDiffTarget)
+//				boolean hasDiffTarget=true;
+//				for(ImageView iv:get(url).targets)
+//					if(iv.equals(target)){
+//						hasDiffTarget=false;
+//						break;
+//					}
+//				if (hasDiffTarget)
 					addNewTarget(url, target);
 				return true;
 			}
@@ -328,8 +328,10 @@ public class ImagePresenter implements IImagePresenter {
 			return;
 		setLoadingImage(target,option);
 		//有相同的任务时不需要重新创建任务了
-		if(taskHistory.checkSameUrl(url, target))
+		if(taskHistory.checkSameUrl(url, target)){
+			ULog.out("taskHistory.checkSameUrl:"+taskHistory.get(url).targets);
 			return;
+		}
 		taskHistory.checkSameImageView(url, target);
 		
 
@@ -366,22 +368,22 @@ public class ImagePresenter implements IImagePresenter {
 							info.mRequestMethod=RequestMethods.GET;
 							info.mResultType=ResultType.IMAGE;
 							info.mExcuteCount=option.getRetryCount();
-							info.mUrlPattener="";
-							
-							bitmap = getRequester().getImage(info);
+							info.mUrlPattener=url;
+
+							bitmap= (Bitmap) getRequester().requestSync(info);
+
+
+
 							if(bitmap==null)
 								return null;
 							try {
 								// 存储大图到本地
 								String localPath = getPersistent().saveBitmap(this.url,bitmap);
-								
 								if (TextUtils.isEmpty(localPath)) {
 									bitmap = zoomBitmap(bitmap, option.getRect().maxWidth, option.getRect().maxHeight);
 									addBitmapToMemoryCache(this.url, bitmap);
 									return bitmap;
 								}
-								
-								bitmap.recycle();
 								// 加载本地大图，并缩小
 								return getBitmapInCache(this.url, option.getRect());
 							} catch (Throwable ex) {
@@ -477,8 +479,6 @@ public class ImagePresenter implements IImagePresenter {
 		};
 		if(target!=null)
 			task.targets.add(target);
-		task.url=uri;
-		taskHistory.put(uri, task);
 		task.executeOnExecutor(SERIAL_EXECUTOR);
 	}
 	
@@ -689,17 +689,8 @@ public class ImagePresenter implements IImagePresenter {
 	
 	
 	
-	private RequestPresenter getRequester(){
-		IRequestPresenterBridge findPresenter = PresenterManager.getInstance().findPresenter(getContext(),IRequestPresenterBridge.class);
-		Method deffaultSource;
-		try {
-			deffaultSource = findPresenter.getClass().getMethod("deffaultSource");
-			RequestPresenter invoke = (RequestPresenter) deffaultSource.invoke(findPresenter);
-			return invoke;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+	private IRequestPresenter getRequester(){
+		return PresenterManager.getInstance().findPresenter(getContext(),IRequestPresenterBridge.class);
 	}
 	private IPersistentPresenter getPersistent(){
 		return PresenterManager.getInstance().findPresenter(getContext(),IPersistentPresenterBridge.class);

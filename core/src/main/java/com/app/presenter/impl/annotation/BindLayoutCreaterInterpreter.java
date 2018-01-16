@@ -14,6 +14,8 @@ import com.app.presenter.IDataPresenter.DataInnerCallBack;
 import com.app.presenter.IDataPresenter.RequestDataCommand;
 import com.app.presenter.impl.layout.LayoutCreater;
 
+import static com.app.presenter.impl.layout.LayoutCreater.TAG_INJECTOR_FIELD;
+
 /**
  * BindLayoutCreater注解解释器
  * Created by xinjun on 2017/7/29 14:33
@@ -59,7 +61,9 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 				findViewById.setTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_DATA_ID, itemLayoutCreater.requestName());
 				//再给其创建请求数据的命令
 				final View finalFindViewById = findViewById;
-				getDataPresenter().sendRequestDataCommand(new RequestDataCommand(itemLayoutCreater.requestName(),null, new DataInnerCallBack() {
+                Object injectFieldPath = findViewById.getTag(LayoutCreater.TAG_INJECTOR_FIELD);
+                String fieldPath=injectFieldPath==null?null:injectFieldPath.toString();
+                getDataPresenter().sendRequestDataCommand(new RequestDataCommand(itemLayoutCreater.requestName(),fieldPath, new DataInnerCallBack() {
 					
 					@Override
 					public void onDataComming(RequestDataCommand command,Object data) {

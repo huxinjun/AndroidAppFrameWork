@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.content.Context;
+import android.os.Handler;
 
 
 /**
@@ -14,12 +15,19 @@ import android.content.Context;
 public class PresenterManager {
 	
 	private static ThreadLocal<PresenterManager> mInstance;
+
+	public Handler getHandler() {
+		return mHandler;
+	}
+
+	private static Handler mHandler=new Handler();
 	
 	private Context context;
 	//所有的业务类,按名称注册到此map中
 	private Map<Class<IPresenterBridge<?>>,IPresenterBridge<?>> mPresenters=new HashMap<Class<IPresenterBridge<?>>,IPresenterBridge<?>>();
 	
 	private PresenterManager() {
+
 	}
 	public static PresenterManager getInstance(){
 		if(mInstance==null){
@@ -38,6 +46,8 @@ public class PresenterManager {
 	 */
 	@SuppressWarnings("unchecked")
 	public <T extends IPresenterBridge<?>> T findPresenter(Context context,Class<T> clazz){
+		if(context==null)
+			throw new RuntimeException("PresenterManager.findPresenter第一个参数context不能为null");
 		if(mPresenters.containsKey(clazz)) {
 			T instance=(T) mPresenters.get(clazz);
 			instance.setContext(context);

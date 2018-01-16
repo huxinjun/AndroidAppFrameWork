@@ -1,6 +1,7 @@
 package com.example.test.fragment;
 
 import android.accounts.Account;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,11 +18,6 @@ import com.example.test.model.Accounts;
 @BindLayoutCreater(creater=Fragment_1.MyCreater.class, requestName = Datas.data_account_list)
 public class Fragment_1 extends SmartFragment {
 
-	
-	public void initData(){
-		
-	}
-	
 	@BindView(R.layout.fragment_1)
 	public static class MyCreater extends LayoutCreater<Accounts> {
 		
@@ -48,8 +44,11 @@ public class Fragment_1 extends SmartFragment {
 
 		@BindFieldName("name")
 		@BindView(R.id.tv_name)
-
 		public TextView tv_name;
+
+		@BindFieldName("userIcon")
+		@BindView(R.id.iv_icon)
+		public ImageView iv_icon;
 
 		@Override
 		public void onDataPrepared() {

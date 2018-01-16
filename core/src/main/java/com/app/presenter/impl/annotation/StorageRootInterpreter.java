@@ -14,15 +14,12 @@ import com.app.presenter.PresenterManager;
  * @author xinjun
  *
  */
-public abstract class StorageRootInterpreter implements IAnnotationPresenter{
+public class StorageRootInterpreter extends AnnotationPresenter{
 
 	@Override
 	public void interpreter(AnnotatedElement target,InterpreterCallBack callBack,Object... context) {
-		if(target.getClass()==Field.class){
-			
-			StorageRoot injector =getAnnotation(target, StorageRoot.class);
-			PresenterManager.getInstance().findPresenter(getContext(),IStoragePresenterBridge.class).setRoot(injector.value());
-		}
+		StorageRoot injector =getAnnotation(target, StorageRoot.class);
+		PresenterManager.getInstance().findPresenter(getContext(),IStoragePresenterBridge.class).setRoot(injector.value());
 	}
 
 	@Override

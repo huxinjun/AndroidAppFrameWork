@@ -25,7 +25,6 @@ public abstract class SmartFragment extends Fragment {
 
 	
 	private LayoutCreater mLayoutCreater;
-	private Handler mHandler=new Handler();
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -43,7 +42,7 @@ public abstract class SmartFragment extends Fragment {
 		//数据
 		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(getActivity(),IDataPresenterBridge.class);
 		//为creater和关联布局下的子creater创建一个请求数据的命令并发送到DataPresenter中,然后静静的等待数据到来
-		dataPresenter.sendRequestDataCommand(new RequestDataCommand(mLayoutCreater.getRequestName(), mLayoutCreater.getContentDataType(), new DataInnerCallBack(){
+		dataPresenter.sendRequestDataCommand(new RequestDataCommand(mLayoutCreater.getRequestName(), null, new DataInnerCallBack(){
 
 			@Override
 			public void onDataComming(RequestDataCommand command, final Object data) {

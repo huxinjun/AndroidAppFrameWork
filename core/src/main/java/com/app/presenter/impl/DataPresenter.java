@@ -41,16 +41,16 @@ import com.app.presenter.IRequestPresenter.RequestInfo;
  */
 public class DataPresenter implements IDataPresenter,Runnable {
 
-	private WeakReference<Context> mContext;
+	private Context mContext;
 
 	@Override
 	public void setContext(Context context) {
-		mContext=new WeakReference<Context>(context);
+		mContext=context;
 	}
 
 	@Override
 	public Context getContext() {
-		return mContext.get();
+		return mContext;
 	}
 
 	public DataPresenter(){
@@ -82,19 +82,48 @@ public class DataPresenter implements IDataPresenter,Runnable {
 		while(true){
 			try {
 				//从头部取出一个数据命令
-				RequestDataCommand command = mCommands.takeFirst();
+				final RequestDataCommand command = mCommands.takeFirst();
 				//查询该命令的网络数据是否已经有了
-				RequestInfo findInfo = mDatas.get(command.getRequestName());
+				final RequestInfo findInfo = mDatas.get(command.getRequestName());
 				if(findInfo!=null){
 					if(command.getType()==RequestDataCommand.TYPE_SINGLE_OBJECT){
 						//如果有了的话就通知监听器
-						command.getCallBack().onDataComming(command,findInfo.mServerResult);
+                        PresenterManager.getInstance().getHandler().post(new Runnable() {
+                            @Override
+                            public void run() {
+                                command.getCallBack().onDataComming(command,findInfo.mServerResult);
+                            }
+                        });
 						//TODO 在entry.value对象中查找命令需要的数据类型,完成后为其创建代理对象
 					}else{
 						//查找类型为List的字段
-						ULog.out("11111111111111111111");
-//						List listObj = findListObj(findInfo.mServerResult, "");
-//						command.getCallBack().onDataComming(command,listObj);
+						ULog.out("查找子数组字段...");
+						if(TextUtils.isEmpty(command.getFieldPath())){
+							//如果没有配置要的是哪个字段，就直接返回整个请求的数据
+							PresenterManager.getInstance().getHandler().post(new Runnable() {
+                                @Override
+                                public void run() {
+							        command.getCallBack().onDataComming(command,findInfo.mServerResult);
+                                }
+                            });
+							return;
+						}
+
+						String[] fields = command.getFieldPath().split("\\.");
+						Object result=findInfo.mServerResult;
+						for(String f:fields)
+							result=findListObj(result,f);
+						ULog.out("查找子数组字段从"+findInfo.mServerResult.getClass().getSimpleName()+"中寻找的"+command.getFieldPath()+"结果："+result);
+						final List finalResult = (List) result;
+						PresenterManager.getInstance().getHandler().post(new Runnable() {
+							@Override
+							public void run() {
+								if(command.getIndex()==-1)
+									command.getCallBack().onDataComming(command, finalResult);
+								else
+									command.getCallBack().onDataComming(command, finalResult.get(command.getIndex()));
+							}
+						});
 					}
 					continue;
 				}
@@ -107,16 +136,20 @@ public class DataPresenter implements IDataPresenter,Runnable {
 		}
 	}
 
-	private List findListObj(Object rootObj,String fields){
-		if(rootObj==null)
+	private List findListObj(Object rootObj,String fieldName){
+		if(rootObj==null || TextUtils.isEmpty(fieldName))
 			return null;
 		Class<?> rootObjClass = rootObj.getClass();
 		Field[] rootObjClassDeclaredFields = rootObjClass.getDeclaredFields();
 		for(Field field:rootObjClassDeclaredFields){
 			field.setAccessible(true);
-			ULog.out("DataPresenter:"+field.getName()+":"+field.getType());
+			if(field.getName().equals(fieldName))
+				try {
+					return (List) field.get(rootObj);
+				} catch (IllegalAccessException e) {
+					throw new RuntimeException("不能在"+rootObj.getClass().getName()+"中找到"+fieldName+"字段！");
+				}
 		}
-
 		return null;
 	}
 

@@ -6,6 +6,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 
 import com.app.SmartAbsListAdapter;
+import com.app.ULog;
 import com.app.presenter.IInjectionPresenter;
 import com.app.presenter.impl.layout.LayoutCreater;
 
@@ -45,6 +46,7 @@ public class ViewInjector implements IInjectionPresenter {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        injector.setContext(mContext);
         injector.inject(target,value);
     }
 

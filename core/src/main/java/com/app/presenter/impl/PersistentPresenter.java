@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Bitmap.CompressFormat;
 
+import com.app.ULog;
 import com.app.presenter.IImagePresenter;
 import com.app.presenter.IImagePresenterBridge;
 import com.app.presenter.IMD5Presenter;
@@ -27,16 +28,16 @@ import com.easyjson.EasyJson;
 
 public class PersistentPresenter implements IPersistentPresenter {
 
-	private WeakReference<Context> mContext;
+	private Context mContext;
 
 	@Override
 	public void setContext(Context context) {
-		mContext=new WeakReference<Context>(context);
+		mContext=context;
 	}
 
 	@Override
 	public Context getContext() {
-		return mContext.get();
+		return mContext;
 	}
 
 	@Override
@@ -88,7 +89,7 @@ public class PersistentPresenter implements IPersistentPresenter {
 		// open failed: EINVAL (Invalid argument)异常
 		File cacheFile = new File(cacheDir, getMd5Manager().getMd5(url));
 		if (cacheFile.exists()) {
-//			MyLog.outInnerLogDetail("缓存文件已经存在！");
+			ULog.out("存储缓存文件:缓存文件已经存在！");
 			return cacheFile.getAbsolutePath();
 		}
 		try {
@@ -103,7 +104,7 @@ public class PersistentPresenter implements IPersistentPresenter {
 			// 如果图片没有后缀
 			else
 				success = target.compress(CompressFormat.PNG, 100, outputStream);
-//			MyLog.outInnerLogDetail("存储缓存文件:" + cacheFile.getAbsolutePath() + ",状态：" + success);
+			ULog.out("存储缓存文件:" + cacheFile.getAbsolutePath() + ",状态：" + success);
 			outputStream.close();
 			target.recycle();
 			return cacheFile.getAbsolutePath();
@@ -124,7 +125,7 @@ public class PersistentPresenter implements IPersistentPresenter {
 		// open failed: EINVAL (Invalid argument)异常
 		File cacheFile = new File(cacheDir, getMd5Manager().getMd5(url));
 		if (cacheFile.exists() && url != null && !"".equals(url) && !cacheFile.isDirectory()) {
-//			MyLog.outInnerLogDetail("获取本地图片:" + cacheFile.getAbsolutePath());
+			ULog.out("获取本地图片(:"+url+"):" + cacheFile.getAbsolutePath());
 			if (rect==null || (rect.maxWidth <= 0 && rect.maxHeight <= 0))
 				bitmap = BitmapFactory.decodeFile(cacheFile.getAbsolutePath());
 			else

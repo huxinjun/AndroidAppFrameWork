@@ -32,10 +32,8 @@ public class SmartActivity extends FragmentActivity {
             PresenterManager.getInstance().findPresenter(this, IAnnotationPresenterBridge.class).interpreter(this.getClass(), new IAnnotationPresenter.InterpreterCallBack() {
                 @Override
                 public void onCompleted(Class<? extends Annotation> anno, Object... results) {
-                    if (anno == BindLayoutCreater.class) {
+                    if (anno == BindLayoutCreater.class)
                         mLayoutCreater = (LayoutCreater) results[0];
-                        mLayoutCreater.setContext(SmartActivity.this);
-                    }
                 }
             });
         }

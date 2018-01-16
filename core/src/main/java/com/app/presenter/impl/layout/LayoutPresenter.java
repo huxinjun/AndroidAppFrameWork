@@ -22,16 +22,16 @@ import com.app.presenter.PresenterManager;
  */
 public class LayoutPresenter implements ILayoutPresenter {
 
-    private static WeakReference<Context> mContext;
+    private Context mContext;
 
     @Override
     public void setContext(Context context) {
-        mContext = new WeakReference<Context>(context);
+        mContext = context;
     }
 
     @Override
     public Context getContext() {
-        return mContext.get();
+        return mContext;
     }
 
 
@@ -40,6 +40,7 @@ public class LayoutPresenter implements ILayoutPresenter {
         LayoutCreater creater = null;
         try {
             creater = createrClass.newInstance();
+            creater.setContext(mContext);
         } catch (Exception e) {
             throw new RuntimeException("不能实例化["+createrClass.getName()+"],请确保类和类的默认构造器可访问,如果是内部类:请声明为static类型!!!");
         }

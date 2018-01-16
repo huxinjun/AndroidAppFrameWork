@@ -16,16 +16,16 @@ import java.lang.ref.WeakReference;
 
 public class NetWorkPresenter implements INetWorkPresenter {
 
-	private WeakReference<Context> mContext;
+	private Context mContext;
 
 	@Override
 	public void setContext(Context context) {
-		mContext=new WeakReference<Context>(context);
+		mContext=context;
 	}
 
 	@Override
 	public Context getContext() {
-		return mContext.get();
+		return mContext;
 	}
 
 

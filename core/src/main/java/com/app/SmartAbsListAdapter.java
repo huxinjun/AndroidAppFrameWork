@@ -22,11 +22,8 @@ public class SmartAbsListAdapter extends BaseAdapter {
 
 	/**
 	 * 这个Adapter被附加的适配器视图
-	 * 当View需要被销毁的时候不会因为View附加的Adapter中对其的引用而无法销毁
-	 * 虽然不使用弱引用也能销毁(java回收枚举根节点可以销毁整个断了的引用链)
-	 * 但用上更好一点,以防万一
 	 */
-	private WeakReference<AdapterView<BaseAdapter>> mAdapterView;
+	private AdapterView<BaseAdapter> mAdapterView;
 	
 	/**
 	 * 适配器包含的所有数据(数据真实类型是代理的)
@@ -43,10 +40,10 @@ public class SmartAbsListAdapter extends BaseAdapter {
 	@SuppressWarnings("unchecked")
 	public SmartAbsListAdapter(Context context,AdapterView<BaseAdapter> parent) {
 		this.context=context;
-		this.mAdapterView=new WeakReference<AdapterView<BaseAdapter>>(parent);
-		if(mAdapterView.get()!=null){
-			mAllDatas=(List<Object>) mAdapterView.get().getTag(LayoutCreater.TAG_ITEMS_DATA);
-			mItemCreaterType=(Class<? extends LayoutCreater>) mAdapterView.get().getTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_CLASS);
+		this.mAdapterView=parent;
+		if(mAdapterView!=null){
+			mAllDatas=(List<Object>) mAdapterView.getTag(LayoutCreater.TAG_ITEMS_DATA);
+			mItemCreaterType=(Class<? extends LayoutCreater>) mAdapterView.getTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_CLASS);
 		}
 	}
 	
@@ -75,23 +72,26 @@ public class SmartAbsListAdapter extends BaseAdapter {
 				@Override
 				public void onCompleted(LayoutCreater instance) {
 					tempCreater=instance;
-					tempCreater.setParentCreater((LayoutCreater) mAdapterView.get().getTag(LayoutCreater.TAG_LAYOUT_CRETAER_PARENT));
-					tempCreater.getContentView().setTag(new WeakReference<LayoutCreater>(tempCreater));
+					tempCreater.setParentCreater((LayoutCreater) mAdapterView.getTag(LayoutCreater.TAG_LAYOUT_CRETAER_PARENT));
+					tempCreater.getContentView().setTag(tempCreater);
 				}
 			});
 		}else{
-			tempCreater = ((WeakReference<LayoutCreater>)convertView.getTag()).get();
+			tempCreater = (LayoutCreater) convertView.getTag();
 		}
 		/**
 		 * 此操作会触发数据更新
 		 */
 		tempCreater.setInParentIndex(position);
-		
-		
+		tempCreater.setRequestName(mAdapterView.getTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_DATA_ID).toString());
+
+		Object injectFieldPath = mAdapterView.getTag(LayoutCreater.TAG_INJECTOR_FIELD);
+		String fieldPath=injectFieldPath==null?null:injectFieldPath.toString();
 		//TODO 下面的逻辑需要转移到LayoutCreater中
 		//数据
 		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(context,IDataPresenterBridge.class);
-		dataPresenter.sendRequestDataCommand(new RequestDataCommand(tempCreater.getRequestName(), tempCreater.getContentDataType(), new DataInnerCallBack(){
+
+		dataPresenter.sendRequestDataCommand(new RequestDataCommand(tempCreater.getRequestName(), fieldPath, new DataInnerCallBack(){
 
 			@Override
 			public void onDataComming(RequestDataCommand command,Object data) {

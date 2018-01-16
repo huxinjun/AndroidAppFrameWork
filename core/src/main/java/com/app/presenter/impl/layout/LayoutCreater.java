@@ -180,8 +180,6 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
             //视图映射的实体字段
             Field javaBeanField = getContentData().getClass().getDeclaredField(bindFieldName);
             javaBeanField.setAccessible(true);
-            if (javaBeanField == null)
-                throw new RuntimeException("在" + this.getClass().getName() + "类的" + viewField.getName() + "字段中配置的BindFieldName上找不到映射的JavaBean字段:" + bindFieldName);
 
             //视图映射的实体字段值
             View view = (View) viewField.get(this);
@@ -190,6 +188,8 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
             if (!viewData.equals(javaBeanField.get(getContentData())))
                 return;
             PresenterManager.getInstance().findPresenter(getContext(), IInjectionPresenterBridge.class).inject(view, viewData);
+        }catch (NoSuchFieldException e1){
+            throw new RuntimeException("在" + this.getClass().getName() + "类的" + viewField.getName() + "字段中配置的BindFieldName上找不到映射的JavaBean字段:" + bindFieldName);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -293,12 +293,7 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
 
     public void setContentData(T mContentData) {
         this.mContentData = mContentData;
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                dataPrepared();
-            }
-        });
+        dataPrepared();
     }
 
     public LayoutCreater getParentCreater() {

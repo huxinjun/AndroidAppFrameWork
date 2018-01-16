@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Handler;
 
+import com.app.ULog;
 import com.app.presenter.IDataPresenter.RequestListener;
 import com.app.presenter.impl.parser.JsonParser;
 import com.app.presenter.IActivityPresenterBridge;
@@ -28,16 +29,16 @@ public abstract class RequestPresenter implements IRequestPresenter {
 	public abstract Object getData(RequestInfo requestInfo);
 
 
-	private WeakReference<Context> mContext;
+	private Context mContext;
 
 	@Override
 	public void setContext(Context context) {
-		mContext=new WeakReference<Context>(context);
+		mContext=context;
 	}
 
 	@Override
 	public Context getContext() {
-		return mContext.get();
+		return mContext;
 	}
 	
 	/**
@@ -74,15 +75,21 @@ public abstract class RequestPresenter implements IRequestPresenter {
 		}
 		return sb.toString();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+	@Override
+	public Object requestSync(RequestInfo requestInfo) {
+		beforeReq(requestInfo);
+		Object result=duringReq(requestInfo);
+		afterReq(requestInfo);
+		return result;
+	}
 	
 	
 	@Override
@@ -93,6 +100,57 @@ public abstract class RequestPresenter implements IRequestPresenter {
 	@Override
 	public void addRequestStatusListenner(String requestName,RequestListener listener) {
 
+	}
+
+	private void beforeReq(RequestInfo mInfo){
+		if(mInfo.mDialog!=null)
+			mInfo.mDialog.show();
+	}
+	private Object duringReq(RequestInfo mInfo){
+		if(mInfo.mParser==null)
+			getParser().setSource(new JsonParser());
+
+		Object result=null;
+		if(mInfo.mResultType==ResultType.STRING){
+
+			//是否请求模板数据
+			if(mInfo.isUseTempleteData){
+				String data=getTempleteData(mInfo.mTempleteDataPackage, mInfo.mTempleteDataFileName);
+				Object parse = getParser().parse(data, mInfo.mEntityType);
+				if(mInfo.mDiscResult!=null && mInfo.mCallBack!=null)
+					mInfo.mCallBack.onCacheComming(mInfo.mDiscResult);
+			}else
+				//检查是否需要使用磁盘缓存
+				if(mInfo.isUseDiscCache && mInfo.mCallBack!=null){
+					//获取本地缓存的数据
+					mInfo.mDiscResult = getLocalCacheEntity(mInfo);
+					if(mInfo.mDiscResult!=null)
+						mInfo.mCallBack.onCacheComming(mInfo.mDiscResult);
+				}
+
+			result=getData(mInfo);
+			mInfo.mServerResult=result;
+			//检查本地和网络数据是否相同
+			if(mInfo.mServerResult!=null && !mInfo.mServerResult.equals(mInfo.mDiscResult) && mInfo.mCallBack!=null)
+				//不同时会返回最新的数据
+				mInfo.mCallBack.onDataComming(result);
+		}
+		else if(mInfo.mResultType==ResultType.IMAGE){
+			result=getImage(mInfo);
+			ULog.out("RequestPresenter.duringReq.getImage:"+result);
+			if(mInfo.mCallBack!=null)
+				mInfo.mCallBack.onDataComming(result);
+		}
+		else if(mInfo.mResultType==ResultType.FILE){
+			result=getFile(mInfo);
+			if(mInfo.mCallBack!=null)
+				mInfo.mCallBack.onDataComming(result);
+		}
+		return result;
+	}
+	private void afterReq(RequestInfo mInfo){
+		if(mInfo.mDialog!=null)
+			mInfo.mDialog.dismiss();
 	}
 
 	
@@ -112,56 +170,18 @@ public abstract class RequestPresenter implements IRequestPresenter {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			if(mInfo.mDialog!=null)
-				mInfo.mDialog.show();
-			mInfo.mHandler=new Handler();
+			beforeReq(mInfo);
 		}
 		
 		@Override
 		protected void onPostExecute(Object result) {
 			super.onPostExecute(result);
-			if(mInfo.mDialog!=null)
-				mInfo.mDialog.dismiss();
+			afterReq(mInfo);
 		}
 		
 		@Override
 		protected Object doInBackground(Void... params) {
-			if(mInfo.mParser==null)
-				getParser().setSource(new JsonParser());
-			
-			//检查是否需要使用磁盘缓存
-			if(mInfo.isUseDiscCache){
-				//获取本地缓存的数据
-				mInfo.mDiscResult = getLocalCacheEntity(mInfo);
-				if(mInfo.mDiscResult!=null)
-					mInfo.mCallBack.onCacheComming(mInfo.mDiscResult);
-			}
-			
-			//是否请求模板数据
-			if(mInfo.isUseTempleteData){
-				String data=getTempleteData(mInfo.mTempleteDataPackage, mInfo.mTempleteDataFileName);
-				Object parse = getParser().parse(data, mInfo.mEntityType);
-				if(mInfo.mDiscResult!=null)
-					mInfo.mCallBack.onCacheComming(mInfo.mDiscResult);
-			}
-			Object result=null;
-			if(mInfo.mResultType==ResultType.STRING){
-				result=getData(mInfo);
-				mInfo.mServerResult=result;
-				//检查本地和网络数据是否相同
-				if(mInfo.mServerResult!=null && !mInfo.mServerResult.equals(mInfo.mDiscResult))
-					//不同时会返回最新的数据
-					mInfo.mCallBack.onDataComming(result);
-			}
-			else if(mInfo.mResultType==ResultType.IMAGE){
-				result=getImage(mInfo);
-				mInfo.mCallBack.onDataComming(result);
-			}
-			else if(mInfo.mResultType==ResultType.FILE){
-				result=getFile(mInfo);
-				mInfo.mCallBack.onDataComming(result);
-			}
-			return null;
+			return duringReq(mInfo);
 		}
 	}
 	

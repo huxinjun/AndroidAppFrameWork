@@ -12,11 +12,10 @@ import java.lang.ref.WeakReference;
 
 public class AdapterViewInjector extends ViewInjector {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void inject(View target, Object value) {
-
 		//设置adapter
-		@SuppressWarnings("unchecked")
 		AdapterView<BaseAdapter> adapterView=(AdapterView<BaseAdapter>) target;
 		adapterView.setAdapter(new SmartAbsListAdapter(getContext(),adapterView));
 	}

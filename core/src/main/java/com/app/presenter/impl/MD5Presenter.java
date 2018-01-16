@@ -12,16 +12,16 @@ import com.app.presenter.IMD5Presenter;
 
 public class MD5Presenter implements IMD5Presenter {
 
-	private WeakReference<Context> mContext;
+	private Context mContext;
 
 	@Override
 	public void setContext(Context context) {
-		mContext=new WeakReference<Context>(context);
+		mContext=context;
 	}
 
 	@Override
 	public Context getContext() {
-		return mContext.get();
+		return mContext;
 	}
 
 	@Override

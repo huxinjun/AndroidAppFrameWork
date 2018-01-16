@@ -65,7 +65,6 @@ public interface IRequestPresenter extends IPresenter {
 	 */
 	public class RequestInfo{
 		
-		public Handler mHandler;
 		/**
 		 * 返回值类型:字符串,图像,文件3中类型
 		 */
@@ -155,7 +154,6 @@ public interface IRequestPresenter extends IPresenter {
 		@Override
 		public String toString() {
 			return "RequestInfo{" +
-					"mHandler=" + mHandler + "\n"+
 					", mResultType=" + mResultType +"\n"+
 					", mRequestMethod=" + mRequestMethod +"\n"+
 					", mDescription='" + mDescription + '\'' +"\n"+
@@ -340,7 +338,6 @@ public interface IRequestPresenter extends IPresenter {
 		
 		/**
 		 * 数据获取到了
-		 * @param command 发送的命令
 		 * @param object 数据
 		 */
 		public abstract void onDataComming(Object object);
@@ -357,7 +354,12 @@ public interface IRequestPresenter extends IPresenter {
 	 * @param requestInfo
 	 */
 	public abstract void request(RequestInfo requestInfo);
-	
+	/**
+	 * 同步发起网络请求
+	 * @param requestInfo
+	 */
+	public abstract Object requestSync(RequestInfo requestInfo);
+
 	/**
 	 * 添加一个数据监听器
 	 * @param listener 监听器
