@@ -1,6 +1,7 @@
 package com.example.test.fragment;
 
 import android.accounts.Account;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,10 +30,11 @@ public class Fragment_1 extends SmartFragment {
 		@BindLayoutCreater(creater = LvCreater.class, requestName = Datas.data_account_list)
 		@BindView(R.id.lv)
 		@BindFieldName("accounts")
-		public ListView lv;
+		public AdapterView lv;
 		@Override
 		public void onDataPrepared() {
 			Accounts contentData = getContentData();
+			contentData.setMsg("你！！！");
 			ULog.out("Fragment_1.MyCreater.onDataPrepared:"+contentData);
 		}
 	}

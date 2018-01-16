@@ -11,7 +11,7 @@ import com.example.test.R;
 import com.example.test.global.Datas;
 import com.example.test.model.Accounts;
 
-@BindLayoutCreater(creater=Fragment_2.MyCreater.class, requestName = Datas.data_account_list)
+@BindLayoutCreater(creater=Fragment_2.MyCreater.class)
 public class Fragment_2 extends SmartFragment {
 
 
@@ -23,7 +23,6 @@ public class Fragment_2 extends SmartFragment {
 	public static class MyCreater extends LayoutCreater<Accounts> {
 
 
-		@BindFieldName("abc")
 		@BindView(R.id.tv_content)
 		public TextView tv_content;
 

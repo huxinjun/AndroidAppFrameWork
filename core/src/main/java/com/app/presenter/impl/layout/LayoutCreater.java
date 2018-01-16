@@ -144,11 +144,10 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
      */
     private void dataPrepared() {
 
-        //TODO 在此注入
-        injection();
-
         //通知提供给外部的方法
         onDataPrepared();
+        //TODO 在此注入
+        injection();
 
     }
 
