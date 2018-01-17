@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -99,8 +102,26 @@ public abstract class RequestPresenter implements IRequestPresenter {
 
 	@Override
 	public void addRequestStatusListenner(String requestName,RequestListener listener) {
-
+		RequestInfo requestInfo = mAllRequests.get(requestName);
+		if(requestInfo==null) {
+			listener.onStatusChanged(RequestStatus.NO_REQUEST, "没有" + requestName + "这个网络数据请求");
+			return;
+		}
+		requestInfo.mListeners.add(listener);
+		//检查有没有这个网络请求
 	}
+
+	@Override
+	public void notifyRequestStatusListenner(String requestName,RequestStatus status,Object data) {
+		RequestInfo requestInfo = mAllRequests.get(requestName);
+		Iterator<RequestListener> requestListeners = requestInfo.mListeners.iterator();
+		while (requestListeners.hasNext()){
+			RequestListener next = requestListeners.next();
+			next.onStatusChanged(status,data);
+			requestListeners.remove();
+		}
+	}
+
 
 	private void beforeReq(RequestInfo mInfo){
 		if(mInfo.mDialog!=null)
@@ -170,6 +191,7 @@ public abstract class RequestPresenter implements IRequestPresenter {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
+			mAllRequests.put(mInfo.mRequestName,mInfo);
 			beforeReq(mInfo);
 		}
 		
@@ -177,6 +199,7 @@ public abstract class RequestPresenter implements IRequestPresenter {
 		protected void onPostExecute(Object result) {
 			super.onPostExecute(result);
 			afterReq(mInfo);
+			mAllRequests.remove(mInfo.mRequestName);
 		}
 		
 		@Override

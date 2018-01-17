@@ -90,7 +90,7 @@ public class SmartViewPagerSameTemplaterAdapter extends PagerAdapter {
 				
 		
 		
-		container.addView(tempCreater.getContentView(), position);
+		container.addView(tempCreater.getContentView());
 		return tempCreater.getContentView();
 	}
 	@Override 

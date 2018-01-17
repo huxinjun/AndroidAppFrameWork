@@ -2,6 +2,12 @@ package com.app.presenter;
 
 
 import android.content.Context;
+import android.text.TextUtils;
+
+import com.app.ULog;
+
+import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * 所有业务类的基类
@@ -22,4 +28,6 @@ public interface IPresenter {
      * @return
      */
 	Context getContext();
+
+
 }

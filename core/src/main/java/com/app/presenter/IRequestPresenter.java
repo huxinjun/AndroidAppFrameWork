@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import android.os.Handler;
-
 import com.app.SmartDialog;
 import com.app.annotation.request.AccessSettings.RequestMethods;
 import com.app.presenter.IDataPresenter.RequestListener;
@@ -64,7 +62,9 @@ public interface IRequestPresenter extends IPresenter {
 	 *
 	 */
 	public class RequestInfo{
-		
+
+		/**请求基地址*/
+		public String mBaseUrl;
 		/**
 		 * 返回值类型:字符串,图像,文件3中类型
 		 */
@@ -107,7 +107,7 @@ public interface IRequestPresenter extends IPresenter {
 		public boolean isUseDiscCache;
 
 		/**请求的地址*/
-		public String mUrlPattener;
+		public String mRequestUrl;
 		
 		/**请求状态监听器*/
 		public Set<RequestListener> mListeners=new HashSet<IDataPresenter.RequestListener>();
@@ -167,7 +167,8 @@ public interface IRequestPresenter extends IPresenter {
 					", mTempleteDataFileName='" + mTempleteDataFileName + '\'' +"\n"+
 					", isPersistence=" + isPersistence +"\n"+
 					", isUseDiscCache=" + isUseDiscCache +"\n"+
-					", mUrlPattener='" + mUrlPattener + '\'' +"\n"+
+					", mBaseUrl='" + mBaseUrl + '\'' +"\n"+
+					", mRequestUrl='" + mRequestUrl + '\'' +"\n"+
 					", mListeners=" + mListeners +"\n"+
 					", mEntityType=" + mEntityType +"\n"+
 					", mAppendType=" + mAppendType +"\n"+
@@ -326,7 +327,11 @@ public interface IRequestPresenter extends IPresenter {
 		/**
 		 * 服务器内部错误
 		 */
-		SERVER_ERROR
+		SERVER_ERROR,
+		/**
+		 * 没有这个请求
+		 */
+		NO_REQUEST
 	}
 	
 	/**
@@ -365,5 +370,12 @@ public interface IRequestPresenter extends IPresenter {
 	 * @param listener 监听器
 	 */
 	public abstract void addRequestStatusListenner(String requestName,RequestListener listener);
-	
+
+	/**
+	 * 通知注册的数据监听器
+	 * @param requestName
+	 * @param status
+	 * @param data
+	 */
+	public void notifyRequestStatusListenner(String requestName,RequestStatus status,Object data);
 }

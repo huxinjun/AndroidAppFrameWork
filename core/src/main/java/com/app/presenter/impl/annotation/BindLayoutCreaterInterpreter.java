@@ -4,9 +4,12 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 
+import android.text.TextUtils;
 import android.view.View;
 import com.app.annotation.creater.BindLayoutCreater;
+import com.app.presenter.IFragmentPresenter;
 import com.app.presenter.IInjectionPresenterBridge;
+import com.app.presenter.ILayoutPresenter;
 import com.app.presenter.ILayoutPresenter.InflateCallBack;
 import com.app.presenter.ILayoutPresenterBridge;
 import com.app.presenter.PresenterManager;
@@ -59,6 +62,7 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 				findViewById.setTag(LayoutCreater.TAG_LAYOUT_CRETAER_PARENT, creater);
 				findViewById.setTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_CLASS, itemLayoutCreater.creater());
 				findViewById.setTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_DATA_ID, itemLayoutCreater.requestName());
+
 				//再给其创建请求数据的命令
 				final View finalFindViewById = findViewById;
                 Object injectFieldPath = findViewById.getTag(LayoutCreater.TAG_INJECTOR_FIELD);
@@ -83,8 +87,11 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 	@Override
 	public void interpreter(Annotation annotation,
 			InterpreterCallBack callBack, Object... context) {
-		// TODO Auto-generated method stub
-		
+		//嵌套的，ViewPager能配置BindLayoutCreaters注解
+		BindLayoutCreater bindLayoutCreaterAnno= (BindLayoutCreater) annotation;
+		ILayoutPresenter.CreaterInfo info=new ILayoutPresenter.CreaterInfo(bindLayoutCreaterAnno.requestName(),bindLayoutCreaterAnno.creater());
+		if(callBack!=null)
+			callBack.onCompleted(annotation.annotationType(),info);
 	}
 	
 }

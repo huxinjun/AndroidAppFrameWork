@@ -25,7 +25,12 @@ public class RequestBaseUrlInterpreter extends AnnotationPresenter {
 	public void interpreter(AnnotatedElement target,
 			InterpreterCallBack callBack, Object... context) {
 		RequestBaseUrl annotation = getAnnotation(target, RequestBaseUrl.class);
-		IRequestPresenter.GLOBLE.requestBaseUrl=annotation.value();
+		if(target.getClass()==Class.class)
+			IRequestPresenter.GLOBLE.requestBaseUrl=annotation.value();
+		else{
+			IRequestPresenter.RequestInfo info= (IRequestPresenter.RequestInfo) context[0];
+			info.mBaseUrl=annotation.value();
+		}
 	}
 	
 	

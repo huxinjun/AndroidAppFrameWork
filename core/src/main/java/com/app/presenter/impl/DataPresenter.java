@@ -1,20 +1,12 @@
 package com.app.presenter.impl;
 
-import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 import android.content.Context;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.text.TextUtils;
 
@@ -32,6 +24,7 @@ import com.app.presenter.IRequestPresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.IRequestPresenter.ParamPool;
 import com.app.presenter.IRequestPresenter.RequestInfo;
+import com.app.utils.ReflectUtils;
 
 /**
  * 数据处理器
@@ -70,9 +63,30 @@ public class DataPresenter implements IDataPresenter,Runnable {
 	@Override
 	public void sendRequestDataCommand(RequestDataCommand command) {
 		try {
-			mCommands.putLast(command);
+			//必须进行有效性检测
+			if(TextUtils.isEmpty(command.getRequestName()))
+				return;
+			Field[] declaredFields = IRequestPresenter.GLOBLE.dataClass.getDeclaredFields();
+			boolean declared=false;
+			for(Field field:declaredFields){
+				field.setAccessible(true);
+				Object fieldValue;
+				try{
+					fieldValue = field.get(null);
+				}catch (Exception e){
+					continue;
+				}
+				if(fieldValue!=null && fieldValue.toString().equals(command.getRequestName())) {
+					declared = true;
+					break;
+				}
+			}
+			if(declared)
+				mCommands.putLast(command);
+			else
+				throw new RuntimeException("RequestDataCommand的requestName必须是@DatasDeclareClass指向的类中申明的静态String字段");
 			ULog.out("DataPresenter.sendRequestDataCommand:"+command);
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -83,38 +97,24 @@ public class DataPresenter implements IDataPresenter,Runnable {
 			try {
 				//从头部取出一个数据命令
 				final RequestDataCommand command = mCommands.takeFirst();
+				ULog.out("取出一个数据命令："+command);
 				//查询该命令的网络数据是否已经有了
 				final RequestInfo findInfo = mDatas.get(command.getRequestName());
 				if(findInfo!=null){
+					ULog.out("找到网络数据，从数据中查找需要的字段");
 					if(command.getType()==RequestDataCommand.TYPE_SINGLE_OBJECT){
 						//如果有了的话就通知监听器
                         PresenterManager.getInstance().getHandler().post(new Runnable() {
                             @Override
                             public void run() {
-                                command.getCallBack().onDataComming(command,findInfo.mServerResult);
+                                command.getCallBack().onDataComming(command, ReflectUtils.getValueByFieldPath(findInfo.mServerResult,command.getFieldPath()));
                             }
                         });
 						//TODO 在entry.value对象中查找命令需要的数据类型,完成后为其创建代理对象
 					}else{
 						//查找类型为List的字段
 						ULog.out("查找子数组字段...");
-						if(TextUtils.isEmpty(command.getFieldPath())){
-							//如果没有配置要的是哪个字段，就直接返回整个请求的数据
-							PresenterManager.getInstance().getHandler().post(new Runnable() {
-                                @Override
-                                public void run() {
-							        command.getCallBack().onDataComming(command,findInfo.mServerResult);
-                                }
-                            });
-							return;
-						}
-
-						String[] fields = command.getFieldPath().split("\\.");
-						Object result=findInfo.mServerResult;
-						for(String f:fields)
-							result=findListObj(result,f);
-						ULog.out("查找子数组字段从"+findInfo.mServerResult.getClass().getSimpleName()+"中寻找的"+command.getFieldPath()+"结果："+result);
-						final List finalResult = (List) result;
+						List finalResult = ReflectUtils.getListByFieldPath(findInfo.mServerResult, command.getFieldPath());
 						PresenterManager.getInstance().getHandler().post(new Runnable() {
 							@Override
 							public void run() {
@@ -127,38 +127,32 @@ public class DataPresenter implements IDataPresenter,Runnable {
 					}
 					continue;
 				}
-				//如果数据没有到来，那么将这个命令加到末尾继续等待网络数据的到来
-				mCommands.offer(command);
+				//检查是否有这个网络请求
+				PresenterManager.getInstance().getHandler().post(new Runnable() {
+					@Override
+					public void run() {
+						getRequester().addRequestStatusListenner(command.getRequestName(), new RequestListener() {
+							@Override
+							public void onStatusChanged(IRequestPresenter.RequestStatus status, Object msg) {
+								//如果数据没有到来，那么将这个命令加到末尾继续等待网络数据的到来
+								if(status != IRequestPresenter.RequestStatus.NO_REQUEST) {
+									ULog.out("正在请求中...还未获取到服务器数据，将命令加入到末尾");
+									mCommands.offer(command);
+								}else
+									ULog.out(msg);
+							}
+						});
+					}
+				});
+
+
+				SystemClock.sleep(50);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
 		}
 	}
-
-	private List findListObj(Object rootObj,String fieldName){
-		if(rootObj==null || TextUtils.isEmpty(fieldName))
-			return null;
-		Class<?> rootObjClass = rootObj.getClass();
-		Field[] rootObjClassDeclaredFields = rootObjClass.getDeclaredFields();
-		for(Field field:rootObjClassDeclaredFields){
-			field.setAccessible(true);
-			if(field.getName().equals(fieldName))
-				try {
-					return (List) field.get(rootObj);
-				} catch (IllegalAccessException e) {
-					throw new RuntimeException("不能在"+rootObj.getClass().getName()+"中找到"+fieldName+"字段！");
-				}
-		}
-		return null;
-	}
-
-
-
-
-
-
-
 
 
 
@@ -191,7 +185,7 @@ public class DataPresenter implements IDataPresenter,Runnable {
 		RequestUrl requestUrl = getAnnotaionManager().getAnnotation(dataField, RequestUrl.class);
 
 		final RequestInfo mInfo=new RequestInfo();
-
+		mInfo.mBaseUrl=IRequestPresenter.GLOBLE.requestBaseUrl;
 		try {
 			mInfo.mRequestName= (String) dataField.get(null);
 		} catch (IllegalAccessException e) {
@@ -204,14 +198,20 @@ public class DataPresenter implements IDataPresenter,Runnable {
 		getAnnotaionManager().interpreter(urlField, null,mInfo);
 		getAnnotaionManager().interpreter(dataField, null,mInfo);
 
-		List<IRequestPresenter.Param> params = mInfo.mParamPool.getParams();
-		boolean hasFileParam=false;
-		for(IRequestPresenter.Param param:params)
-			if(param.getType()== IRequestPresenter.ParamType.FILE){
-				hasFileParam=true;
-				break;
-			}
-		mInfo.mResultType= hasFileParam?IRequestPresenter.ResultType.FILE:IRequestPresenter.ResultType.STRING;
+		mInfo.mResultType=IRequestPresenter.ResultType.STRING;
+		if(mInfo.mParamPool!=null){
+			List<IRequestPresenter.Param> params = mInfo.mParamPool.getParams();
+			boolean hasFileParam=false;
+			for(IRequestPresenter.Param param:params)
+				if(param.getType()== IRequestPresenter.ParamType.FILE){
+					hasFileParam=true;
+					break;
+				}
+			mInfo.mResultType= hasFileParam?IRequestPresenter.ResultType.FILE:mInfo.mResultType;
+		}else
+			mInfo.mParamPool=ParamPool.obtain();
+
+
 		mInfo.mCallBack=new DataCallBack() {
 			
 			@Override

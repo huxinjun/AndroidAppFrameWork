@@ -17,6 +17,23 @@ import com.app.presenter.impl.layout.LayoutCreater;
 public interface ILayoutPresenter extends IPresenter {
 
 	/**
+	 * 绑定一系列的LayoutCreater需要的信息
+	 * @author xinjun
+	 *
+	 */
+	public static class CreaterInfo{
+		public String requestName;
+		public Class<? extends LayoutCreater> clazz;
+		public CreaterInfo(String requestName, Class<? extends LayoutCreater> clazz) {
+			super();
+			this.requestName = requestName;
+			this.clazz = clazz;
+		}
+
+
+	}
+
+	/**
 	 * 实例创建后的回调
 	 * 为什么不用返回值而要使用回调?
 	 * 答:由于创建实例取决于给定class上的Annotation,然而一个class上可能配置了多个Annotation,

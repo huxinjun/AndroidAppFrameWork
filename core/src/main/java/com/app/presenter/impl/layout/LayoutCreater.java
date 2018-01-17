@@ -10,6 +10,7 @@ import com.app.annotation.BindFieldName;
 import com.app.presenter.IDataPresenter;
 import com.app.presenter.IInjectionPresenterBridge;
 import com.app.presenter.PresenterManager;
+import com.app.utils.ReflectUtils;
 
 import java.lang.reflect.Field;
 
@@ -173,25 +174,16 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
      * @param viewField     声明Annotation的view对象
      */
     private void injection(String bindFieldName, Field viewField) {
-        //视图id
+        //视图
+        View view = null;
         try {
-
-            //视图映射的实体字段
-            Field javaBeanField = getContentData().getClass().getDeclaredField(bindFieldName);
-            javaBeanField.setAccessible(true);
-
-            //视图映射的实体字段值
-            View view = (View) viewField.get(this);
-            Object viewData = javaBeanField.get(getContentData());
-            //当beforeInject中将javaBeanField字段的值修改了的话,说明viewData现在已经是旧数据了,不需要再注入了
-            if (!viewData.equals(javaBeanField.get(getContentData())))
-                return;
-            PresenterManager.getInstance().findPresenter(getContext(), IInjectionPresenterBridge.class).inject(view, viewData);
-        }catch (NoSuchFieldException e1){
-            throw new RuntimeException("在" + this.getClass().getName() + "类的" + viewField.getName() + "字段中配置的BindFieldName上找不到映射的JavaBean字段:" + bindFieldName);
-        } catch (Exception e) {
-            e.printStackTrace();
+            view = (View) viewField.get(this);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException("无法在"+this.getClass().getName()+"中找到"+viewField.getName()+"字段");
         }
+        //视图映射的实体字段
+        Object viewData = ReflectUtils.getValueByFieldPath(getContentData(),bindFieldName);
+        PresenterManager.getInstance().findPresenter(getContext(), IInjectionPresenterBridge.class).inject(view, viewData);
     }
 
     /**

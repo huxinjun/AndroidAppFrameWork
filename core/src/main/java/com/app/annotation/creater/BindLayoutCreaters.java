@@ -1,5 +1,8 @@
 package com.app.annotation.creater;
 
+import com.app.annotation.Interpreter;
+import com.app.presenter.impl.annotation.BindLayoutCreatersInterpreter;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,8 +15,9 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
+@Interpreter(BindLayoutCreatersInterpreter.class)
 public @interface BindLayoutCreaters {
 
-	BindLayoutCreater[] creaters();
+	BindLayoutCreater[] value();
 
 }

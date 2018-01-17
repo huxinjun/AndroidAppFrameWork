@@ -1,6 +1,7 @@
 package com.app.presenter;
 
 import com.app.SmartFragment;
+import com.app.presenter.impl.layout.LayoutCreater;
 
 /**
  * Activity业务类
@@ -30,6 +31,7 @@ public interface IFragmentPresenter extends IPresenter {
 		
 		
 	}
+
 	
 	public abstract void changeFragment(FragmentInfo... fragments);
 

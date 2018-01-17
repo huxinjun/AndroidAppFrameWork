@@ -57,7 +57,7 @@ public class HttpClientRequest extends RequestPresenter {
 	@Override
 	public Bitmap getImage(RequestInfo info) {
 		ULog.out("getImage:"+info);
-		HttpGet get = new HttpGet(info.mUrlPattener);
+		HttpGet get = new HttpGet(info.mRequestUrl);
 		HttpResponse response = null;
 
 		HttpParams httpParams = new BasicHttpParams();
@@ -122,30 +122,18 @@ public class HttpClientRequest extends RequestPresenter {
 			} else if (response != null) {
 				int code = response.getStatusLine().getStatusCode();
 				//服务器错误
-				if(info.mListeners!=null){
-					for(RequestListener listener:info.mListeners){
-						listener.onStatusChanged(RequestStatus.SERVER_ERROR, code+"");
-					}
-				}
-				
+				notifyRequestStatusListenner(info.mRequestName,RequestStatus.SERVER_ERROR,code);
+
 				
 				
 			} else {
 				//没有网络时会执行到这里
-				if(info.mListeners!=null){
-					for(RequestListener listener:info.mListeners){
-						listener.onStatusChanged(RequestStatus.NO_NETWORK,"无网络");
-					}
-				}
+				notifyRequestStatusListenner(info.mRequestName,RequestStatus.NO_NETWORK,"无网络");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			// 执行到这里说明连接超时了
-			if(info.mListeners!=null){
-				for(RequestListener listener:info.mListeners){
-					listener.onStatusChanged(RequestStatus.CONNECTION_TIME_OUT,"连接超时");
-				}
-			}
+			notifyRequestStatusListenner(info.mRequestName,RequestStatus.CONNECTION_TIME_OUT,"连接超时");
 		}
 		return null;
 	}
@@ -178,7 +166,7 @@ public class HttpClientRequest extends RequestPresenter {
 	
 	
 	private HttpGet getGet(RequestInfo info){
-		StringBuffer urlStr = new StringBuffer(IRequestPresenter.GLOBLE.requestBaseUrl + info.mUrlPattener);
+		StringBuffer urlStr = new StringBuffer(info.mRequestUrl);
 		
 		List<Param> params = info.mParamPool.getParams();
 		if (info.mParamPool.getParams().size() > 0) {
@@ -208,7 +196,7 @@ public class HttpClientRequest extends RequestPresenter {
 	
 	
 	private HttpPost getPost(final RequestInfo requestInfo){
-		HttpPost post = new HttpPost(IRequestPresenter.GLOBLE.requestBaseUrl+requestInfo.mUrlPattener);
+		HttpPost post = new HttpPost(requestInfo.mRequestUrl);
 		HttpParams httpParams = new BasicHttpParams();
 		httpParams = new BasicHttpParams();
 		HttpConnectionParams.setConnectionTimeout(httpParams, requestInfo.mConnectionTimeOut);
@@ -226,12 +214,7 @@ public class HttpClientRequest extends RequestPresenter {
 					
 					@Override
 					public void transferred(ProgressInfo info) {
-						if(requestInfo.mListeners!=null){
-							for(RequestListener listener:requestInfo.mListeners){
-								listener.onStatusChanged(RequestStatus.UPLOADING,info);
-							}
-						}
-						
+						notifyRequestStatusListenner(requestInfo.mRequestName,RequestStatus.UPLOADING,info);
 					}
 				}):mpEntity;
 				

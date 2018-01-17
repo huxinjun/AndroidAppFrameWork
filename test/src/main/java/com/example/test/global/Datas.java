@@ -12,6 +12,7 @@ import com.app.annotation.request.UseDiscCache;
 import com.app.presenter.impl.parser.JsonParser;
 import com.example.test.dialog.LoadingDialog;
 import com.example.test.model.Accounts;
+import com.example.test.model.Rooms;
 
 @RequestUrls(com.example.test.global.RequestUrls.class)
 public class Datas {
@@ -24,4 +25,14 @@ public class Datas {
 	@Parser(JsonParser.class)
 	@UseDiscCache
 	public static final String data_account_list = "get_all";
+
+
+
+	@Description("获取房间列表")
+	@EntityType(Rooms.class)
+	@RequestUrl(com.example.test.global.RequestUrls.PATTERN_HOT_ROOM)
+	@Dialog(LoadingDialog.class)
+	@Parser(JsonParser.class)
+	@UseDiscCache
+	public static final String data_room_list = "rooms";
 }

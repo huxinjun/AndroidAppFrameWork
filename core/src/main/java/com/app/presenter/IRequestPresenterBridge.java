@@ -38,6 +38,11 @@ public class IRequestPresenterBridge extends IPresenterBridge<IRequestPresenter>
 	}
 
 	@Override
+	public void notifyRequestStatusListenner(String requestName, RequestStatus status, Object data) {
+		mSource.notifyRequestStatusListenner(requestName,status,data);
+	}
+
+	@Override
 	protected IRequestPresenter deffaultSource() {
 		return new HttpClientRequest();
 	}

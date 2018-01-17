@@ -1,8 +1,6 @@
 package com.app.presenter.impl;
 
-import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,7 +39,6 @@ import com.app.presenter.IRequestPresenter.ResultType;
 import com.app.presenter.IRequestPresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
-import com.app.presenter.impl.request.RequestPresenter;
 
 /**
  * 图片管理器
@@ -368,7 +365,7 @@ public class ImagePresenter implements IImagePresenter {
 							info.mRequestMethod=RequestMethods.GET;
 							info.mResultType=ResultType.IMAGE;
 							info.mExcuteCount=option.getRetryCount();
-							info.mUrlPattener=url;
+							info.mRequestUrl =url;
 
 							bitmap= (Bitmap) getRequester().requestSync(info);
 
