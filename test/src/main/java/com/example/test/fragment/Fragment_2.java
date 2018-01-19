@@ -6,6 +6,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.app.SmartFragment;
+import com.app.ULog;
 import com.app.annotation.BindFieldName;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.annotation.creater.BindLayoutCreaters;
@@ -15,6 +16,7 @@ import com.example.test.R;
 import com.example.test.global.Datas;
 import com.example.test.model.Accounts;
 import com.example.test.model.Rooms;
+import com.squareup.picasso.Picasso;
 
 @BindLayoutCreater(creater=Fragment_2.MyCreater.class)
 public class Fragment_2 extends SmartFragment {
@@ -31,8 +33,14 @@ public class Fragment_2 extends SmartFragment {
 		@BindView(R.id.vp)
 		public ViewPager viewPager;
 
+
+		@Override
+		public void onCreated() {
+		}
+
 		@Override
 		public void onDataPrepared() {
+
 		}
 	}
 
@@ -64,6 +72,7 @@ public class Fragment_2 extends SmartFragment {
 
 			@Override
 			public void onDataPrepared() {
+				ULog.out("onDataPrepared:"+getInParentIndex()+getContext()+hot_item_image_01);
 			}
 		}
 

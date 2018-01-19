@@ -75,6 +75,7 @@ public class SmartViewPagerSameTemplaterAdapter extends PagerAdapter {
 		Object injectFieldPath = mAdapterView.getTag(LayoutCreater.TAG_INJECTOR_FIELD);
 		String fieldPath=injectFieldPath==null?null:injectFieldPath.toString();
 		//数据
+		ULog.out("sendRequestDataCommand");
 		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(context,IDataPresenterBridge.class);
 		dataPresenter.sendRequestDataCommand(new RequestDataCommand(tempCreater.getRequestName(),fieldPath, new DataInnerCallBack(){
 

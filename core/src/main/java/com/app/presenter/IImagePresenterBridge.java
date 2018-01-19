@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
-import com.app.presenter.impl.ImagePresenter;
+import com.app.presenter.impl.GlideImagePresenter;
 
 /**
  * 图片加载代理类
@@ -26,7 +26,7 @@ public class IImagePresenterBridge extends IPresenterBridge<IImagePresenter> imp
 
 	@Override
 	protected IImagePresenter deffaultSource() {
-		return new ImagePresenter();
+		return new GlideImagePresenter();
 	}
 
 	@Override

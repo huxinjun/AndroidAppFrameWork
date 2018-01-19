@@ -40,7 +40,7 @@ public class ReflectUtils {
         Object result=obj;
         for(String f:fields)
             result=getObjByFieldName(result,f);
-        ULog.out("查找子数组字段从"+obj.getClass().getSimpleName()+"中寻找的"+fieldPath+"结果："+result);
+//        ULog.out("查找子数组字段从"+obj.getClass().getSimpleName()+"中寻找的"+fieldPath+"结果："+result);
         return result;
     }
 

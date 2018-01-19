@@ -154,7 +154,7 @@ public interface IRequestPresenter extends IPresenter {
 		@Override
 		public String toString() {
 			return "RequestInfo{" +
-					", mResultType=" + mResultType +"\n"+
+					"mResultType=" + mResultType +"\n"+
 					", mRequestMethod=" + mRequestMethod +"\n"+
 					", mDescription='" + mDescription + '\'' +"\n"+
 					", mRequestName='" + mRequestName + '\'' +"\n"+

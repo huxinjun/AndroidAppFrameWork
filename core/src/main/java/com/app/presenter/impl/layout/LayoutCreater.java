@@ -116,7 +116,6 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
      * LayoutCreater被创建完成,并解析了类上的注解,也设置了mRequestName表示其关注的请求
      */
     public void onCreated() {
-        init();
     }
 
     /**
@@ -126,18 +125,6 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
 
 
     //-----------------------------------------------------------------------
-
-    /**
-     * 执行初始化操作
-     * 初始化数据请求,数据请求状态监听,数据改变监听等
-     */
-    public void init() {
-        //1.注册内部数据请求
-
-        //2.注册数据变化处理器
-
-        //3.注册请求状态监听器(用于loading view注解)
-    }
 
     /**
      * 此方法由命令回调反射调用
@@ -303,11 +290,6 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
         if (mInParentIndex == getInParentIndex())
             return;
         this.mInParentIndex = mInParentIndex;
-
-        /**
-         * 改变位置后整个布局的数据要更新
-         */
-        init();
     }
 
 }

@@ -13,8 +13,7 @@ public class ImageViewInjector extends ViewInjector {
 
 	@Override
 	public void inject(View target, Object value) {
-		value="https://xzbenben.cn/AccountBook/image/get/"+value;
-//		ULog.out("ImageViewInjector:"+value);
+		value=value.toString().startsWith("http")?value:"https://xzbenben.cn/AccountBook/image/get/"+value;
 		PresenterManager.getInstance().findPresenter(getContext(), IImagePresenterBridge.class).setImage((ImageView) target,value.toString());
 	}
 

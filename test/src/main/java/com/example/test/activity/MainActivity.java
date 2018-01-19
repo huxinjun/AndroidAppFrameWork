@@ -35,14 +35,14 @@ public class MainActivity extends SmartActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        PresenterManager.getInstance().findPresenter(getContext(), IDataPresenterBridge.class).request(Datas.data_account_list,null,null);
+        PresenterManager.getInstance().findPresenter(getContext(), IDataPresenterBridge.class).request(Datas.data_account_list,null,null);
         PresenterManager.getInstance().findPresenter(getContext(), IDataPresenterBridge.class).request(Datas.data_room_list,null,null);
     }
 
     @BindView(R.layout.activity_main)
     public static class MainActivityCreater extends LayoutCreater {
 
-        @Fragment(clazz=Fragment_2.class)
+        @Fragment(clazz=Fragment_1.class)
         @BindView(R.id.fl_container)
         public FrameLayout fl_container;
 

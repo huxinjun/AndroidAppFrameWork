@@ -14,7 +14,7 @@ import android.os.Handler;
  */
 public class PresenterManager {
 	
-	private static ThreadLocal<PresenterManager> mInstance;
+	private static PresenterManager mInstance;
 
 	public Handler getHandler() {
 		return mHandler;
@@ -30,13 +30,9 @@ public class PresenterManager {
 
 	}
 	public static PresenterManager getInstance(){
-		if(mInstance==null){
-			mInstance=new ThreadLocal<PresenterManager>();
-			mInstance.set(new PresenterManager());
-		}
-		if(mInstance.get()==null)
-			mInstance.set(new PresenterManager());
-		return mInstance.get();
+		if(mInstance==null)
+			mInstance=new PresenterManager();
+		return mInstance;
 	}
 
 	/**

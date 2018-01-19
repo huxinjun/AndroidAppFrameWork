@@ -11,6 +11,7 @@ import com.app.presenter.IDataPresenterBridge;
 import com.app.presenter.ILayoutPresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
+import com.example.core.R;
 
 import android.content.Context;
 import android.view.View;
@@ -79,30 +80,28 @@ public class SmartAbsListAdapter extends BaseAdapter {
 		}else{
 			tempCreater = (LayoutCreater) convertView.getTag();
 		}
-		/**
-		 * 此操作会触发数据更新
-		 */
 		tempCreater.setInParentIndex(position);
-		tempCreater.setRequestName(mAdapterView.getTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_DATA_ID).toString());
+		Object o = mAllDatas.get(position);
+		tempCreater.setContentData(o);
 
-		Object injectFieldPath = mAdapterView.getTag(LayoutCreater.TAG_INJECTOR_FIELD);
-		String fieldPath=injectFieldPath==null?null:injectFieldPath.toString();
-		//TODO 下面的逻辑需要转移到LayoutCreater中
+
+//		tempCreater.setRequestName(mAdapterView.getTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_DATA_ID).toString());
+//		Object injectFieldPath = mAdapterView.getTag(LayoutCreater.TAG_INJECTOR_FIELD);
+//		String fieldPath=injectFieldPath==null?null:injectFieldPath.toString();
+
 		//数据
-		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(context,IDataPresenterBridge.class);
-
-		dataPresenter.sendRequestDataCommand(new RequestDataCommand(tempCreater.getRequestName(), fieldPath, new DataInnerCallBack(){
-
-			@Override
-			public void onDataComming(RequestDataCommand command,Object data) {
-				//数据来了,这个数据已经有了,发出的请求数据命令只是为了获取到一个代理的对象而已,此方法会在getView返回之前调用
-				LayoutCreater creater=(LayoutCreater) command.getTag();
-				creater.setContentData(data);
-			}
-			
-			
-		}).setType(RequestDataCommand.TYPE_LIST_OBJECT).setIndex(position).setTag(tempCreater));
-		
+//		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(context,IDataPresenterBridge.class);
+//		dataPresenter.sendRequestDataCommand(new RequestDataCommand(tempCreater.getRequestName(), fieldPath, new DataInnerCallBack(){
+//
+//			@Override
+//			public void onDataComming(RequestDataCommand command,Object data) {
+//				//数据来了,这个数据已经有了,发出的请求数据命令只是为了获取到一个代理的对象而已,此方法会在getView返回之前调用
+//				LayoutCreater creater=(LayoutCreater) command.getTag();
+//				creater.setContentData(data);
+//			}
+//
+//
+//		}).setType(RequestDataCommand.TYPE_LIST_OBJECT).setIndex(position).setTag(tempCreater));
 		return tempCreater.getContentView();
 	}
 

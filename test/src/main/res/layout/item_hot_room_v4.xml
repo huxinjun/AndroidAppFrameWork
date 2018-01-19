@@ -30,7 +30,7 @@
                     android:id="@+id/hot_item_image_01"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:scaleType="matrix"/>
+                    android:scaleType="fitXY"/>
 
                 <TextView
                     android:id="@+id/tv_room_type_01"
@@ -132,7 +132,7 @@
                     android:id="@+id/hot_item_image_02"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:scaleType="matrix"/>
+                    android:scaleType="fitXY"/>
 
                 <TextView
                     android:id="@+id/tv_room_type_02"

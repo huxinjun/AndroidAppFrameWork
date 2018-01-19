@@ -85,7 +85,6 @@ public class DataPresenter implements IDataPresenter,Runnable {
 				mCommands.putLast(command);
 			else
 				throw new RuntimeException("RequestDataCommand的requestName必须是@DatasDeclareClass指向的类中申明的静态String字段");
-			ULog.out("DataPresenter.sendRequestDataCommand:"+command);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -107,7 +106,9 @@ public class DataPresenter implements IDataPresenter,Runnable {
                         PresenterManager.getInstance().getHandler().post(new Runnable() {
                             @Override
                             public void run() {
-                                command.getCallBack().onDataComming(command, ReflectUtils.getValueByFieldPath(findInfo.mServerResult,command.getFieldPath()));
+								Object result=ReflectUtils.getValueByFieldPath(findInfo.mServerResult,command.getFieldPath());
+								ULog.out("找到目标对象："+result);
+                                command.getCallBack().onDataComming(command, result);
                             }
                         });
 						//TODO 在entry.value对象中查找命令需要的数据类型,完成后为其创建代理对象
@@ -127,27 +128,20 @@ public class DataPresenter implements IDataPresenter,Runnable {
 					}
 					continue;
 				}
+				ULog.out("没有现成的数据，检查是否有这个网络请求...");
 				//检查是否有这个网络请求
-				PresenterManager.getInstance().getHandler().post(new Runnable() {
+				getRequester().addRequestStatusListenner(command.getRequestName(), new RequestListener() {
 					@Override
-					public void run() {
-						getRequester().addRequestStatusListenner(command.getRequestName(), new RequestListener() {
-							@Override
-							public void onStatusChanged(IRequestPresenter.RequestStatus status, Object msg) {
-								//如果数据没有到来，那么将这个命令加到末尾继续等待网络数据的到来
-								if(status != IRequestPresenter.RequestStatus.NO_REQUEST) {
-									ULog.out("正在请求中...还未获取到服务器数据，将命令加入到末尾");
-									mCommands.offer(command);
-								}else
-									ULog.out(msg);
-							}
-						});
+					public void onStatusChanged(IRequestPresenter.RequestStatus status, Object msg) {
+						//如果数据没有到来，那么将这个命令加到末尾继续等待网络数据的到来
+						if(status != IRequestPresenter.RequestStatus.NO_REQUEST) {
+							ULog.out("正在请求中...还未获取到服务器数据，将命令加入到末尾");
+							mCommands.offer(command);
+						}else
+							ULog.out("没有这个请求，忽略此命令："+msg);
 					}
 				});
-
-
-				SystemClock.sleep(50);
-			} catch (InterruptedException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
@@ -192,12 +186,14 @@ public class DataPresenter implements IDataPresenter,Runnable {
 			e.printStackTrace();
 		}
 
+
 		//在url请求配置类中查找到@RequestUrl对应的字段
 		Field urlField = getFieldInClassByStaticFieldValue(IRequestPresenter.GLOBLE.urlClass, requestUrl.value());
 
 		getAnnotaionManager().interpreter(urlField, null,mInfo);
 		getAnnotaionManager().interpreter(dataField, null,mInfo);
 
+		mInfo.mRequestUrl= mInfo.mBaseUrl + mInfo.mRequestUrl;
 		mInfo.mResultType=IRequestPresenter.ResultType.STRING;
 		if(mInfo.mParamPool!=null){
 			List<IRequestPresenter.Param> params = mInfo.mParamPool.getParams();

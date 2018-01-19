@@ -23,11 +23,13 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
-    compile files('libs/EasyJson.jar')
+    compile project(':easyjson')
+    compile 'com.squareup.picasso:picasso:2.5.1'
 }

@@ -18,4 +18,5 @@
         android:textColor="@android:color/holo_green_dark"
         android:text="FRAGMENT\n2"/>
 
+
 </RelativeLayout>

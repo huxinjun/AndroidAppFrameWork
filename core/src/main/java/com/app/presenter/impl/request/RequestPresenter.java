@@ -107,19 +107,24 @@ public abstract class RequestPresenter implements IRequestPresenter {
 			listener.onStatusChanged(RequestStatus.NO_REQUEST, "没有" + requestName + "这个网络数据请求");
 			return;
 		}
-		requestInfo.mListeners.add(listener);
+		synchronized (requestInfo.mListeners){
+		    requestInfo.mListeners.add(listener);
+        }
 		//检查有没有这个网络请求
 	}
 
 	@Override
 	public void notifyRequestStatusListenner(String requestName,RequestStatus status,Object data) {
 		RequestInfo requestInfo = mAllRequests.get(requestName);
-		Iterator<RequestListener> requestListeners = requestInfo.mListeners.iterator();
-		while (requestListeners.hasNext()){
-			RequestListener next = requestListeners.next();
-			next.onStatusChanged(status,data);
-			requestListeners.remove();
+		synchronized (requestInfo.mListeners){
+			Iterator<RequestListener> requestListeners = requestInfo.mListeners.iterator();
+			while (requestListeners.hasNext()){
+				RequestListener next = requestListeners.next();
+				next.onStatusChanged(status,data);
+				requestListeners.remove();
+			}
 		}
+
 	}
 
 

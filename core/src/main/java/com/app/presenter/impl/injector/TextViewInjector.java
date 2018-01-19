@@ -11,7 +11,7 @@ public class TextViewInjector extends ViewInjector {
 	@Override
 	public void inject(View target, Object value) {
 		TextView tv= (TextView) target;
-		tv.setText(value.toString());
+		tv.setText(value==null?"":value.toString());
 	}
 
 }
