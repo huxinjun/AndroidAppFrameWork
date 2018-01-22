@@ -56,8 +56,10 @@ public class LayoutPresenter implements ILayoutPresenter {
                 field.setAccessible(true);
                 try {
                     getAnnotationPresenter().interpreter(field, null, finalCreater, field);
-                } catch (Exception e1) {
-                    throw new RuntimeException(e1);
+                } catch (java.lang.IllegalArgumentException e1) {
+                    throw new RuntimeException("注入异常：请检查"+createrClass.getName()+"中"+field.getName()+"字段的类型是否与布局中的一致");
+                } catch (Exception ex){
+                    throw new RuntimeException(ex);
                 }
 
             }

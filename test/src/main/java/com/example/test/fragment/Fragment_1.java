@@ -1,9 +1,8 @@
 package com.example.test.fragment;
 
-import android.accounts.Account;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.app.SmartFragment;
@@ -41,20 +40,46 @@ public class Fragment_1 extends SmartFragment {
 
 
 	@BindView(R.layout.account_item)
-	public static class LvCreater extends LayoutCreater<Account> {
+	public static class LvCreater extends LayoutCreater<Accounts.Account> {
 
-
-		@BindFieldName("name")
-		@BindView(R.id.tv_name)
-		public TextView tv_name;
 
 		@BindFieldName("userIcon")
 		@BindView(R.id.iv_icon)
 		public ImageView iv_icon;
 
+		@BindFieldName("name")
+		@BindView(R.id.tv_name)
+		public TextView tv_name;
+
+		@BindFieldName("date")
+		@BindView(R.id.tv_date)
+		public TextView tv_date;
+
+		@BindFieldName("paidIn")
+		@BindView(R.id.tv_paidin)
+		public TextView tv_paidin;
+
+		@BindView(R.id.tv_tag)
+		public TextView tv_tag;
+
+		@BindFieldName("description")
+		@BindView(R.id.tv_content)
+		public TextView tv_content;
+
+		@BindFieldName("addrName")
+		@BindView(R.id.tv_addr)
+		public TextView tv_addr;
+
+		@BindFieldName("dateDis")
+		@BindView(R.id.tv_time)
+		public TextView tv_time;
+
 		@Override
 		public void onDataPrepared() {
-
+			if(getContentData().getIsPrivate())
+				tv_tag.setVisibility(View.VISIBLE);
+			else
+				tv_tag.setVisibility(View.GONE);
 		}
 	}
 

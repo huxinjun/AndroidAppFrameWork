@@ -303,7 +303,7 @@ public interface IRequestPresenter extends IPresenter {
 		/**
 		 * 暂未发起请求
 		 */
-		WAIT,
+		INIT,
 		/**
 		 * 上传本地文件
 		 */
@@ -331,7 +331,11 @@ public interface IRequestPresenter extends IPresenter {
 		/**
 		 * 没有这个请求
 		 */
-		NO_REQUEST
+		NO_REQUEST,
+		/**
+		 * 请求结束
+		 */
+		COMPLETED
 	}
 	
 	/**

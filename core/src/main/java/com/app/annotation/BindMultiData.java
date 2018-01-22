@@ -9,7 +9,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 在类型声明上使用此注解,来指示这个类管理的布局所使用的数据类型
+ * 一个adapter的item绑定多个实体对象，需要在适配器视图上申明此注解
+ * 再在item的LayoutCreater的视图字段上使用BindFieldName携带index参数即可
+ * 如果需要获取item绑定的实体数据，需要调用getContentData(int index)或者getContentDatas()
  * @author xinjun
  *
  */

@@ -3,20 +3,14 @@ package com.app.presenter.impl.request;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.os.Handler;
 
-import com.app.ULog;
 import com.app.presenter.IDataPresenter.RequestListener;
 import com.app.presenter.impl.parser.JsonParser;
-import com.app.presenter.IActivityPresenterBridge;
 import com.app.presenter.IMD5Presenter;
 import com.app.presenter.IMD5PresenterBridge;
 import com.app.presenter.IParserPresenterBridge;
@@ -129,6 +123,7 @@ public abstract class RequestPresenter implements IRequestPresenter {
 
 
 	private void beforeReq(RequestInfo mInfo){
+		notifyRequestStatusListenner(mInfo.mRequestName,RequestStatus.INIT,null);
 		if(mInfo.mDialog!=null)
 			mInfo.mDialog.show();
 	}
@@ -163,7 +158,6 @@ public abstract class RequestPresenter implements IRequestPresenter {
 		}
 		else if(mInfo.mResultType==ResultType.IMAGE){
 			result=getImage(mInfo);
-			ULog.out("RequestPresenter.duringReq.getImage:"+result);
 			if(mInfo.mCallBack!=null)
 				mInfo.mCallBack.onDataComming(result);
 		}
@@ -177,6 +171,7 @@ public abstract class RequestPresenter implements IRequestPresenter {
 	private void afterReq(RequestInfo mInfo){
 		if(mInfo.mDialog!=null)
 			mInfo.mDialog.dismiss();
+		notifyRequestStatusListenner(mInfo.mRequestName,RequestStatus.COMPLETED,null);
 	}
 
 	
