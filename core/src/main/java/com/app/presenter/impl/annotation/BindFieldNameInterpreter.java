@@ -15,7 +15,7 @@ import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 
 /**
- * @UseDiscCache解释器
+ * @BindFieldName解释器
  * @author XINJUN
  *
  */
@@ -37,6 +37,7 @@ public class BindFieldNameInterpreter extends AnnotationPresenter {
 		try {
 			View view= (View) field.get(creater);
 			view.setTag(LayoutCreater.TAG_INJECTOR_FIELD, annotation.value());
+			view.setTag(LayoutCreater.TAG_MULTI_DATA_INDEX, annotation.index());
 		} catch (IllegalAccessException e) {
 			throw new RuntimeException(e);
 		}

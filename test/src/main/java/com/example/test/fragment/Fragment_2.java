@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.app.SmartFragment;
 import com.app.ULog;
 import com.app.annotation.BindFieldName;
+import com.app.annotation.BindMultiData;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.annotation.creater.BindLayoutCreaters;
 import com.app.annotation.creater.BindView;
@@ -51,6 +52,7 @@ public class Fragment_2 extends SmartFragment {
 
 		@BindView(R.id.lv_content)
 		@BindFieldName("result.rooms")
+		@BindMultiData(2)
 		@BindLayoutCreater(creater = LvCreater.class,requestName = Datas.data_room_list)
 		public ListView lv_content;
 
@@ -63,16 +65,15 @@ public class Fragment_2 extends SmartFragment {
 
 
 			@BindView(R.id.hot_item_image_01)
-			@BindFieldName("imgPathM")
+			@BindFieldName(value = "imgPathM",index = 0)
 			public ImageView hot_item_image_01;
 
 			@BindView(R.id.hot_item_image_02)
-			@BindFieldName("imgPathM")
+			@BindFieldName(value = "imgPathM",index = 1)
 			public ImageView hot_item_image_02;
 
 			@Override
 			public void onDataPrepared() {
-				ULog.out("onDataPrepared:"+getInParentIndex()+getContext()+hot_item_image_01);
 			}
 		}
 

@@ -2,6 +2,7 @@ package com.app;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.app.presenter.IDataPresenter.DataInnerCallBack;
@@ -50,7 +51,13 @@ public class SmartAbsListAdapter extends BaseAdapter {
 	
 	@Override
 	public int getCount() {
-		return mAllDatas==null?0:mAllDatas.size();
+		Object dataCount = mAdapterView.getTag(LayoutCreater.TAG_MULTI_DATA_COUNT);
+		if(dataCount==null)
+			return mAllDatas==null?0:mAllDatas.size();
+		else{
+			int count= (int) dataCount;
+			return mAllDatas.size()/count;
+		}
 	}
 
 	@Override
@@ -77,12 +84,22 @@ public class SmartAbsListAdapter extends BaseAdapter {
 					tempCreater.getContentView().setTag(tempCreater);
 				}
 			});
-		}else{
+		}else
 			tempCreater = (LayoutCreater) convertView.getTag();
-		}
+
 		tempCreater.setInParentIndex(position);
-		Object o = mAllDatas.get(position);
-		tempCreater.setContentData(o);
+		Object dataCount = mAdapterView.getTag(LayoutCreater.TAG_MULTI_DATA_COUNT);
+		if(dataCount==null){
+			Object o = mAllDatas.get(position);
+			tempCreater.setContentData(o);
+		}else{
+			//一个布局绑定多个对象
+			int count= (int) dataCount;
+			List<Object> datas=new ArrayList<>();
+			for(int i=position*count;i<position*count+count;i++)
+				datas.add(mAllDatas.get(i));
+			tempCreater.setContentData(datas);
+		}
 
 
 //		tempCreater.setRequestName(mAdapterView.getTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_DATA_ID).toString());

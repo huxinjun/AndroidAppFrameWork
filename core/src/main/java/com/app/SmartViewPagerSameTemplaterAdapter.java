@@ -2,6 +2,7 @@ package com.app;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.app.presenter.IDataPresenterBridge;
@@ -72,23 +73,37 @@ public class SmartViewPagerSameTemplaterAdapter extends PagerAdapter {
 			}
 		});
 
-		Object injectFieldPath = mAdapterView.getTag(LayoutCreater.TAG_INJECTOR_FIELD);
-		String fieldPath=injectFieldPath==null?null:injectFieldPath.toString();
-		//数据
-		ULog.out("sendRequestDataCommand");
-		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(context,IDataPresenterBridge.class);
-		dataPresenter.sendRequestDataCommand(new RequestDataCommand(tempCreater.getRequestName(),fieldPath, new DataInnerCallBack(){
+		tempCreater.setInParentIndex(position);
+		Object dataCount = mAdapterView.getTag(LayoutCreater.TAG_MULTI_DATA_COUNT);
+		if(dataCount==null){
+			Object o = mAllDatas.get(position);
+			tempCreater.setContentData(o);
+		}else{
+			//一个布局绑定多个对象
+			int count= (int) dataCount;
+			List<Object> datas=new ArrayList<>();
+			for(int i=position*count;i<position*count+count;i++)
+				datas.add(mAllDatas.get(i));
+			tempCreater.setContentData(datas);
+		}
 
-			@Override
-			public void onDataComming(RequestDataCommand command,Object data) {
-				//数据来了,这个数据已经有了,发出的请求数据命令只是为了获取到一个代理的对象而已,此方法会在getView返回之前调用
-				LayoutCreater creater=(LayoutCreater) command.getTag();
-				creater.setContentData(data);
-			}
-
-			
-		}).setType(RequestDataCommand.TYPE_LIST_OBJECT).setIndex(position).setTag(tempCreater));
-				
+//		Object injectFieldPath = mAdapterView.getTag(LayoutCreater.TAG_INJECTOR_FIELD);
+//		String fieldPath=injectFieldPath==null?null:injectFieldPath.toString();
+//		//数据
+//		ULog.out("sendRequestDataCommand");
+//		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(context,IDataPresenterBridge.class);
+//		dataPresenter.sendRequestDataCommand(new RequestDataCommand(tempCreater.getRequestName(),fieldPath, new DataInnerCallBack(){
+//
+//			@Override
+//			public void onDataComming(RequestDataCommand command,Object data) {
+//				//数据来了,这个数据已经有了,发出的请求数据命令只是为了获取到一个代理的对象而已,此方法会在getView返回之前调用
+//				LayoutCreater creater=(LayoutCreater) command.getTag();
+//				creater.setContentData(data);
+//			}
+//
+//
+//		}).setType(RequestDataCommand.TYPE_LIST_OBJECT).setIndex(position).setTag(tempCreater));
+//
 		
 		
 		container.addView(tempCreater.getContentView());

@@ -13,6 +13,7 @@ import com.app.presenter.PresenterManager;
 import com.app.utils.ReflectUtils;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * 根据注解创建视图,根据viewid注解创建视图--->数据,视图--->事件之间的映射关系
@@ -75,9 +76,18 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
      */
     public static final int TAG_INJECTOR_FIELD = TAG_START_INDEX + 0x9;
     /**
+     * view绑定多个list item data
+     */
+    public static final int TAG_MULTI_DATA_COUNT = TAG_START_INDEX + 0x10;
+    /**
+     * 有时候一个布局要绑定多个对象，这个tag确定绑定的是哪个对象的字段
+     * view绑定对象中字段时绑定那个索引的对象字段，配合TAG_MULTI_DATA_COUNT使用
+     */
+    public static final int TAG_MULTI_DATA_INDEX = TAG_START_INDEX + 0x11;
+    /**
      * 图片加载需要的参数
      */
-    public static final int TAG_IMAGE_OPTION = TAG_START_INDEX + 0x10;
+    public static final int TAG_IMAGE_OPTION = TAG_START_INDEX + 0x12;
 
     private Context mContext;
     /**
@@ -104,6 +114,10 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
      * 这个布局对应的数据
      */
     private T mContentData;
+    /**
+     * 这个布局对应的数据(多个)
+     */
+    private List<T> mContentDatas;
 
     /**
      * 这个布局在父布局中的索引(-1表示这个布局不处于AdapterView或者其他适配器视图中,是一个单独的布局)
@@ -168,8 +182,20 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
         } catch (IllegalAccessException e) {
             throw new RuntimeException("无法在"+this.getClass().getName()+"中找到"+viewField.getName()+"字段");
         }
+        //处理多个绑定的实体数据
+        Object data=null;
+        if(getContentData()!=null)
+            data=getContentData();
+        else{
+            Object dataIndex = view.getTag(LayoutCreater.TAG_MULTI_DATA_INDEX);
+            int index= (int) dataIndex;
+            if(index==-1)
+                throw new RuntimeException(this.getClass().getName()+"中的"+viewField.getName()+"没有为BindFieldName注解配置index属性，原因："+"当一个布局绑定了多个实体数据时，请务必在使用BindFieldName注解时带上index参数以定位捆绑对象的索引（从0开始）");
+            data=getContentData(index);
+        }
+
         //视图映射的实体字段
-        Object viewData = ReflectUtils.getValueByFieldPath(getContentData(),bindFieldName);
+        Object viewData = ReflectUtils.getValueByFieldPath(data,bindFieldName);
         PresenterManager.getInstance().findPresenter(getContext(), IInjectionPresenterBridge.class).inject(view, viewData);
     }
 
@@ -268,9 +294,18 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
     public T getContentData() {
         return mContentData;
     }
+    public T getContentData(int index) {
+        if(mContentDatas==null)
+            return mContentData;
+        return mContentDatas.get(index);
+    }
 
     public void setContentData(T mContentData) {
         this.mContentData = mContentData;
+        dataPrepared();
+    }
+    public void setContentData(List<T> mContentDatas) {
+        this.mContentDatas = mContentDatas;
         dataPrepared();
     }
 
