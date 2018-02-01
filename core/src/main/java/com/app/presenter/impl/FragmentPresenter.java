@@ -10,6 +10,7 @@ import com.app.ULog;
 import com.app.presenter.IFragmentPresenter;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 /**
  * fragment管理器
@@ -39,10 +40,23 @@ public class FragmentPresenter implements IFragmentPresenter {
 		FragmentManager fm =activity.getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		for(FragmentInfo info:fragments){
-			try {
-				ft.replace(info.viewID,info.clazz.newInstance());
-			} catch (Exception e) {
-				throw new RuntimeException(e);
+			boolean attached=false;
+			List<Fragment> allFragment = fm.getFragments();
+			if(allFragment!=null)
+				for(Fragment fragment:allFragment){
+					if(info.clazz==fragment.getClass()){
+						attached=true;
+						ft.attach(fragment);
+					}
+					else
+						ft.detach(fragment);
+				}
+			if(!attached){
+				try {
+					ft.add(info.viewID,info.clazz.newInstance());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		ft.commitAllowingStateLoss();
