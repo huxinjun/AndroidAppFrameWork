@@ -19,6 +19,6 @@ import com.app.presenter.impl.annotation.BindLayoutCreaterHeaderInterpreter;
 public @interface BindLayoutCreaterHeader {
 
 	Class<? extends LayoutCreater> creater();
-	String requestName();
+	String requestName() default "";
 
 }

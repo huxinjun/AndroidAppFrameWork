@@ -6,10 +6,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.app.SmartFragment;
-import com.app.ULog;
 import com.app.annotation.BindFieldName;
 import com.app.annotation.BindMultiData;
 import com.app.annotation.creater.BindLayoutCreater;
+import com.app.annotation.creater.BindLayoutCreaterHeader;
 import com.app.annotation.creater.BindLayoutCreaters;
 import com.app.annotation.creater.BindView;
 import com.app.presenter.impl.layout.LayoutCreater;
@@ -17,7 +17,6 @@ import com.example.test.R;
 import com.example.test.global.Datas;
 import com.example.test.model.Accounts;
 import com.example.test.model.Rooms;
-import com.squareup.picasso.Picasso;
 
 @BindLayoutCreater(creater=Fragment_2.MyCreater.class)
 public class Fragment_2 extends SmartFragment {
@@ -54,13 +53,31 @@ public class Fragment_2 extends SmartFragment {
 		@BindFieldName("result.rooms")
 		@BindMultiData(2)
 		@BindLayoutCreater(creater = LvCreater.class,requestName = Datas.data_room_list)
+		@BindLayoutCreaterHeader(creater = LvHeaderCreater.class)
 		public ListView lv_content;
 
 		@Override
 		public void onDataPrepared() {
+			Rooms.Result.Room numOne = getContentData().getResult().getRooms().remove(0);
+			LayoutCreater headerCreater= getHeaderCreater(lv_content);
+			headerCreater.setContentData(numOne);
 		}
 
-		@BindView(R.layout.item_hot_room_v4)
+		@BindView(R.layout.layout_header_img)
+		public static class LvHeaderCreater extends LayoutCreater<Rooms.Result.Room> {
+
+
+			@BindFieldName(value = "imgPathM")
+			@BindView(R.id.iv_icon)
+			public ImageView iv_icon;
+
+			@Override
+			public void onDataPrepared() {
+			}
+		}
+
+
+		@BindView(R.layout.layout_room)
 		public static class LvCreater extends LayoutCreater<Rooms.Result.Room> {
 
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.app.annotation.BindFieldName;
 import com.app.presenter.IDataPresenter;
@@ -124,6 +125,16 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
      * 这个布局在父布局中的索引(-1表示这个布局不处于AdapterView或者其他适配器视图中,是一个单独的布局)
      */
     private int mInParentIndex = -1;
+
+    //----------------------------
+    protected LayoutCreater getHeaderCreater(AdapterView view){
+        return (LayoutCreater) view.getTag(TAG_LAYOUT_CRETAER_HEADER);
+    }
+    protected LayoutCreater getFooterCreater(AdapterView view){
+        //TODO
+        return (LayoutCreater) view.getTag(TAG_LAYOUT_CRETAER_HEADER);
+    }
+
 
     //-------------------------三个生命周期方法----------------------------------------------
 

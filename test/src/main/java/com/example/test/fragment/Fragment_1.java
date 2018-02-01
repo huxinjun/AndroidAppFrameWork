@@ -40,7 +40,7 @@ public class Fragment_1 extends SmartFragment {
 	}
 
 
-	@BindView(R.layout.account_item)
+	@BindView(R.layout.layout_account)
 	public static class LvCreater extends LayoutCreater<Accounts.Account> {
 
 
@@ -89,10 +89,10 @@ public class Fragment_1 extends SmartFragment {
 
 
 
-		@BindView(R.layout.img_item)
+		@BindView(R.layout.layout_img)
 		public static class ImgCreater extends LayoutCreater<String> {
 
-			@BindFieldName("iv_icon")
+			@BindFieldName
 			@BindView(R.id.iv_icon)
 			public ImageView iv_icon;
 

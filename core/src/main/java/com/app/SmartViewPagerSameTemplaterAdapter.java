@@ -87,25 +87,6 @@ public class SmartViewPagerSameTemplaterAdapter extends PagerAdapter {
 			tempCreater.setContentData(datas);
 		}
 
-//		Object injectFieldPath = mAdapterView.getTag(LayoutCreater.TAG_INJECTOR_FIELD);
-//		String fieldPath=injectFieldPath==null?null:injectFieldPath.toString();
-//		//数据
-//		ULog.out("sendRequestDataCommand");
-//		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(context,IDataPresenterBridge.class);
-//		dataPresenter.sendRequestDataCommand(new RequestDataCommand(tempCreater.getRequestName(),fieldPath, new DataInnerCallBack(){
-//
-//			@Override
-//			public void onDataComming(RequestDataCommand command,Object data) {
-//				//数据来了,这个数据已经有了,发出的请求数据命令只是为了获取到一个代理的对象而已,此方法会在getView返回之前调用
-//				LayoutCreater creater=(LayoutCreater) command.getTag();
-//				creater.setContentData(data);
-//			}
-//
-//
-//		}).setType(RequestDataCommand.TYPE_LIST_OBJECT).setIndex(position).setTag(tempCreater));
-//
-		
-		
 		container.addView(tempCreater.getContentView());
 		return tempCreater.getContentView();
 	}
