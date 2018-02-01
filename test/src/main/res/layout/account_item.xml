@@ -72,6 +72,15 @@
             android:textColor="#555"
             android:textSize="14sp"/>
 
+        <GridView
+            android:id="@+id/gv_pics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3"
+            android:horizontalSpacing="5dp"
+            android:verticalSpacing="5dp"
+            android:text="内容"/>
+
 
         <TextView
             android:id="@+id/tv_addr"

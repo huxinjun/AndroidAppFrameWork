@@ -17,7 +17,10 @@ public class AdapterViewInjector extends ViewInjector {
 	public void inject(View target, Object value) {
 		//设置adapter
 		AdapterView<BaseAdapter> adapterView=(AdapterView<BaseAdapter>) target;
-		adapterView.setAdapter(new SmartAbsListAdapter(getContext(),adapterView));
+		if(value==null)
+			adapterView.setAdapter(null);
+		else
+			adapterView.setAdapter(new SmartAbsListAdapter(getContext(),adapterView));
 	}
 
 }

@@ -6,6 +6,8 @@ import java.lang.reflect.Field;
 
 import android.text.TextUtils;
 import android.view.View;
+
+import com.app.annotation.BindFieldName;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.presenter.IFragmentPresenter;
 import com.app.presenter.IInjectionPresenterBridge;
@@ -16,6 +18,7 @@ import com.app.presenter.PresenterManager;
 import com.app.presenter.IDataPresenter.DataInnerCallBack;
 import com.app.presenter.IDataPresenter.RequestDataCommand;
 import com.app.presenter.impl.layout.LayoutCreater;
+import com.app.utils.ReflectUtils;
 
 import static com.app.presenter.impl.layout.LayoutCreater.TAG_INJECTOR_FIELD;
 
@@ -63,10 +66,25 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 				findViewById.setTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_CLASS, itemLayoutCreater.creater());
 				findViewById.setTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_DATA_ID, itemLayoutCreater.requestName());
 
-				//再给其创建请求数据的命令
+				//再给其创建请求数据的命令41
 				final View finalFindViewById = findViewById;
                 Object injectFieldPath = findViewById.getTag(LayoutCreater.TAG_INJECTOR_FIELD);
                 String fieldPath=injectFieldPath==null?null:injectFieldPath.toString();
+                if(TextUtils.isEmpty(itemLayoutCreater.requestName()) && target.getAnnotation(BindFieldName.class)!=null){
+                    //如果BindLayoutCreater没有配置itemLayoutCreater.requestName()，配置了BindFieldName注解，说明需要从父LayoutCreater的数据中取数据
+					creater.addDataListener(new LayoutCreater.DataListener() {
+						@Override
+						public void onDataPrepared(Object data) {
+							BindFieldName bindFieldName=target.getAnnotation(BindFieldName.class);
+							//根据BindFieldName在父LayoutCreater关联的数据中找自己需要的字段
+							Object findObj = ReflectUtils.getObjByFieldName(data, bindFieldName.value());
+							finalFindViewById.setTag(LayoutCreater.TAG_ITEMS_DATA, findObj);
+							//数据来了,这个可能是给listview,gridview,recycleview,viewpager使用的数据
+							PresenterManager.getInstance().findPresenter(getContext(),IInjectionPresenterBridge.class).inject(finalFindViewById, findObj);
+						}
+					});
+                    return;
+                }
                 getDataPresenter().sendRequestDataCommand(new RequestDataCommand(itemLayoutCreater.requestName(),fieldPath, new DataInnerCallBack() {
 					
 					@Override

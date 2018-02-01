@@ -32,6 +32,8 @@ public class ViewInjector implements IInjectionPresenter {
 
     @Override
     public void inject(View target, Object value) {
+        if(target==null)
+            return;
         //配置了@Injector注解后view的tag下会记录其使用的注入器类型
         Class<IInjectionPresenter> injectorClass = (Class<IInjectionPresenter>) target.getTag(LayoutCreater.TAG_INJECTOR_CLASS);
 

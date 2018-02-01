@@ -2,6 +2,7 @@ package com.example.test.fragment;
 
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -74,6 +75,10 @@ public class Fragment_1 extends SmartFragment {
 		@BindView(R.id.tv_time)
 		public TextView tv_time;
 
+		@BindLayoutCreater(creater=ImgCreater.class)
+		@BindFieldName("imgs")
+		@BindView(R.id.gv_pics)
+		public GridView gv_pics;
 		@Override
 		public void onDataPrepared() {
 			if(getContentData().getIsPrivate())
@@ -81,6 +86,25 @@ public class Fragment_1 extends SmartFragment {
 			else
 				tv_tag.setVisibility(View.GONE);
 		}
+
+
+
+		@BindView(R.layout.img_item)
+		public static class ImgCreater extends LayoutCreater<String> {
+
+			@BindFieldName("iv_icon")
+			@BindView(R.id.iv_icon)
+			public ImageView iv_icon;
+
+			@Override
+			public void onDataPrepared() {
+				ULog.out("ImgCreater.onDataPrepared:"+getContentData());
+
+			}
+		}
+
+
+
 	}
 
 	

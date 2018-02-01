@@ -4,6 +4,7 @@ import java.io.Serializable;
 import com.easyjson.annotation.JSONClass;
 import com.easyjson.annotation.JSONField;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -146,7 +147,7 @@ public class Accounts implements Serializable{
 		/**
 		 * 
 		 */
-		private String imgs;
+		private ArrayList<String> imgs;
 		/**
 		 * 
 		 */
@@ -232,10 +233,10 @@ public class Accounts implements Serializable{
 		public void setDate(String date){
 			this.date=date;
 		}
-		public String getImgs(){
+		public ArrayList<String> getImgs(){
 			return this.imgs;
 		}
-		public void setImgs(String imgs){
+		public void setImgs(ArrayList<String> imgs){
 			this.imgs=imgs;
 		}
 		public ArrayList<PayResult> getPayResult(){

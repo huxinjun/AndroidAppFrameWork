@@ -13,7 +13,10 @@ public class ViewPagerInjector extends ViewInjector {
 	public void inject(View target, Object value) {
 		//ViewPager每一页都是一样的
 		ViewPager pagerView=(ViewPager) target;
-		pagerView.setAdapter(new SmartViewPagerSameTemplaterAdapter(getContext(),pagerView));
+		if(value==null)
+			pagerView.setAdapter(null);
+		else
+			pagerView.setAdapter(new SmartViewPagerSameTemplaterAdapter(getContext(),pagerView));
 	}
 
 }

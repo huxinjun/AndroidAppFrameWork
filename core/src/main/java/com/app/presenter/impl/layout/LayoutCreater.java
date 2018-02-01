@@ -13,6 +13,7 @@ import com.app.presenter.PresenterManager;
 import com.app.utils.ReflectUtils;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -140,11 +141,27 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
 
     //-----------------------------------------------------------------------
 
+    public interface DataListener{
+        void onDataPrepared(Object data);
+    }
+
+    public void addDataListener(DataListener dataListener) {
+        this.mDataListeners.add(dataListener);
+    }
+
+    /**
+     * 有些内嵌的LayoutCreater的字段可能需要父LayoutCreater中的数据，他们在解释注解的时候
+     * 会在父LayoutCreater上注册一个DataListener
+     */
+    private List<DataListener> mDataListeners=new ArrayList<>();
     /**
      * 此方法由命令回调反射调用
      * 目的是不想暴露给外界
      */
     private void dataPrepared() {
+        if(mDataListeners.size()>0)
+            for(DataListener listener:mDataListeners)
+                listener.onDataPrepared(mContentData);
 
         //通知提供给外部的方法
         onDataPrepared();
@@ -163,7 +180,6 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
                 BindFieldName bindFieldName = field.getAnnotation(BindFieldName.class);
                 if (bindFieldName != null)
                     injection(bindFieldName.value(), field);
-
             }
         }
     }
@@ -193,9 +209,12 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
                 throw new RuntimeException(this.getClass().getName()+"中的"+viewField.getName()+"没有为BindFieldName注解配置index属性，原因："+"当一个布局绑定了多个实体数据时，请务必在使用BindFieldName注解时带上index参数以定位捆绑对象的索引（从0开始）");
             data=getContentData(index);
         }
-
         //视图映射的实体字段
-        Object viewData = ReflectUtils.getValueByFieldPath(data,bindFieldName);
+        Object viewData = data;
+        //有可能该field所在的LayoutCreater使用的是普通类型的数据,如：int,string,float,boolean等等
+        if(!ReflectUtils.isBasicType(data.getClass()))
+            viewData = ReflectUtils.getValueByFieldPath(data,bindFieldName);
+
         PresenterManager.getInstance().findPresenter(getContext(), IInjectionPresenterBridge.class).inject(view, viewData);
     }
 

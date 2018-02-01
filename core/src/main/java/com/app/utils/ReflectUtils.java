@@ -14,6 +14,24 @@ import java.util.List;
 
 public class ReflectUtils {
 
+    public static boolean isBasicType(Class type){
+        boolean result=false;
+        if(type==short.class || type==Short.class)
+            result=true;
+        if(type==int.class || type==Integer.class)
+            result=true;
+        if(type==float.class || type==Float.class)
+            result=true;
+        if(type==double.class || type==Double.class)
+            result=true;
+        if(type==boolean.class || type==Boolean.class)
+            result=true;
+        if(type==String.class)
+            result=true;
+        return result;
+    }
+
+
     /**
      * 反射获取对象中的list
      * @param obj
