@@ -159,7 +159,13 @@ public class DataPresenter implements IDataPresenter,Runnable {
 
 	@Override
 	public void request(String requestName, Option option, ParamPool paramPool) {
-		
+		if(option==null)
+			option=Option.REPLICE;
+		if(mDatas.containsKey(requestName) && option==Option.REPLICE){
+			ULog.out("删除旧的数据："+requestName);
+			mDatas.remove(requestName);
+		}
+
 		//请求网络，组装RequestInfo对象
 		if(IRequestPresenter.GLOBLE.dataClass==null)
 			throw new RuntimeException("请在Application类声明上配置@DatasDeclareClass注解，指明数据容器配置的类路径！");

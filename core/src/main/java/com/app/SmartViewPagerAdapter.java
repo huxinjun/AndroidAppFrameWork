@@ -69,7 +69,6 @@ public class SmartViewPagerAdapter extends PagerAdapter {
 
 			}
 		});
-		ULog.out("vpadapter.position:"+position);
 		container.addView(view[0]);
 		return view[0];
 	}

@@ -6,12 +6,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.app.SmartFragment;
+import com.app.ULog;
 import com.app.annotation.BindFieldName;
 import com.app.annotation.BindMultiData;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.annotation.creater.BindLayoutCreaterHeader;
 import com.app.annotation.creater.BindLayoutCreaters;
 import com.app.annotation.creater.BindView;
+import com.app.presenter.IDataPresenterBridge;
+import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
 import com.example.test.R;
 import com.example.test.global.Datas;
@@ -35,7 +38,8 @@ public class Fragment_2 extends SmartFragment {
 
 
 		@Override
-		public void onCreated() {
+		public void onViewCreated() {
+			PresenterManager.getInstance().findPresenter(getContext(), IDataPresenterBridge.class).request(Datas.data_room_list,null,null);
 		}
 
 		@Override
@@ -55,6 +59,11 @@ public class Fragment_2 extends SmartFragment {
 		@BindLayoutCreater(creater = LvCreater.class,requestName = Datas.data_room_list)
 		@BindLayoutCreaterHeader(creater = LvHeaderCreater.class)
 		public ListView lv_content;
+
+		@Override
+		public void onViewCreated() {
+
+		}
 
 		@Override
 		public void onDataPrepared() {

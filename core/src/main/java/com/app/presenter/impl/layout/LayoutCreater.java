@@ -141,7 +141,7 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
     /**
      * LayoutCreater被创建完成,并解析了类上的注解,也设置了mRequestName表示其关注的请求
      */
-    public void onCreated() {
+    public void onViewCreated() {
     }
 
     /**

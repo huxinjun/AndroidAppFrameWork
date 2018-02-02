@@ -9,7 +9,6 @@ import android.view.View;
 
 import com.app.annotation.BindFieldName;
 import com.app.annotation.creater.BindLayoutCreater;
-import com.app.presenter.IFragmentPresenter;
 import com.app.presenter.IInjectionPresenterBridge;
 import com.app.presenter.ILayoutPresenter;
 import com.app.presenter.ILayoutPresenter.InflateCallBack;
@@ -19,8 +18,6 @@ import com.app.presenter.IDataPresenter.DataInnerCallBack;
 import com.app.presenter.IDataPresenter.RequestDataCommand;
 import com.app.presenter.impl.layout.LayoutCreater;
 import com.app.utils.ReflectUtils;
-
-import static com.app.presenter.impl.layout.LayoutCreater.TAG_INJECTOR_FIELD;
 
 /**
  * BindLayoutCreater注解解释器
@@ -43,7 +40,6 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 					@Override
 					public void onCompleted(LayoutCreater instance) {
 						instance.setRequestName(requestName);
-						instance.onCreated();
 						if(callBack!=null)
 							callBack.onCompleted(BindLayoutCreater.class,instance);
 					}
