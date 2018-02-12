@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.app.annotation.BindFieldName;
-import com.app.presenter.IDataPresenter;
 import com.app.presenter.IInjectionPresenterBridge;
+import com.app.presenter.IRequestPresenter;
 import com.app.presenter.PresenterManager;
 import com.app.utils.ReflectUtils;
 
@@ -28,7 +28,7 @@ import java.util.List;
  * @LayoutDataType 只能配置在继承了LayoutCreater的类声明上, 指示这个布局关联的数据实体类型
  * @BindJsonKey 只能配置在类静态常量上, 指示这个(视图id=常量值)所关联的基本类型数据
  */
-public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHandler {
+public abstract class LayoutCreater<T>{
 
     private Handler mHandler=new Handler();
     /**
@@ -141,6 +141,12 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
     /**
      * LayoutCreater被创建完成,并解析了类上的注解,也设置了mRequestName表示其关注的请求
      */
+    public IRequestPresenter.Option onBuildRequest(IRequestPresenter.ParamPool paramPool) {
+        return IRequestPresenter.Option.REPLACE;
+    }
+    /**
+     * LayoutCreater被创建完成,并解析了类上的注解,也设置了mRequestName表示其关注的请求
+     */
     public void onViewCreated() {
     }
 
@@ -234,7 +240,6 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
      *
      * @param bindFieldName 修改的字段名称
      */
-    @Override
     public void onDataChanged(String bindFieldName) {
         int viewId = 0;
         Field viewIdField = null;
@@ -333,6 +338,7 @@ public abstract class LayoutCreater<T> implements IDataPresenter.DataChangedHand
     public void setContentData(T mContentData) {
         this.mContentData = mContentData;
         dataPrepared();
+
     }
     public void setContentData(List<T> mContentDatas) {
         this.mContentDatas = mContentDatas;

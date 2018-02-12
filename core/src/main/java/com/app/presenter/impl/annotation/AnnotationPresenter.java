@@ -1,17 +1,16 @@
 package com.app.presenter.impl.annotation;
 
 import java.lang.annotation.Annotation;
-import java.lang.ref.WeakReference;
 import java.lang.reflect.AnnotatedElement;
 
 import android.content.Context;
-import com.app.presenter.IActivityPresenterBridge;
+
 import com.app.presenter.IAnnotationPresenter;
 import com.app.presenter.IAnnotationPresenterBridge;
-import com.app.presenter.IDataPresenter;
-import com.app.presenter.IDataPresenterBridge;
 import com.app.presenter.ILayoutPresenter;
 import com.app.presenter.ILayoutPresenterBridge;
+import com.app.presenter.IRequestPresenter;
+import com.app.presenter.IRequestPresenterBridge;
 import com.app.presenter.PresenterManager;
 
 /**
@@ -51,16 +50,16 @@ public abstract class AnnotationPresenter implements IAnnotationPresenter{
 
 	
 
-	protected IDataPresenter getDataPresenter(){
-		return PresenterManager.getInstance().findPresenter(getContext(),IDataPresenterBridge.class);
-	}
-	
 	protected ILayoutPresenter getLayoutPresenter(){
 		return PresenterManager.getInstance().findPresenter(getContext(),ILayoutPresenterBridge.class);
 	}
 
 	protected IAnnotationPresenter getAnnotationPresenter(){
 		return PresenterManager.getInstance().findPresenter(getContext(),IAnnotationPresenterBridge.class);
+	}
+
+	protected IRequestPresenter getRequester(){
+		return PresenterManager.getInstance().findPresenter(getContext(),IRequestPresenterBridge.class);
 	}
 	
 }

@@ -6,18 +6,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.app.SmartFragment;
-import com.app.ULog;
 import com.app.annotation.BindFieldName;
 import com.app.annotation.BindMultiData;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.annotation.creater.BindLayoutCreaterHeader;
 import com.app.annotation.creater.BindLayoutCreaters;
 import com.app.annotation.creater.BindView;
-import com.app.presenter.IDataPresenterBridge;
-import com.app.presenter.PresenterManager;
+import com.app.presenter.IRequestPresenter;
 import com.app.presenter.impl.layout.LayoutCreater;
 import com.example.test.R;
-import com.example.test.global.Datas;
+import com.example.test.global.Urls;
 import com.example.test.model.Accounts;
 import com.example.test.model.Rooms;
 
@@ -29,7 +27,7 @@ public class Fragment_2 extends SmartFragment {
 	public static class MyCreater extends LayoutCreater {
 
 
-		@BindLayoutCreaters({@BindLayoutCreater(creater = Vp1Creater.class,requestName = Datas.data_room_list),
+		@BindLayoutCreaters({@BindLayoutCreater(creater = Vp1Creater.class,requestName = Urls.PATTERN_HOT_ROOM),
 				@BindLayoutCreater(creater = Vp2Creater.class,requestName = ""),
 				@BindLayoutCreater(creater = Vp3Creater.class,requestName = ""),
 				@BindLayoutCreater(creater = Vp4Creater.class,requestName = "")})
@@ -39,7 +37,6 @@ public class Fragment_2 extends SmartFragment {
 
 		@Override
 		public void onViewCreated() {
-			PresenterManager.getInstance().findPresenter(getContext(), IDataPresenterBridge.class).request(Datas.data_room_list,null,null);
 		}
 
 		@Override
@@ -56,9 +53,14 @@ public class Fragment_2 extends SmartFragment {
 		@BindView(R.id.lv_content)
 		@BindFieldName("result.rooms")
 		@BindMultiData(2)
-		@BindLayoutCreater(creater = LvCreater.class,requestName = Datas.data_room_list)
+		@BindLayoutCreater(creater = LvCreater.class)
 		@BindLayoutCreaterHeader(creater = LvHeaderCreater.class)
 		public ListView lv_content;
+
+		@Override
+		public IRequestPresenter.Option onBuildRequest(IRequestPresenter.ParamPool paramPool) {
+			return IRequestPresenter.Option.REPLACE;
+		}
 
 		@Override
 		public void onViewCreated() {

@@ -13,9 +13,8 @@ import com.app.presenter.IInjectionPresenterBridge;
 import com.app.presenter.ILayoutPresenter;
 import com.app.presenter.ILayoutPresenter.InflateCallBack;
 import com.app.presenter.ILayoutPresenterBridge;
+import com.app.presenter.IRequestPresenter;
 import com.app.presenter.PresenterManager;
-import com.app.presenter.IDataPresenter.DataInnerCallBack;
-import com.app.presenter.IDataPresenter.RequestDataCommand;
 import com.app.presenter.impl.layout.LayoutCreater;
 import com.app.utils.ReflectUtils;
 
@@ -42,6 +41,18 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 						instance.setRequestName(requestName);
 						if(callBack!=null)
 							callBack.onCompleted(BindLayoutCreater.class,instance);
+
+						IRequestPresenter.ParamPool paramPool= IRequestPresenter.ParamPool.obtain();
+						IRequestPresenter.Option option = instance.onBuildRequest(paramPool);
+						IRequestPresenter.RequestInfo info=getRequester().build(requestName, option,paramPool);
+						if(info!=null)
+							info.mCallBack=new IRequestPresenter.DataCallBack() {
+								@Override
+								public void onDataComming(Object data) {
+									instance.setContentData(data);
+								}
+							};
+						getRequester().request(info);
 					}
 				});
 			} catch (Exception e) {
@@ -73,7 +84,7 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 						public void onDataPrepared(Object data) {
 							BindFieldName bindFieldName=target.getAnnotation(BindFieldName.class);
 							//根据BindFieldName在父LayoutCreater关联的数据中找自己需要的字段
-							Object findObj = ReflectUtils.getObjByFieldName(data, bindFieldName.value());
+							Object findObj = ReflectUtils.getValueByFieldPath(data, bindFieldName.value());
 							finalFindViewById.setTag(LayoutCreater.TAG_ITEMS_DATA, findObj);
 							//数据来了,这个可能是给listview,gridview,recycleview,viewpager使用的数据
 							PresenterManager.getInstance().findPresenter(getContext(),IInjectionPresenterBridge.class).inject(finalFindViewById, findObj);
@@ -81,15 +92,23 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 					});
                     return;
                 }
-                getDataPresenter().sendRequestDataCommand(new RequestDataCommand(itemLayoutCreater.requestName(),fieldPath, new DataInnerCallBack() {
-					
-					@Override
-					public void onDataComming(RequestDataCommand command,Object data) {
-						finalFindViewById.setTag(LayoutCreater.TAG_ITEMS_DATA, data);
-						//数据来了,这个可能是给listview,gridview,recycleview,viewpager使用的数据
-						PresenterManager.getInstance().findPresenter(getContext(),IInjectionPresenterBridge.class).inject(finalFindViewById, data);
-					}
-				}).setType(RequestDataCommand.TYPE_LIST_OBJECT));
+				IRequestPresenter.ParamPool paramPool= IRequestPresenter.ParamPool.obtain();
+				IRequestPresenter.Option option = creater.onBuildRequest(paramPool);
+				IRequestPresenter.RequestInfo info=getRequester().build(itemLayoutCreater.requestName(), option,paramPool);
+                if(info!=null)
+                    info.mCallBack=new IRequestPresenter.DataCallBack() {
+                        @Override
+                        public void onDataComming(Object data) {
+							BindFieldName bindFieldName=target.getAnnotation(BindFieldName.class);
+							Object findObj=data;
+							if(!TextUtils.isEmpty(bindFieldName.value()))
+								findObj = ReflectUtils.getValueByFieldPath(data, bindFieldName.value());
+                            finalFindViewById.setTag(LayoutCreater.TAG_ITEMS_DATA, findObj);
+                            //数据来了,这个可能是给listview,gridview,recycleview,viewpager使用的数据
+                            PresenterManager.getInstance().findPresenter(getContext(),IInjectionPresenterBridge.class).inject(finalFindViewById, findObj);
+                        }
+                    };
+				getRequester().request(info);
 				
 			} catch (Exception e) {
 				//出错误说明没有配置这个注解,不用管

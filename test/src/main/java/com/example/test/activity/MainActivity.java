@@ -11,9 +11,8 @@ import com.app.annotation.action.OnClick;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.annotation.creater.BindView;
 import com.app.annotation.fragment.Fragment;
-import com.app.annotation.request.DatasDeclareClass;
+import com.app.annotation.request.RequestUrls;
 import com.app.annotation.storage.StorageRoot;
-import com.app.presenter.IDataPresenterBridge;
 import com.app.presenter.IFragmentPresenter;
 import com.app.presenter.IFragmentPresenterBridge;
 import com.app.presenter.PresenterManager;
@@ -21,9 +20,9 @@ import com.app.presenter.impl.layout.LayoutCreater;
 import com.example.test.R;
 import com.example.test.fragment.Fragment_1;
 import com.example.test.fragment.Fragment_2;
-import com.example.test.global.Datas;
+import com.example.test.global.Urls;
 
-@DatasDeclareClass(Datas.class)
+@RequestUrls(Urls.class)
 @BindLayoutCreater(creater=MainActivity.MainActivityCreater.class)
 @StorageRoot("xinjun")
 public class MainActivity extends SmartActivity {
@@ -33,8 +32,6 @@ public class MainActivity extends SmartActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        PresenterManager.getInstance().findPresenter(getContext(), IDataPresenterBridge.class).request(Datas.data_account_list,null,null);
-
     }
 
     @BindView(R.layout.activity_main)

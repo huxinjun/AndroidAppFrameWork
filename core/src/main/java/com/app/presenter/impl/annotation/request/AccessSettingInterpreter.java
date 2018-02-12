@@ -1,7 +1,6 @@
 package com.app.presenter.impl.annotation.request;
 
 import com.app.annotation.request.AccessSettings;
-import com.app.annotation.request.DatasDeclareClass;
 import com.app.presenter.IRequestPresenter;
 import com.app.presenter.impl.annotation.AnnotationPresenter;
 

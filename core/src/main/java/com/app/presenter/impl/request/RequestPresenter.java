@@ -3,13 +3,21 @@ package com.app.presenter.impl.request;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 import java.util.Iterator;
+import java.util.List;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.text.TextUtils;
 
-import com.app.presenter.IDataPresenter.RequestListener;
+import com.app.presenter.IAnnotationPresenter;
+import com.app.presenter.IAnnotationPresenterBridge;
+import com.app.presenter.IEntityProxyPresenter;
+import com.app.presenter.IEntityProxyPresenterBridge;
+import com.app.presenter.IRequestPresenterBridge;
 import com.app.presenter.impl.parser.JsonParser;
 import com.app.presenter.IMD5Presenter;
 import com.app.presenter.IMD5PresenterBridge;
@@ -18,6 +26,7 @@ import com.app.presenter.IPersistentPresenter;
 import com.app.presenter.IPersistentPresenterBridge;
 import com.app.presenter.IRequestPresenter;
 import com.app.presenter.PresenterManager;
+import com.app.utils.ReflectUtils;
 
 public abstract class RequestPresenter implements IRequestPresenter {
 
@@ -27,6 +36,8 @@ public abstract class RequestPresenter implements IRequestPresenter {
 
 
 	private Context mContext;
+
+	private Handler mHandler=new Handler();
 
 	@Override
 	public void setContext(Context context) {
@@ -82,6 +93,8 @@ public abstract class RequestPresenter implements IRequestPresenter {
 
 	@Override
 	public Object requestSync(RequestInfo requestInfo) {
+		if(requestInfo==null)
+			return null;
 		beforeReq(requestInfo);
 		Object result=duringReq(requestInfo);
 		afterReq(requestInfo);
@@ -91,6 +104,8 @@ public abstract class RequestPresenter implements IRequestPresenter {
 	
 	@Override
 	public void request(RequestInfo requestInfo) {
+		if(requestInfo==null)
+			return;
 		new CustomerAsyncTask(requestInfo).execute();
 	}
 
@@ -139,14 +154,24 @@ public abstract class RequestPresenter implements IRequestPresenter {
 				String data=getTempleteData(mInfo.mTempleteDataPackage, mInfo.mTempleteDataFileName);
 				Object parse = getParser().parse(data, mInfo.mEntityType);
 				if(mInfo.mDiscResult!=null && mInfo.mCallBack!=null)
-					mInfo.mCallBack.onCacheComming(mInfo.mDiscResult);
+					mHandler.post(new Runnable() {
+						@Override
+						public void run() {
+							mInfo.mCallBack.onCacheComming(mInfo.mDiscResult);
+						}
+					});
 			}else
 				//检查是否需要使用磁盘缓存
 				if(mInfo.isUseDiscCache && mInfo.mCallBack!=null){
 					//获取本地缓存的数据
 					mInfo.mDiscResult = getLocalCacheEntity(mInfo);
 					if(mInfo.mDiscResult!=null)
-						mInfo.mCallBack.onCacheComming(mInfo.mDiscResult);
+						mHandler.post(new Runnable() {
+							@Override
+							public void run() {
+								mInfo.mCallBack.onCacheComming(mInfo.mDiscResult);
+							}
+						});
 				}
 
 			result=getData(mInfo);
@@ -154,17 +179,39 @@ public abstract class RequestPresenter implements IRequestPresenter {
 			//检查本地和网络数据是否相同
 			if(mInfo.mServerResult!=null && !mInfo.mServerResult.equals(mInfo.mDiscResult) && mInfo.mCallBack!=null)
 				//不同时会返回最新的数据
-				mInfo.mCallBack.onDataComming(result);
+			{
+				Object finalResult2 = result;
+				mHandler.post(new Runnable() {
+					@Override
+					public void run() {
+						mInfo.mCallBack.onDataComming(finalResult2);
+					}
+				});
+			}
 		}
 		else if(mInfo.mResultType==ResultType.IMAGE){
 			result=getImage(mInfo);
-			if(mInfo.mCallBack!=null)
-				mInfo.mCallBack.onDataComming(result);
+			if(mInfo.mCallBack!=null) {
+				Object finalResult1 = result;
+				mHandler.post(new Runnable() {
+					@Override
+					public void run() {
+						mInfo.mCallBack.onDataComming(finalResult1);
+					}
+				});
+			}
 		}
 		else if(mInfo.mResultType==ResultType.FILE){
 			result=getFile(mInfo);
-			if(mInfo.mCallBack!=null)
-				mInfo.mCallBack.onDataComming(result);
+			if(mInfo.mCallBack!=null) {
+				Object finalResult = result;
+				mHandler.post(new Runnable() {
+					@Override
+					public void run() {
+						mInfo.mCallBack.onDataComming(finalResult);
+					}
+				});
+			}
 		}
 		return result;
 	}
@@ -218,24 +265,83 @@ public abstract class RequestPresenter implements IRequestPresenter {
 		String md5 = getMd5Manager().getMd5(mInfo.toString());
 		return getPersistenter().getObject(md5, mInfo.mEntityType);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public RequestInfo build(String requestName, Option option, ParamPool paramPool) {
+		if(TextUtils.isEmpty(requestName))
+			return null;
+
+		if(option==null)
+			option= Option.REPLACE;
+
+		if(IRequestPresenter.GLOBLE.urlClass==null)
+			throw new RuntimeException("请在配置请求的类声明上配置@RequestUrlsPackage注解，指明请求URL所在的类路径！");
+
+		//解释请求配置类，上面配置了@RequestBaseUrl,LocalJsonPackage注解
+		getAnnotaionManager().interpreter(IRequestPresenter.GLOBLE.urlClass,null);
+
+
+		final RequestInfo mInfo=new RequestInfo();
+		mInfo.mBaseUrl=IRequestPresenter.GLOBLE.requestBaseUrl;
+		mInfo.mRequestName= requestName;
+
+		//在url请求配置类中查找到@RequestUrl对应的字段
+		Field urlField = ReflectUtils.getFieldInClassByStaticFieldValue(IRequestPresenter.GLOBLE.urlClass, requestName);
+
+		getAnnotaionManager().interpreter(urlField, null,mInfo);
+
+		mInfo.mRequestUrl= mInfo.mBaseUrl + mInfo.mRequestName;
+		mInfo.mResultType=IRequestPresenter.ResultType.STRING;
+		if(mInfo.mParamPool!=null){
+			List<Param> params = mInfo.mParamPool.getParams();
+			boolean hasFileParam=false;
+			for(IRequestPresenter.Param param:params)
+				if(param.getType()== IRequestPresenter.ParamType.FILE){
+					hasFileParam=true;
+					break;
+				}
+			mInfo.mResultType= hasFileParam?IRequestPresenter.ResultType.FILE:mInfo.mResultType;
+		}else
+			mInfo.mParamPool=ParamPool.obtain();
+
+		//RequetInfo创建完毕，去请求吧^_^
+		return mInfo;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public IAnnotationPresenter getAnnotaionManager(){
+		return PresenterManager.getInstance().findPresenter(getContext(),IAnnotationPresenterBridge.class);
+	}
+	public IRequestPresenter getRequester(){
+		return PresenterManager.getInstance().findPresenter(getContext(),IRequestPresenterBridge.class);
+	}
+	public IEntityProxyPresenter getProxyManager(){
+		return PresenterManager.getInstance().findPresenter(getContext(),IEntityProxyPresenterBridge.class);
+	}
+
+
 	public IPersistentPresenter getPersistenter() {
 		return PresenterManager.getInstance().findPresenter(getContext(),IPersistentPresenterBridge.class);
 		

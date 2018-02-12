@@ -1,6 +1,5 @@
 package com.app.presenter.impl.layout;
 
-import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -9,8 +8,6 @@ import android.view.View;
 
 import com.app.presenter.IAnnotationPresenter;
 import com.app.presenter.IAnnotationPresenterBridge;
-import com.app.presenter.IDataPresenter;
-import com.app.presenter.IDataPresenterBridge;
 import com.app.presenter.ILayoutPresenter;
 import com.app.presenter.PresenterManager;
 
@@ -109,10 +106,6 @@ public class LayoutPresenter implements ILayoutPresenter {
 
     private IAnnotationPresenter getAnnotationPresenter() {
         return PresenterManager.getInstance().findPresenter(getContext(), IAnnotationPresenterBridge.class);
-    }
-
-    private IDataPresenter getDataPresenter() {
-        return PresenterManager.getInstance().findPresenter(getContext(), IDataPresenterBridge.class);
     }
 
 

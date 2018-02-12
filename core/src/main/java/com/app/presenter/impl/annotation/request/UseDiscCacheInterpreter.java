@@ -1,6 +1,5 @@
 package com.app.presenter.impl.annotation.request;
 
-import com.app.annotation.request.RequestUrl;
 import com.app.annotation.request.UseDiscCache;
 import com.app.presenter.IRequestPresenter;
 import com.app.presenter.impl.annotation.AnnotationPresenter;

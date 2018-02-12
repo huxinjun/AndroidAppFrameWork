@@ -1,5 +1,6 @@
 package com.app.presenter;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,8 +9,8 @@ import java.util.Map;
 import java.util.Set;
 
 import com.app.SmartDialog;
+import com.app.ULog;
 import com.app.annotation.request.AccessSettings.RequestMethods;
-import com.app.presenter.IDataPresenter.RequestListener;
 import com.app.presenter.IEntityProxyPresenter.BeanProxyInfo;
 
 /**
@@ -32,10 +33,7 @@ public interface IRequestPresenter extends IPresenter {
 	 *
 	 */
 	public class Setting{
-		
-		/**配置请求的类全路径名*/
-		public Class dataClass;
-		
+
 		/**配置请求url段的类全路径名*/
 		public Class urlClass;
 		
@@ -49,7 +47,6 @@ public interface IRequestPresenter extends IPresenter {
 		@Override
 		public String toString() {
 			return "Setting{" +
-					"dataClass=" + dataClass + "\n"+
 					", urlClass=" + urlClass + "\n"+
 					", localJsonPackage='" + localJsonPackage + '\'' +"\n"+
 					", requestBaseUrl='" + requestBaseUrl + '\'' +
@@ -110,7 +107,7 @@ public interface IRequestPresenter extends IPresenter {
 		public String mRequestUrl;
 		
 		/**请求状态监听器*/
-		public Set<RequestListener> mListeners=new HashSet<IDataPresenter.RequestListener>();
+		public Set<RequestListener> mListeners=new HashSet<RequestListener>();
 		
 		/**实体类型*/
 		public Class<?> mEntityType;
@@ -353,27 +350,50 @@ public interface IRequestPresenter extends IPresenter {
 		
 		public void onCacheComming(Object object){};
 	}
-	
+
+	/**
+	 * 请求监听器
+	 * @author xinjun
+	 *
+	 */
+	public interface RequestListener{
+
+		/**
+		 * 请求状态回调方法
+		 * @param status
+		 * @param msg 上传参数时类型为com.app.presenter.impl.request.CustomMultipartEntity.ProgressListener
+		 * 			      下载文件时为xxx类型
+		 * 			      其他错误状态均为java.lang.String类型
+		 */
+		public void onStatusChanged(RequestStatus status,Object msg);
+
+	}
+
+	public enum Option{
+		REPLACE,APPEND
+	}
 	
 	//----------------------abstract method---------------------------------------------------------------------------------------------------------
-	
+
+
+	RequestInfo build(String requestName,Option option, ParamPool paramPool);
 	
 	/**
 	 * 发起网络请求
 	 * @param requestInfo
 	 */
-	public abstract void request(RequestInfo requestInfo);
+	void request(RequestInfo requestInfo);
 	/**
 	 * 同步发起网络请求
 	 * @param requestInfo
 	 */
-	public abstract Object requestSync(RequestInfo requestInfo);
+	Object requestSync(RequestInfo requestInfo);
 
 	/**
 	 * 添加一个数据监听器
 	 * @param listener 监听器
 	 */
-	public abstract void addRequestStatusListenner(String requestName,RequestListener listener);
+	void addRequestStatusListenner(String requestName,RequestListener listener);
 
 	/**
 	 * 通知注册的数据监听器
@@ -381,5 +401,14 @@ public interface IRequestPresenter extends IPresenter {
 	 * @param status
 	 * @param data
 	 */
-	public void notifyRequestStatusListenner(String requestName,RequestStatus status,Object data);
+	void notifyRequestStatusListenner(String requestName,RequestStatus status,Object data);
+
+
+
+
+
+
+
+
+
 }

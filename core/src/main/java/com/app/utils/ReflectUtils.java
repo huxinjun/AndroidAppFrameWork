@@ -68,7 +68,7 @@ public class ReflectUtils {
      * @param fieldName
      * @return
      */
-    public static Object getObjByFieldName(Object rootObj, String fieldName){
+    private static Object getObjByFieldName(Object rootObj, String fieldName){
         if(rootObj==null || TextUtils.isEmpty(fieldName))
             return null;
         Class<?> rootObjClass = rootObj.getClass();
@@ -83,5 +83,30 @@ public class ReflectUtils {
                 }
         }
         return null;
+    }
+
+
+
+    /**
+     * 根据字段值在一个class对象中找寻相应的字段
+     * @param clazz 目标class
+     * @param value 目标class中某个字段(静态)的值
+     * @return 值所对应的字段
+     */
+    public static Field getFieldInClassByStaticFieldValue(Class<?> clazz,String value){
+
+        Field[] fields = clazz.getDeclaredFields();
+        for(Field field:fields){
+            try {
+                field.setAccessible(true);
+                Object fvalue = field.get(null);
+                if(fvalue.equals(value))
+                    return field;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        throw new RuntimeException("没有在"+clazz.getName()+"中找到值为"+value+"的字段!");
     }
 }

@@ -2,11 +2,9 @@ package com.app;
 
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
 
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +13,8 @@ import android.view.ViewGroup;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.presenter.IAnnotationPresenter;
 import com.app.presenter.IAnnotationPresenterBridge;
-import com.app.presenter.IDataPresenter.DataInnerCallBack;
-import com.app.presenter.IDataPresenter.RequestDataCommand;
-import com.app.presenter.IDataPresenterBridge;
+import com.app.presenter.IRequestPresenter;
+import com.app.presenter.IRequestPresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
 
@@ -38,34 +35,6 @@ public abstract class SmartFragment extends Fragment {
 					mLayoutCreater = (LayoutCreater) results[0];
 			}
 		});
-		
-		//数据
-		IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(getActivity(),IDataPresenterBridge.class);
-		//为creater和关联布局下的子creater创建一个请求数据的命令并发送到DataPresenter中,然后静静的等待数据到来
-		dataPresenter.sendRequestDataCommand(new RequestDataCommand(mLayoutCreater.getRequestName(), null, new DataInnerCallBack(){
-
-			@Override
-			public void onDataComming(RequestDataCommand command, final Object data) {
-				//数据来了,这个数据已经有了,发出的请求数据命令只是为了获取到一个代理的对象而已,此方法会在getView返回之前调用
-				final LayoutCreater creater=(LayoutCreater) command.getTag();
-				creater.setContentData(data);
-			}
-			
-//			if(!methodName.startsWith("set"))
-//				return;
-//			//数据来了,这个数据已经有了,发出的请求数据命令只是为了获取到一个代理的对象而已,此方法会在getView返回之前调用
-//			LayoutCreater creater=(LayoutCreater) command.getTag();
-//			try {
-//				Method method = creater.getClass().getMethod("injection",String.class);
-//				method.setAccessible(true);
-//				if(method!=null)
-//					method.invoke(creater,getFieldNameByMethodName(methodName));
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-			
-		}).setType(RequestDataCommand.TYPE_SINGLE_OBJECT).setTag(mLayoutCreater));
-		
 		return onCreateView(inflater, container, savedInstanceState);
 	}
 	
@@ -84,5 +53,9 @@ public abstract class SmartFragment extends Fragment {
 	
 	public int animIn(){return 0;}
 	public int animOut(){return 0;}
-	public void sendRequestInThisBody(){return;}
+
+
+	private IRequestPresenter getRequester(){
+		return PresenterManager.getInstance().findPresenter(getActivity(), IRequestPresenterBridge.class);
+	}
 }

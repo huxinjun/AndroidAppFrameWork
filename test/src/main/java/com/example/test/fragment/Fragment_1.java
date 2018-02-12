@@ -13,10 +13,10 @@ import com.app.annotation.creater.BindLayoutCreater;
 import com.app.annotation.creater.BindView;
 import com.app.presenter.impl.layout.LayoutCreater;
 import com.example.test.R;
-import com.example.test.global.Datas;
+import com.example.test.global.Urls;
 import com.example.test.model.Accounts;
 
-@BindLayoutCreater(creater=Fragment_1.MyCreater.class, requestName = Datas.data_account_list)
+@BindLayoutCreater(creater=Fragment_1.MyCreater.class)
 public class Fragment_1 extends SmartFragment {
 
 	@BindView(R.layout.fragment_1)
@@ -27,7 +27,7 @@ public class Fragment_1 extends SmartFragment {
 		@BindView(R.id.tv_content)
 		public TextView tv_content;
 
-		@BindLayoutCreater(creater = LvCreater.class, requestName = Datas.data_account_list)
+		@BindLayoutCreater(creater = LvCreater.class,requestName = Urls.PATTERN_ACCOUNTS_GET_ALL)
 		@BindView(R.id.lv)
 		@BindFieldName("accounts")
 		public AdapterView lv;

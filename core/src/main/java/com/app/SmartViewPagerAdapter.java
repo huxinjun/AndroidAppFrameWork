@@ -2,17 +2,14 @@ package com.app;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.app.presenter.IDataPresenter.DataInnerCallBack;
-import com.app.presenter.IDataPresenter.RequestDataCommand;
-import com.app.presenter.IDataPresenterBridge;
 import com.app.presenter.ILayoutPresenter;
 import com.app.presenter.ILayoutPresenter.InflateCallBack;
 import com.app.presenter.ILayoutPresenterBridge;
+import com.app.presenter.IRequestPresenter;
+import com.app.presenter.IRequestPresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
 
@@ -54,18 +51,20 @@ public class SmartViewPagerAdapter extends PagerAdapter {
 				view[0] =instance.getContentView();
 				instance.setRequestName(createrInfo.requestName);
 				//数据
-				IDataPresenterBridge dataPresenter = PresenterManager.getInstance().findPresenter(context,IDataPresenterBridge.class);
-				dataPresenter.sendRequestDataCommand(new RequestDataCommand(instance.getRequestName(),null, new DataInnerCallBack(){
-
-					@Override
-					public void onDataComming(RequestDataCommand command,Object data) {
-						//数据来了,这个数据已经有了,发出的请求数据命令只是为了获取到一个代理的对象而已,此方法会在getView返回之前调用
-						LayoutCreater creater=(LayoutCreater) command.getTag();
-						creater.setContentData(data);
-					}
 
 
-				}).setType(RequestDataCommand.TYPE_SINGLE_OBJECT).setTag(instance));
+				IRequestPresenter.ParamPool paramPool= IRequestPresenter.ParamPool.obtain();
+				IRequestPresenter.Option option = instance.onBuildRequest(paramPool);
+				IRequestPresenter.RequestInfo info=getRequester().build(instance.getRequestName(), option,paramPool);
+				if(info!=null)
+					info.mCallBack=new IRequestPresenter.DataCallBack() {
+						@Override
+						public void onDataComming(Object data) {
+							//数据来了,这个数据已经有了,发出的请求数据命令只是为了获取到一个代理的对象而已,此方法会在getView返回之前调用
+							instance.setContentData(data);
+						}
+					};
+				getRequester().request(info);
 
 			}
 		});
@@ -75,5 +74,9 @@ public class SmartViewPagerAdapter extends PagerAdapter {
 	@Override 
 	public void destroyItem(ViewGroup container,int position,Object object){
 		container.removeView((View)object);
+	}
+
+	private IRequestPresenter getRequester(){
+		return PresenterManager.getInstance().findPresenter(context, IRequestPresenterBridge.class);
 	}
 }

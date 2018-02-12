@@ -42,7 +42,6 @@ import com.app.presenter.IParserPresenter;
 import com.app.presenter.IParserPresenterBridge;
 import com.app.presenter.IRequestPresenter;
 import com.app.presenter.PresenterManager;
-import com.app.presenter.IDataPresenter.RequestListener;
 import com.app.presenter.impl.request.CustomMultipartEntity.ProgressInfo;
 import com.app.presenter.impl.request.CustomMultipartEntity.ProgressListener;
 

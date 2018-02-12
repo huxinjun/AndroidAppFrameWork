@@ -1,18 +1,12 @@
 package com.app;
 
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.app.presenter.IDataPresenter.DataInnerCallBack;
-import com.app.presenter.IDataPresenter.RequestDataCommand;
 import com.app.presenter.ILayoutPresenter.InflateCallBack;
-import com.app.presenter.IDataPresenterBridge;
 import com.app.presenter.ILayoutPresenterBridge;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
-import com.example.core.R;
 
 import android.content.Context;
 import android.view.View;
