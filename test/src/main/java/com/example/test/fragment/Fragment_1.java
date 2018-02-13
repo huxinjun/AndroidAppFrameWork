@@ -11,6 +11,7 @@ import com.app.ULog;
 import com.app.annotation.BindFieldName;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.annotation.creater.BindView;
+import com.app.presenter.IRequestPresenter;
 import com.app.presenter.impl.layout.LayoutCreater;
 import com.example.test.R;
 import com.example.test.global.Urls;
@@ -31,6 +32,14 @@ public class Fragment_1 extends SmartFragment {
 		@BindView(R.id.lv)
 		@BindFieldName("accounts")
 		public AdapterView lv;
+
+		@Override
+		public IRequestPresenter.Option onBuildRequest(IRequestPresenter.ParamPool paramPool) {
+			ULog.out("!!!!!!!!!!MyCreater.onBuildRequest");
+			paramPool.putParam("pageIndex","2");
+			return IRequestPresenter.Option.REPLACE;
+		}
+
 		@Override
 		public void onDataPrepared() {
 			Accounts contentData = getContentData();

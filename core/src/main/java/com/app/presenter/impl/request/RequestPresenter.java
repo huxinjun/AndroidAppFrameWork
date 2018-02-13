@@ -292,17 +292,26 @@ public abstract class RequestPresenter implements IRequestPresenter {
 
 		mInfo.mRequestUrl= mInfo.mBaseUrl + mInfo.mRequestName;
 		mInfo.mResultType=IRequestPresenter.ResultType.STRING;
-		if(mInfo.mParamPool!=null){
-			List<Param> params = mInfo.mParamPool.getParams();
-			boolean hasFileParam=false;
-			for(IRequestPresenter.Param param:params)
-				if(param.getType()== IRequestPresenter.ParamType.FILE){
-					hasFileParam=true;
-					break;
+
+		//将注解中的参数和代码中的参数合并到一起
+		if(paramPool!=null && paramPool.getParams()!=null && paramPool.getParams().size()>0){
+			if(mInfo.mParamPool==null)
+				mInfo.mParamPool=ParamPool.obtain();
+			List<Param> params = paramPool.getParams();
+			for (Param param:params) {
+				switch (param.getType()){
+					case FILE:
+						mInfo.mParamPool.putFileParam(param.getKey(),param.getValue());
+						break;
+					case VALUE:
+						mInfo.mParamPool.putParam(param.getKey(),param.getValue());
+						break;
 				}
-			mInfo.mResultType= hasFileParam?IRequestPresenter.ResultType.FILE:mInfo.mResultType;
-		}else
-			mInfo.mParamPool=ParamPool.obtain();
+			}
+		}
+
+		//TODO 其他类型的结果解析，目前只做了String的解析
+		mInfo.mResultType=ResultType.STRING;
 
 		//RequetInfo创建完毕，去请求吧^_^
 		return mInfo;
