@@ -58,7 +58,7 @@ public class Fragment_2 extends SmartFragment {
 		public ListView lv_content;
 
 		@Override
-		public IRequestPresenter.Option onBuildRequest(IRequestPresenter.ParamPool paramPool) {
+		public IRequestPresenter.Option onBuildRequest(String reqName,IRequestPresenter.ParamPool paramPool) {
 			return IRequestPresenter.Option.REPLACE;
 		}
 

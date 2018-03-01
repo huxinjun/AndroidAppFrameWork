@@ -34,7 +34,7 @@ public class Fragment_1 extends SmartFragment {
 		public AdapterView lv;
 
 		@Override
-		public IRequestPresenter.Option onBuildRequest(IRequestPresenter.ParamPool paramPool) {
+		public IRequestPresenter.Option onBuildRequest(String reqName,IRequestPresenter.ParamPool paramPool) {
 			ULog.out("!!!!!!!!!!MyCreater.onBuildRequest");
 			paramPool.putParam("pageIndex","2");
 			return IRequestPresenter.Option.REPLACE;

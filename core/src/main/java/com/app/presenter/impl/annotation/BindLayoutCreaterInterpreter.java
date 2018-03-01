@@ -43,7 +43,7 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 							callBack.onCompleted(BindLayoutCreater.class,instance);
 
 						IRequestPresenter.ParamPool paramPool= IRequestPresenter.ParamPool.obtain();
-						IRequestPresenter.Option option = instance.onBuildRequest(paramPool);
+						IRequestPresenter.Option option = instance.onBuildRequest(requestName,paramPool);
 						IRequestPresenter.RequestInfo info=getRequester().build(requestName, option,paramPool);
 						if(info!=null)
 							info.mCallBack=new IRequestPresenter.DataCallBack() {
@@ -93,7 +93,7 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
                     return;
                 }
 				IRequestPresenter.ParamPool paramPool= IRequestPresenter.ParamPool.obtain();
-				IRequestPresenter.Option option = creater.onBuildRequest(paramPool);
+				IRequestPresenter.Option option = creater.onBuildRequest(itemLayoutCreater.requestName(),paramPool);
 				IRequestPresenter.RequestInfo info=getRequester().build(itemLayoutCreater.requestName(), option,paramPool);
                 if(info!=null)
                     info.mCallBack=new IRequestPresenter.DataCallBack() {

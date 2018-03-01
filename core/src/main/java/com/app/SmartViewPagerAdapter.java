@@ -54,7 +54,7 @@ public class SmartViewPagerAdapter extends PagerAdapter {
 
 
 				IRequestPresenter.ParamPool paramPool= IRequestPresenter.ParamPool.obtain();
-				IRequestPresenter.Option option = instance.onBuildRequest(paramPool);
+				IRequestPresenter.Option option = instance.onBuildRequest(createrInfo.requestName,paramPool);
 				IRequestPresenter.RequestInfo info=getRequester().build(instance.getRequestName(), option,paramPool);
 				if(info!=null)
 					info.mCallBack=new IRequestPresenter.DataCallBack() {
