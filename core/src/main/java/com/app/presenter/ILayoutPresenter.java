@@ -21,12 +21,11 @@ public interface ILayoutPresenter extends IPresenter {
 	 * @author xinjun
 	 *
 	 */
-	public static class CreaterInfo{
+	class CreaterInfo{
 		public String requestName;
 		public Class<? extends LayoutCreater> clazz;
-		public CreaterInfo(String requestName, Class<? extends LayoutCreater> clazz) {
+		public CreaterInfo(Class<? extends LayoutCreater> clazz) {
 			super();
-			this.requestName = requestName;
 			this.clazz = clazz;
 		}
 

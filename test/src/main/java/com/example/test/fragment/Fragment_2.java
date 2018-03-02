@@ -13,6 +13,8 @@ import com.app.annotation.creater.BindLayoutCreaterHeader;
 import com.app.annotation.creater.BindLayoutCreaters;
 import com.app.annotation.creater.BindView;
 import com.app.presenter.IRequestPresenter;
+import com.app.presenter.IRequestPresenterBridge;
+import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
 import com.example.test.R;
 import com.example.test.global.Urls;
@@ -27,10 +29,10 @@ public class Fragment_2 extends SmartFragment {
 	public static class MyCreater extends LayoutCreater {
 
 
-		@BindLayoutCreaters({@BindLayoutCreater(creater = Vp1Creater.class,requestName = Urls.PATTERN_HOT_ROOM),
-				@BindLayoutCreater(creater = Vp2Creater.class,requestName = ""),
-				@BindLayoutCreater(creater = Vp3Creater.class,requestName = ""),
-				@BindLayoutCreater(creater = Vp4Creater.class,requestName = "")})
+		@BindLayoutCreaters({@BindLayoutCreater(creater = Vp1Creater.class),
+				@BindLayoutCreater(creater = Vp2Creater.class),
+				@BindLayoutCreater(creater = Vp3Creater.class),
+				@BindLayoutCreater(creater = Vp4Creater.class)})
 		@BindView(R.id.vp)
 		public ViewPager viewPager;
 
@@ -58,8 +60,13 @@ public class Fragment_2 extends SmartFragment {
 		public ListView lv_content;
 
 		@Override
-		public IRequestPresenter.Option onBuildRequest(String reqName,IRequestPresenter.ParamPool paramPool) {
-			return IRequestPresenter.Option.REPLACE;
+		public void onInitData() {
+			PresenterManager.getInstance().findPresenter(getContext(), IRequestPresenterBridge.class).request(Urls.PATTERN_HOT_ROOM, null, new IRequestPresenter.DataCallBack() {
+				@Override
+				public void onDataComming(Object object) {
+					setContentData((Rooms) object);
+				}
+			});
 		}
 
 		@Override

@@ -49,23 +49,6 @@ public class SmartViewPagerAdapter extends PagerAdapter {
 			@Override
 			public void onCompleted(LayoutCreater instance) {
 				view[0] =instance.getContentView();
-				instance.setRequestName(createrInfo.requestName);
-				//数据
-
-
-				IRequestPresenter.ParamPool paramPool= IRequestPresenter.ParamPool.obtain();
-				IRequestPresenter.Option option = instance.onBuildRequest(createrInfo.requestName,paramPool);
-				IRequestPresenter.RequestInfo info=getRequester().build(instance.getRequestName(), option,paramPool);
-				if(info!=null)
-					info.mCallBack=new IRequestPresenter.DataCallBack() {
-						@Override
-						public void onDataComming(Object data) {
-							//数据来了,这个数据已经有了,发出的请求数据命令只是为了获取到一个代理的对象而已,此方法会在getView返回之前调用
-							instance.setContentData(data);
-						}
-					};
-				getRequester().request(info);
-
 			}
 		});
 		container.addView(view[0]);

@@ -12,6 +12,8 @@ import com.app.annotation.BindFieldName;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.annotation.creater.BindView;
 import com.app.presenter.IRequestPresenter;
+import com.app.presenter.IRequestPresenterBridge;
+import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
 import com.example.test.R;
 import com.example.test.global.Urls;
@@ -28,16 +30,19 @@ public class Fragment_1 extends SmartFragment {
 		@BindView(R.id.tv_content)
 		public TextView tv_content;
 
-		@BindLayoutCreater(creater = LvCreater.class,requestName = Urls.PATTERN_ACCOUNTS_GET_ALL)
+		@BindLayoutCreater(creater = LvCreater.class)
 		@BindView(R.id.lv)
 		@BindFieldName("accounts")
 		public AdapterView lv;
 
 		@Override
-		public IRequestPresenter.Option onBuildRequest(String reqName,IRequestPresenter.ParamPool paramPool) {
-			ULog.out("!!!!!!!!!!MyCreater.onBuildRequest");
-			paramPool.putParam("pageIndex","2");
-			return IRequestPresenter.Option.REPLACE;
+		public void onInitData() {
+			PresenterManager.getInstance().findPresenter(getContext(), IRequestPresenterBridge.class).request(Urls.PATTERN_ACCOUNTS_GET_ALL, null, new IRequestPresenter.DataCallBack() {
+				@Override
+				public void onDataComming(Object object) {
+					setContentData((Accounts) object);
+				}
+			});
 		}
 
 		@Override

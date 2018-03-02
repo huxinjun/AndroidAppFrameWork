@@ -31,28 +31,14 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 			//加在类上了
 			BindLayoutCreater bindLayoutCreater =getAnnotation(target, BindLayoutCreater.class);
 			final Class<? extends LayoutCreater> createrClass = bindLayoutCreater.creater();
-			final String requestName = bindLayoutCreater.requestName();
-			
+
 			try {
 				PresenterManager.getInstance().findPresenter(getContext(),ILayoutPresenterBridge.class).inflate(createrClass, new InflateCallBack() {
 					
 					@Override
 					public void onCompleted(LayoutCreater instance) {
-						instance.setRequestName(requestName);
 						if(callBack!=null)
 							callBack.onCompleted(BindLayoutCreater.class,instance);
-
-						IRequestPresenter.ParamPool paramPool= IRequestPresenter.ParamPool.obtain();
-						IRequestPresenter.Option option = instance.onBuildRequest(requestName,paramPool);
-						IRequestPresenter.RequestInfo info=getRequester().build(requestName, option,paramPool);
-						if(info!=null)
-							info.mCallBack=new IRequestPresenter.DataCallBack() {
-								@Override
-								public void onDataComming(Object data) {
-									instance.setContentData(data);
-								}
-							};
-						getRequester().request(info);
 					}
 				});
 			} catch (Exception e) {
@@ -71,13 +57,12 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 				//给配置了@BindLayoutCreater注解的视图中放入一些tag记录其子创建器的和其他需要的信息
 				findViewById.setTag(LayoutCreater.TAG_LAYOUT_CRETAER_PARENT, creater);
 				findViewById.setTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_CLASS, itemLayoutCreater.creater());
-				findViewById.setTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_DATA_ID, itemLayoutCreater.requestName());
 
 				//再给其创建请求数据的命令41
 				final View finalFindViewById = findViewById;
                 Object injectFieldPath = findViewById.getTag(LayoutCreater.TAG_INJECTOR_FIELD);
                 String fieldPath=injectFieldPath==null?null:injectFieldPath.toString();
-                if(TextUtils.isEmpty(itemLayoutCreater.requestName()) && target.getAnnotation(BindFieldName.class)!=null){
+                if(itemLayoutCreater!=null && target.getAnnotation(BindFieldName.class)!=null){
                     //如果BindLayoutCreater没有配置itemLayoutCreater.requestName()，配置了BindFieldName注解，说明需要从父LayoutCreater的数据中取数据
 					creater.addDataListener(new LayoutCreater.DataListener() {
 						@Override
@@ -92,24 +77,6 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 					});
                     return;
                 }
-				IRequestPresenter.ParamPool paramPool= IRequestPresenter.ParamPool.obtain();
-				IRequestPresenter.Option option = creater.onBuildRequest(itemLayoutCreater.requestName(),paramPool);
-				IRequestPresenter.RequestInfo info=getRequester().build(itemLayoutCreater.requestName(), option,paramPool);
-                if(info!=null)
-                    info.mCallBack=new IRequestPresenter.DataCallBack() {
-                        @Override
-                        public void onDataComming(Object data) {
-							BindFieldName bindFieldName=target.getAnnotation(BindFieldName.class);
-							Object findObj=data;
-							if(!TextUtils.isEmpty(bindFieldName.value()))
-								findObj = ReflectUtils.getValueByFieldPath(data, bindFieldName.value());
-                            finalFindViewById.setTag(LayoutCreater.TAG_ITEMS_DATA, findObj);
-                            //数据来了,这个可能是给listview,gridview,recycleview,viewpager使用的数据
-                            PresenterManager.getInstance().findPresenter(getContext(),IInjectionPresenterBridge.class).inject(finalFindViewById, findObj);
-                        }
-                    };
-				getRequester().request(info);
-				
 			} catch (Exception e) {
 				//出错误说明没有配置这个注解,不用管
 				throw new RuntimeException(e);
@@ -122,7 +89,7 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 			InterpreterCallBack callBack, Object... context) {
 		//嵌套的，ViewPager能配置BindLayoutCreaters注解
 		BindLayoutCreater bindLayoutCreaterAnno= (BindLayoutCreater) annotation;
-		ILayoutPresenter.CreaterInfo info=new ILayoutPresenter.CreaterInfo(bindLayoutCreaterAnno.requestName(),bindLayoutCreaterAnno.creater());
+		ILayoutPresenter.CreaterInfo info=new ILayoutPresenter.CreaterInfo(bindLayoutCreaterAnno.creater());
 		if(callBack!=null)
 			callBack.onCompleted(annotation.annotationType(),info);
 	}

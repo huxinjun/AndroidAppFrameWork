@@ -21,19 +21,15 @@ public class IRequestPresenterBridge extends IPresenterBridge<IRequestPresenter>
 		return this.mSource.getContext();
 	}
 
+
 	@Override
-	public RequestInfo build(String requestName, Option option, ParamPool paramPool) {
-		return mSource.build(requestName,option,paramPool);
+	public void request(String requestName,ParamPool paramPool,DataCallBack callBack) {
+		mSource.request(requestName,paramPool,callBack);
 	}
 
 	@Override
-	public void request(RequestInfo requestInfo) {
-		mSource.request(requestInfo);
-	}
-
-	@Override
-	public Object requestSync(RequestInfo requestInfo) {
-		return mSource.requestSync(requestInfo);
+	public Object requestSync(String requestName,ParamPool paramPool,DataCallBack callBack) {
+		return mSource.requestSync(requestName,paramPool,callBack);
 	}
 
 	@Override

@@ -52,10 +52,6 @@ public abstract class LayoutCreater<T>{
     public static final int TAG_LAYOUT_CRETAER_ITEM_CLASS = TAG_START_INDEX + 0x3;
 
     /**
-     * 子条目关联的LayoutCreater其使用的唯一数据ID
-     */
-    public static final int TAG_LAYOUT_CRETAER_ITEM_DATA_ID = TAG_START_INDEX + 0x4;
-    /**
      * 子条目使用的数据类型(type=Class<?>)
      */
     public static final int TAG_ITEM_DATA_TYPE = TAG_START_INDEX + 0x5;
@@ -97,10 +93,6 @@ public abstract class LayoutCreater<T>{
      * 顶层的LayoutCreater的mParentCreater为null
      */
     private LayoutCreater mParentCreater;
-    /**
-     * 这个布局关联的数据请求码
-     */
-    private String mRequestName;
 
     /**
      * 这个布局对应的视图对象
@@ -141,13 +133,10 @@ public abstract class LayoutCreater<T>{
     /**
      * LayoutCreater被创建完成,并解析了类上的注解,也设置了mRequestName表示其关注的请求
      */
-    public IRequestPresenter.Option onBuildRequest(String reqName,IRequestPresenter.ParamPool paramPool) {
-        return IRequestPresenter.Option.REPLACE;
-    }
-    /**
-     * LayoutCreater被创建完成,并解析了类上的注解,也设置了mRequestName表示其关注的请求
-     */
     public void onViewCreated() {
+    }
+
+    public void onInitData() {
     }
 
     /**
@@ -308,14 +297,6 @@ public abstract class LayoutCreater<T>{
 
     public void setContentView(View mContentView) {
         this.mContentView = mContentView;
-    }
-
-    public String getRequestName() {
-        return mRequestName;
-    }
-
-    public void setRequestName(String mRequestName) {
-        this.mRequestName = mRequestName;
     }
 
     public Class<T> getContentDataType() {

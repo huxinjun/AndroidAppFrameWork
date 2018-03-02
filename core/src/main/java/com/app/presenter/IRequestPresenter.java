@@ -376,18 +376,25 @@ public interface IRequestPresenter extends IPresenter {
 	//----------------------abstract method---------------------------------------------------------------------------------------------------------
 
 
-	RequestInfo build(String requestName,Option option, ParamPool paramPool);
-	
+	/**
+	 * 发起网络请求
+	 */
+	void request(String requestName,ParamPool paramPool,DataCallBack callBack);
+	/**
+	 * 同步发起网络请求
+	 */
+	Object requestSync(String requestName,ParamPool paramPool,DataCallBack callBack);
+
 	/**
 	 * 发起网络请求
 	 * @param requestInfo
 	 */
-	void request(RequestInfo requestInfo);
+//	void request(RequestInfo requestInfo);
 	/**
 	 * 同步发起网络请求
 	 * @param requestInfo
 	 */
-	Object requestSync(RequestInfo requestInfo);
+//	Object requestSync(RequestInfo requestInfo);
 
 	/**
 	 * 添加一个数据监听器

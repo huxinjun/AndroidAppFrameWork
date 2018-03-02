@@ -92,9 +92,8 @@ public abstract class RequestPresenter implements IRequestPresenter {
 
 
 	@Override
-	public Object requestSync(RequestInfo requestInfo) {
-		if(requestInfo==null)
-			return null;
+	public Object requestSync(String requestName,ParamPool paramPool,DataCallBack callBack) {
+		RequestInfo requestInfo = build(requestName, paramPool, callBack);
 		beforeReq(requestInfo);
 		Object result=duringReq(requestInfo);
 		afterReq(requestInfo);
@@ -103,9 +102,8 @@ public abstract class RequestPresenter implements IRequestPresenter {
 	
 	
 	@Override
-	public void request(RequestInfo requestInfo) {
-		if(requestInfo==null)
-			return;
+	public void request(String requestName,ParamPool paramPool,DataCallBack callBack) {
+		RequestInfo requestInfo = build(requestName, paramPool, callBack);
 		new CustomerAsyncTask(requestInfo).execute();
 	}
 
@@ -266,13 +264,9 @@ public abstract class RequestPresenter implements IRequestPresenter {
 		return getPersistenter().getObject(md5, mInfo.mEntityType);
 	}
 
-	@Override
-	public RequestInfo build(String requestName, Option option, ParamPool paramPool) {
+	public RequestInfo build(String requestName,ParamPool paramPool,DataCallBack callBack) {
 		if(TextUtils.isEmpty(requestName))
 			return null;
-
-		if(option==null)
-			option= Option.REPLACE;
 
 		if(IRequestPresenter.GLOBLE.urlClass==null)
 			throw new RuntimeException("请在配置请求的类声明上配置@RequestUrlsPackage注解，指明请求URL所在的类路径！");
@@ -284,6 +278,8 @@ public abstract class RequestPresenter implements IRequestPresenter {
 		final RequestInfo mInfo=new RequestInfo();
 		mInfo.mBaseUrl=IRequestPresenter.GLOBLE.requestBaseUrl;
 		mInfo.mRequestName= requestName;
+
+		mInfo.mCallBack=callBack;
 
 		//在url请求配置类中查找到@RequestUrl对应的字段
 		Field urlField = ReflectUtils.getFieldInClassByStaticFieldValue(IRequestPresenter.GLOBLE.urlClass, requestName);
