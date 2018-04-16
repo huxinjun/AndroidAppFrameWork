@@ -14,13 +14,7 @@ import com.easyjson.core.JSONHashMap;
  */
 public class BeanListHandler<T> extends BaseBeanHandler<ArrayList<T>> {
 
-	private boolean isSearch=false;
-	
-	public BeanListHandler<T> setSearch(boolean isSearch) {
-		this.isSearch = isSearch;
-		return this;
-	}
-	
+
 	public BeanListHandler(Class<T> beanClass) {
 		super(beanClass);
 	}
@@ -51,7 +45,7 @@ public class BeanListHandler<T> extends BaseBeanHandler<ArrayList<T>> {
 						//这个属性是一个数组
 						if(isObjectMap(map,key) || isArrayMap(map.get(key)))
 						{
-							ArrayList<T> child = new BeanListHandler(beanClass).setSearch(true).handle(map.get(key));
+							ArrayList<T> child = new BeanListHandler(beanClass).handle(map.get(key));
 							//合并后续查找出来的T对象到数组中
 							if(child!=null && child.size()>0)
 							{
@@ -78,8 +72,7 @@ public class BeanListHandler<T> extends BaseBeanHandler<ArrayList<T>> {
 				{
 					for(int i=0;i<map.size();i++)
 					{
-						if(isTargetObject(map))
-							result.add((T) map.getValue(i));
+						result.add((T) map.getValue(i));
 					}
 				}catch(Exception ex1)
 				{
@@ -97,19 +90,6 @@ public class BeanListHandler<T> extends BaseBeanHandler<ArrayList<T>> {
 					//在看一下这个map的某个键的第一个元素是不是对象，不是对象就跳过
 					if(!isObjectArrayMap(map))
 						continue;
-					//看一下当前map下的某个键的值和实体类匹配不匹配
-					if(!isTargetObject(map.get(key)))
-					{
-						//new BeanListHandler(beanClass).handle(map.get(key));
-						//不匹配时看子map批不匹配，如果子元素匹配了直接返回子元素对应的map数组中的元素
-						ArrayList<T> child = new BeanListHandler(beanClass).handle(map.get(key));
-						//合并后续查找出来的T对象到数组中
-						for(int j=0;j<child.size();j++)
-						{
-							result.add(child.get(j));
-						}
-						continue;
-					}
 					//走到这里就是个对象，解析这个对象
 					T resultItem=(T) new BeanHandler(beanClass).handle(map.get(key));
 					result.add(resultItem);
@@ -223,34 +203,6 @@ public class BeanListHandler<T> extends BaseBeanHandler<ArrayList<T>> {
 			return false;
 		}
 		return true;
-	}
-
-
-	/**
-	 * 将拿到的JSONHashMap与一个实体类对比，如果字段一致，就说明这个类是需要返回的实体
-	 * @param jsonHashMap json的一个节点
-	 * @param key 当前的json属性名称，如果全部字段通过比对，还得确认json中的属性名和当前对象时匹配的
-	 * @return 是否是和当前JSONHashMap匹配的实体
-	 */
-	private boolean isTargetObject(JSONHashMap jsonHashMap) {
-		
-		//如果当前的beanClass是基本类型，直接返回true
-		if(classes.contains(beanClass))
-			return true;
-		for(String key:jsonHashMap.keySet())
-		{
-			Field field;
-			//在搜索模式下（直接由EasyJson.getBean传来的BeanListHandler时如果发现字段不匹配是不需要提示的）
-			//但是在自上向下解析模式下，字段不一致时必须抛出异常终止解析！！
-			if(isSearch)
-				field = getJSONMappingField(beanClass, key,false);
-			else
-				field = getJSONMappingField(beanClass, key);
-			if(field==null)
-				return false;
-		}
-		return true;
-		
 	}
 
 

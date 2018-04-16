@@ -65,6 +65,7 @@ public class Fragment_2 extends SmartFragment {
 			PresenterManager.getInstance().findPresenter(getContext(), IRequestPresenterBridge.class).request(Urls.PATTERN_HOT_ROOM, null, new IRequestPresenter.DataCallBack() {
 				@Override
 				public void onDataComming(Object object) {
+					ULog.out("onDataComming："+object);
 					setContentData((Rooms) object);
 				}
 			});
@@ -77,10 +78,9 @@ public class Fragment_2 extends SmartFragment {
 
 		@Override
 		public void onDataPrepared() {
-			ULog.out("解析："+getContentData());
-//			Rooms.Result.Room numOne = getContentData().getResult().getRooms().remove(0);
-//			LayoutCreater headerCreater= getHeaderCreater(lv_content);
-//			headerCreater.setContentData(numOne);
+			Rooms.Result.Room numOne = getContentData().getResult().getRooms().remove(0);
+			LayoutCreater headerCreater= getHeaderCreater(lv_content);
+			headerCreater.setContentData(numOne);
 		}
 
 		@BindView(R.layout.layout_header_img)

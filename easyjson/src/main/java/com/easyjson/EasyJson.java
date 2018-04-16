@@ -29,7 +29,6 @@ public class EasyJson {
 	 * 提供将JSON对象转化为实体的方法,传入BeanHandler
 	 * 提供在JSON对象搜寻某写实体JAVABEAN的方法,传入BeanListHandler
 	 * @param json json字符串
-	 * @param handler 具体的json处理器
 	 * @return 你需要的对象
 	 */
 	public static <T> T getJavaBean(String json,Class<T> beanClass)
@@ -42,23 +41,13 @@ public class EasyJson {
 	
 	public static <T> ArrayList<T> getJavaBeans(String json,Class<T> beanClass)
 	{
-		return getJavaBeans(json, beanClass, false);
+		return getJavaBeans(json, beanClass);
 	}
-	public static <T> ArrayList<T> getJavaBeans(String json,Class<T> beanClass,boolean isSearch)
-	{
-		JSONHashMap map=JSONParser.parse(json);
-		if(map==null)
-			return null;
-		BeanListHandler<T> beanListHandler = new BeanListHandler<T>(beanClass);
-		beanListHandler.setSearch(isSearch);
-		return beanListHandler.handle(map);
-	}
-	
+
 	/**
 	 * 提供获取JSON对象任意节点下的某个字段的方法
 	 * 提供获取JSON对象下除过数组和对象以外的属性集合的方法
 	 * @param json json字符串
-	 * @param handler 具体的json处理器
 	 * @return 你需要的对象
 	 * @throws PathInvalidateException 如果路径不正确就抛出此异常
 	 */
@@ -106,7 +95,6 @@ public class EasyJson {
 		
 		/**
 		 * 将JavaBean对象写入本地文件中
-		 * @param obj
 		 * @return
 		 */
 		public static boolean writeBean(Object bean,String path)
@@ -116,7 +104,6 @@ public class EasyJson {
 		}
 		/**
 		 * 将JavaBean对象写入本地文件中
-		 * @param obj
 		 * @return
 		 */
 		public static boolean writeBean(Object bean,File targetFile)
@@ -149,7 +136,6 @@ public class EasyJson {
 		
 		/**
 		 * 将JavaBean对象写入本地文件中
-		 * @param obj
 		 * @return
 		 */
 		public static boolean writeBeans(ArrayList<?> beans,String path)
@@ -159,7 +145,6 @@ public class EasyJson {
 		}
 		/**
 		 * 将JavaBean对象写入本地文件中
-		 * @param obj
 		 * @return
 		 */
 		public static boolean writeBeans(ArrayList<?> beans,File targetFile)

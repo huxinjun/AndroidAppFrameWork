@@ -310,6 +310,9 @@ public abstract class LayoutCreater<T>{
     public T getContentData() {
         return mContentData;
     }
+    public List<T> getContentDatas() {
+        return mContentDatas;
+    }
     public T getContentData(int index) {
         if(mContentDatas==null)
             return mContentData;
