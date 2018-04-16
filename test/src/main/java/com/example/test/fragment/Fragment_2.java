@@ -6,6 +6,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.app.SmartFragment;
+import com.app.ULog;
 import com.app.annotation.BindFieldName;
 import com.app.annotation.BindMultiData;
 import com.app.annotation.creater.BindLayoutCreater;
@@ -76,9 +77,10 @@ public class Fragment_2 extends SmartFragment {
 
 		@Override
 		public void onDataPrepared() {
-			Rooms.Result.Room numOne = getContentData().getResult().getRooms().remove(0);
-			LayoutCreater headerCreater= getHeaderCreater(lv_content);
-			headerCreater.setContentData(numOne);
+			ULog.out("解析："+getContentData());
+//			Rooms.Result.Room numOne = getContentData().getResult().getRooms().remove(0);
+//			LayoutCreater headerCreater= getHeaderCreater(lv_content);
+//			headerCreater.setContentData(numOne);
 		}
 
 		@BindView(R.layout.layout_header_img)
