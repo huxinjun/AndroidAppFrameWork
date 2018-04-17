@@ -4,19 +4,15 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
-import com.app.ULog;
 import com.app.presenter.IImagePresenter;
-import com.example.core.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.squareup.picasso.Picasso;
 
 /**
  * Created by Administrator on 2018/1/19.
  */
 
-public class GlideImagePresenter implements IImagePresenter {
+public class ImageLoaderPresenter implements IImagePresenter {
 
     private Context mContext;
     private Option option;
@@ -53,8 +49,8 @@ public class GlideImagePresenter implements IImagePresenter {
 
     @Override
     public void setImage(ImageView target, String url) {
-        ULog.out("setImage:"+url+",mContext:"+mContext.getClass().getName());
-        Picasso.with(getContext()).load(url).into(target);
+        DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory().cacheOnDisc().build();
+        ImageLoader.getInstance().displayImage(url,target,options);
     }
 
     @Override

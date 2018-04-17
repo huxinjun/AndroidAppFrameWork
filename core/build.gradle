@@ -32,4 +32,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':easyjson')
     compile 'com.squareup.picasso:picasso:2.5.1'
+    compile files('libs/universal-image-loader-1.9.1.jar')
 }

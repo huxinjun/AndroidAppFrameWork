@@ -9,6 +9,7 @@ import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -94,7 +95,6 @@ public class SmartAbsListAdapter extends BaseAdapter {
 				datas.add(mAllDatas.get(i));
 			tempCreater.setContentData(datas);
 		}
-
 		return tempCreater.getContentView();
 	}
 

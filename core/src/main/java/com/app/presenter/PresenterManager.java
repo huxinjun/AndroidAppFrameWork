@@ -46,12 +46,13 @@ public class PresenterManager {
 			throw new RuntimeException("PresenterManager.findPresenter第一个参数context不能为null");
 		if(mPresenters.containsKey(clazz)) {
 			T instance=(T) mPresenters.get(clazz);
-			instance.setContext(context);
+			instance.mContext=context;
 			return instance;
 		}
 		IPresenterBridge<T> presenterImpl = null;
 		try {
 			presenterImpl = (IPresenterBridge<T>) clazz.newInstance();
+			presenterImpl.mContext=context;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

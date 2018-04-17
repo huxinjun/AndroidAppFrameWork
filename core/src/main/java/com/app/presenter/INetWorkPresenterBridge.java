@@ -11,15 +11,6 @@ import com.app.presenter.impl.NetWorkPresenter;
  */
 public class INetWorkPresenterBridge extends IPresenterBridge<INetWorkPresenter> implements INetWorkPresenter{
 
-	@Override
-	public void setContext(Context context) {
-		this.mSource.setContext(context);
-	}
-
-	@Override
-	public Context getContext() {
-		return this.mSource.getContext();
-	}
 
 	@Override
 	public int checkNetWork() {
@@ -41,10 +32,6 @@ public class INetWorkPresenterBridge extends IPresenterBridge<INetWorkPresenter>
 		return new NetWorkPresenter();
 	}
 
-	@Override
-	public void setSource(INetWorkPresenter source) {
-		mSource=source;
-	}
 
 
 	

@@ -106,6 +106,7 @@
     <orderEntry type="library" exported="" name="com.android.support:appcompat-v7-25.3.1" level="project" />
     <orderEntry type="library" exported="" name="__local_jars__:C.\Users\Administrator\AndroidStudioProjects\opensource\AndroidAppFrameWork\core\libs\cglib-3.2.4.jar:unspecified@jar" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-compat-25.3.1" level="project" />
+    <orderEntry type="library" exported="" name="__local_jars__:C.\Users\Administrator\AndroidStudioProjects\opensource\AndroidAppFrameWork\core\libs\universal-image-loader-1.9.1.jar:unspecified@jar" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-core-utils-25.3.1" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-vector-drawable-25.3.1" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-v4-25.3.1" level="project" />

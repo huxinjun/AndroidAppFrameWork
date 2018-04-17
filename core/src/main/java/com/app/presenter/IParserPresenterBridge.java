@@ -11,15 +11,6 @@ import com.app.presenter.impl.parser.JsonParser;
  */
 public class IParserPresenterBridge extends IPresenterBridge<IParserPresenter> implements IParserPresenter{
 
-	@Override
-	public void setContext(Context context) {
-		this.mSource.setContext(context);
-	}
-
-	@Override
-	public Context getContext() {
-		return this.mSource.getContext();
-	}
 
 	@Override
 	public Object parse(String data, Class<?> entityClass) {
@@ -31,10 +22,6 @@ public class IParserPresenterBridge extends IPresenterBridge<IParserPresenter> i
 		return new JsonParser();
 	}
 
-	@Override
-	public void setSource(IParserPresenter source) {
-		mSource=source;
-	}
 
 
 

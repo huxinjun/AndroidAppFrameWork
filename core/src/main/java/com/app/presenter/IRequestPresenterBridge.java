@@ -11,15 +11,6 @@ import com.app.presenter.impl.request.HttpClientRequest;
  */
 public class IRequestPresenterBridge extends IPresenterBridge<IRequestPresenter> implements IRequestPresenter{
 
-	@Override
-	public void setContext(Context context) {
-		this.mSource.setContext(context);
-	}
-
-	@Override
-	public Context getContext() {
-		return this.mSource.getContext();
-	}
 
 
 	@Override
@@ -48,10 +39,6 @@ public class IRequestPresenterBridge extends IPresenterBridge<IRequestPresenter>
 		return new HttpClientRequest();
 	}
 
-	@Override
-	public void setSource(IRequestPresenter source) {
-		mSource=source;
-	}
 
 
 	

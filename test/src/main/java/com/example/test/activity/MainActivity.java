@@ -15,12 +15,16 @@ import com.app.annotation.request.RequestUrls;
 import com.app.annotation.storage.StorageRoot;
 import com.app.presenter.IFragmentPresenter;
 import com.app.presenter.IFragmentPresenterBridge;
+import com.app.presenter.IImagePresenterBridge;
 import com.app.presenter.PresenterManager;
+import com.app.presenter.impl.ImageLoaderPresenter;
 import com.app.presenter.impl.layout.LayoutCreater;
 import com.example.test.R;
 import com.example.test.fragment.Fragment_1;
 import com.example.test.fragment.Fragment_2;
 import com.example.test.global.Urls;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 @RequestUrls(Urls.class)
 @BindLayoutCreater(creater=MainActivity.MainActivityCreater.class)
@@ -32,6 +36,8 @@ public class MainActivity extends SmartActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this));
+        PresenterManager.getInstance().findPresenter(getContext(), IImagePresenterBridge.class).setSource(new ImageLoaderPresenter());
     }
 
     @BindView(R.layout.activity_main)

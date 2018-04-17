@@ -15,24 +15,10 @@ public class IImagePresenterBridge extends IPresenterBridge<IImagePresenter> imp
 
 
 	@Override
-	public void setContext(Context context) {
-		this.mSource.setContext(context);
-	}
-
-	@Override
-	public Context getContext() {
-		return this.mSource.getContext();
-	}
-
-	@Override
 	protected IImagePresenter deffaultSource() {
 		return new GlideImagePresenter();
 	}
 
-	@Override
-	public void setSource(IImagePresenter source) {
-		mSource=source;
-	}
 
 	@Override
 	public void setGlobleOption(Option option) {

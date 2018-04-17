@@ -13,15 +13,6 @@ import com.app.presenter.impl.MD5Presenter;
  */
 public class IMD5PresenterBridge extends IPresenterBridge<IMD5Presenter> implements IMD5Presenter{
 
-	@Override
-	public void setContext(Context context) {
-		this.mSource.setContext(context);
-	}
-
-	@Override
-	public Context getContext() {
-		return this.mSource.getContext();
-	}
 
 	@Override
 	public String getMd5(String str) {
@@ -38,10 +29,6 @@ public class IMD5PresenterBridge extends IPresenterBridge<IMD5Presenter> impleme
 		return new MD5Presenter();
 	}
 
-	@Override
-	public void setSource(IMD5Presenter source) {
-		mSource=source;
-	}
 
 
 	

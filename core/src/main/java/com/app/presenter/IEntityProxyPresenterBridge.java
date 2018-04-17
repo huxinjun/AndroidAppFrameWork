@@ -14,20 +14,7 @@ public class IEntityProxyPresenterBridge extends IPresenterBridge<IEntityProxyPr
 		return null;
 	}
 
-	@Override
-	public void setSource(IEntityProxyPresenter source) {
-		mSource=source;
-	}
 
-	@Override
-	public void setContext(Context context) {
-		this.mSource.setContext(context);
-	}
-
-	@Override
-	public Context getContext() {
-		return this.mSource.getContext();
-	}
 
 	@Override
 	public BeanProxyInfo creatJavaProxy(Class<?> clazz, Object bean) {

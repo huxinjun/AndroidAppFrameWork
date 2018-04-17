@@ -40,22 +40,6 @@ public class IAnnotationPresenterBridge extends IPresenterBridge<IAnnotationPres
 		};
 	}
 
-	@Override
-	public void setSource(IAnnotationPresenter source) {
-		mSource=source;
-	}
-
-	private Context mContext;
-
-	@Override
-	public void setContext(Context context) {
-		this.mContext=context;
-	}
-
-	@Override
-	public Context getContext() {
-		return mContext;
-	}
 
 	@Override
 	public <T extends Annotation> T getAnnotation(AnnotatedElement target,

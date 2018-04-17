@@ -17,15 +17,6 @@ import com.app.presenter.impl.layout.LayoutCreater;
  */
 public class IInjectionPresenterBridge extends IPresenterBridge<IInjectionPresenter> implements IInjectionPresenter{
 
-	@Override
-	public void setContext(Context context) {
-		this.mSource.setContext(context);
-	}
-
-	@Override
-	public Context getContext() {
-		return this.mSource.getContext();
-	}
 
 	@Override
 	protected IInjectionPresenter deffaultSource() {
@@ -33,11 +24,6 @@ public class IInjectionPresenterBridge extends IPresenterBridge<IInjectionPresen
 	}
 
 	
-	
-	@Override
-	public void setSource(IInjectionPresenter source) {
-		mSource=source;
-	}
 
 
 	@Override

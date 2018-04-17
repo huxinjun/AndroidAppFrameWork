@@ -13,15 +13,6 @@ import com.app.presenter.impl.FragmentPresenter;
 public class IFragmentPresenterBridge extends IPresenterBridge<IFragmentPresenter> implements IFragmentPresenter{
 
 
-	@Override
-	public void setContext(Context context) {
-		this.mSource.setContext(context);
-	}
-
-	@Override
-	public Context getContext() {
-		return this.mSource.getContext();
-	}
 
 	@Override
 	protected IFragmentPresenter deffaultSource() {
@@ -34,10 +25,6 @@ public class IFragmentPresenterBridge extends IPresenterBridge<IFragmentPresente
 		mSource.changeFragment(fragments);
 	}
 
-	@Override
-	public void setSource(IFragmentPresenter source) {
-		mSource=source;
-	}
 
 
 

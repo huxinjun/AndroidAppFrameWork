@@ -13,6 +13,7 @@ import android.content.Context;
  */
 public abstract class IPresenterBridge<T extends IPresenter> implements IPresenter{
 
+	protected Context mContext;
 	/**
 	 * 目标实现类
 	 */
@@ -24,9 +25,19 @@ public abstract class IPresenterBridge<T extends IPresenter> implements IPresent
 	 */
 	protected abstract T deffaultSource();
 	
-	/**
-	 * 动态设置运行时的实现类
-	 * @param source
-	 */
-	public abstract void setSource(T source);
+
+	@Override
+	public void setContext(Context context) {
+		mContext=context;
+	}
+
+	@Override
+	public Context getContext() {
+		return mContext;
+	}
+
+	public void setSource(T source) {
+		mSource=source;
+		mSource.setContext(mContext);
+	}
 }

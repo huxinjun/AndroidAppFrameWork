@@ -17,22 +17,6 @@ public class IActivityPresenterBridge extends IPresenterBridge<IActivityPresente
 		return new ActivityPresenter();
 	}
 
-	
-	@Override
-	public void setSource(IActivityPresenter source) {
-		this.mSource=source;
-	}
-
-	@Override
-	public void setContext(Context context) {
-		this.mSource.setContext(context);
-	}
-
-	@Override
-	public Context getContext() {
-		return this.mSource.getContext();
-	}
-
 
 	@Override
 	public IActivityPresenter startActivity(Class<? extends SmartActivity> clazz) {

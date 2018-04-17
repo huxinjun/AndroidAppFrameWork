@@ -14,25 +14,10 @@ import com.app.presenter.impl.layout.LayoutPresenter;
 public class ILayoutPresenterBridge extends IPresenterBridge<ILayoutPresenter> implements ILayoutPresenter{
 
 	@Override
-	public void setContext(Context context) {
-		this.mSource.setContext(context);
-	}
-
-	@Override
-	public Context getContext() {
-		return this.mSource.getContext();
-	}
-
-	@Override
 	protected ILayoutPresenter deffaultSource() {
 		return new LayoutPresenter();
 	}
 
-	
-	@Override
-	public void setSource(ILayoutPresenter source) {
-		this.mSource=source;
-	}
 
 
 	@Override

@@ -25,16 +25,7 @@ public class IStoragePresenterBridge extends IPresenterBridge<IStoragePresenter>
 		deffDir.put(DIR.CUSTOMER3, DIR.CUSTOMER3.toString());
 	}
 
-	@Override
-	public void setContext(Context context) {
-		this.mSource.setContext(context);
-	}
 
-	@Override
-	public Context getContext() {
-		return this.mSource.getContext();
-	}
-	
 	@Override
 	public File getCacheDir(DIR dirType) {
 		return mSource.getCacheDir(dirType);
@@ -43,11 +34,6 @@ public class IStoragePresenterBridge extends IPresenterBridge<IStoragePresenter>
 	@Override
 	protected IStoragePresenter deffaultSource() {
 		return new StoragePresenter();
-	}
-
-	@Override
-	public void setSource(IStoragePresenter source) {
-		mSource=source;
 	}
 
 	@Override

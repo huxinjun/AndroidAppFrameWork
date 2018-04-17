@@ -13,15 +13,6 @@ import com.app.presenter.impl.PersistentPresenter;
  */
 public class IPersistentPresenterBridge extends IPresenterBridge<IPersistentPresenter> implements IPersistentPresenter{
 
-	@Override
-	public void setContext(Context context) {
-		this.mSource.setContext(context);
-	}
-
-	@Override
-	public Context getContext() {
-		return this.mSource.getContext();
-	}
 
 	@Override
 	public void saveObject(String name, Object target) {
@@ -58,10 +49,6 @@ public class IPersistentPresenterBridge extends IPresenterBridge<IPersistentPres
 		return new PersistentPresenter();
 	}
 
-	@Override
-	public void setSource(IPersistentPresenter source) {
-		mSource=source;
-	}
 
 
 	
