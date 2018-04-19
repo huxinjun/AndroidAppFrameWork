@@ -4,6 +4,7 @@ package com.app.presenter.impl.layout;
 import android.content.Context;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -60,6 +61,7 @@ public abstract class LayoutCreater<T>{
      */
     public static final int TAG_ITEMS_DATA = TAG_START_INDEX + 0x6;
 
+
     /**
      * 父创建器TAG
      */
@@ -86,6 +88,20 @@ public abstract class LayoutCreater<T>{
      * 图片加载需要的参数
      */
     public static final int TAG_IMAGE_OPTION = TAG_START_INDEX + 0x12;
+
+    /**
+     * RecyclerView的adapter使用的定义自条目类型的Class
+     */
+    public static final int TAG_DEFINER_ITEM_CLASS = TAG_START_INDEX + 0x13;
+
+    /**
+     * RecyclerView的header数据集合
+     */
+    public static final int TAG_RECYCLERVIEW_HEADER_DATA = TAG_START_INDEX + 0x14;
+    /**
+     * RecyclerView的footer数据集合
+     */
+    public static final int TAG_RECYCLERVIEW_FOOTER_DATA = TAG_START_INDEX + 0x15;
 
     private Context mContext;
     /**
@@ -226,7 +242,6 @@ public abstract class LayoutCreater<T>{
 
     /**
      * 当数据修改后,代理的回调将会通过反射调用此方法
-     *
      * @param bindFieldName 修改的字段名称
      */
     public void onDataChanged(String bindFieldName) {
@@ -262,10 +277,45 @@ public abstract class LayoutCreater<T>{
         }
     }
 
+    /**
+     * 提供一个给RecyclerView的HeaderView填充数据的方法
+     * @param rcv RecyclerView
+     * @param headerIndex 目标header的索引(一般是0，多个Header时根据添加次序确定数据所填充的索引)
+     * @param data 数据
+     */
+    protected void setRecyclerViewHeaderData(RecyclerView rcv,int headerIndex, Object data){
+        Object headerDatas = rcv.getTag(LayoutCreater.TAG_RECYCLERVIEW_HEADER_DATA);
+        if(headerDatas==null){
+            headerDatas=new ArrayList<>();
+            rcv.setTag(LayoutCreater.TAG_RECYCLERVIEW_HEADER_DATA,headerDatas);
+        }
+        List headerDataArr= (List) headerDatas;
+        headerDataArr.add(headerIndex,data);
+        if(rcv.getAdapter()!=null)
+            rcv.getAdapter().notifyDataSetChanged();
+    }
+
+    /**
+     * 提供一个给RecyclerView的FooterView填充数据的方法
+     * @param rcv RecyclerView
+     * @param footerIndex 目标footer的索引(一般是0，多个footer时根据添加次序确定数据所填充的索引)
+     * @param data 数据
+     */
+    protected void setRecyclerViewFooterData(RecyclerView rcv,int footerIndex, Object data){
+        Object footerDatas = rcv.getTag(LayoutCreater.TAG_RECYCLERVIEW_HEADER_DATA);
+        if(footerDatas==null){
+            footerDatas=new ArrayList<>();
+            rcv.setTag(LayoutCreater.TAG_RECYCLERVIEW_HEADER_DATA,footerDatas);
+        }
+        List footerDataArr= (List) footerDatas;
+        footerDataArr.add(footerIndex,data);
+        if(rcv.getAdapter()!=null)
+            rcv.getAdapter().notifyDataSetChanged();
+    }
+
 
     /**
      * 切换fragment
-     *
      * @param viewID        fragment所在的id,不限定与当前creater
      * @param fragmentClass fragment类
      */

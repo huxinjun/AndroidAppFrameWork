@@ -6,6 +6,7 @@ import java.util.Map;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -21,6 +22,7 @@ import com.app.presenter.impl.injector.ButtonInjector;
 import com.app.presenter.impl.injector.CheckBoxInjector;
 import com.app.presenter.impl.injector.ImageViewInjector;
 import com.app.presenter.impl.injector.RadioButtonInjector;
+import com.app.presenter.impl.injector.RecyclerViewInjector;
 import com.app.presenter.impl.injector.TextViewInjector;
 import com.app.presenter.impl.injector.ViewPagerInjector;
 
@@ -49,6 +51,7 @@ public interface IInjectionPresenter extends IPresenter {
 			put(ListView.class, AdapterViewInjector.class);
 			put(GridView.class, AdapterViewInjector.class);
 			put(ViewPager.class, ViewPagerInjector.class);
+			put(RecyclerView.class, RecyclerViewInjector.class);
 		}
 	};
 	

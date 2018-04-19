@@ -1,51 +1,31 @@
 package com.app.presenter.impl.annotation;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Field;
-
-import android.text.TextUtils;
 import android.view.View;
 
 import com.app.annotation.BindFieldName;
+import com.app.annotation.creater.BindItemDefiner;
 import com.app.annotation.creater.BindLayoutCreater;
 import com.app.presenter.IInjectionPresenterBridge;
 import com.app.presenter.ILayoutPresenter;
 import com.app.presenter.ILayoutPresenter.InflateCallBack;
 import com.app.presenter.ILayoutPresenterBridge;
-import com.app.presenter.IRequestPresenter;
 import com.app.presenter.PresenterManager;
 import com.app.presenter.impl.layout.LayoutCreater;
 import com.app.utils.ReflectUtils;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.Field;
 
 /**
  * BindLayoutCreater注解解释器
  * Created by xinjun on 2017/7/29 14:33
  */
-public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
+public class BindItemDefinerInterpreter extends AnnotationPresenter{
 
 	@Override
 	public void interpreter(AnnotatedElement target,final InterpreterCallBack callBack,Object... context) {
-		//这个注解可能会加在类上 或者字段上
-		if(target.getClass()==Class.class){
-			//加在类上了
-			BindLayoutCreater bindLayoutCreater =getAnnotation(target, BindLayoutCreater.class);
-			final Class<? extends LayoutCreater> createrClass = bindLayoutCreater.creater();
-
-			try {
-				PresenterManager.getInstance().findPresenter(getContext(),ILayoutPresenterBridge.class).inflate(createrClass, new InflateCallBack() {
-					
-					@Override
-					public void onCompleted(LayoutCreater instance) {
-						if(callBack!=null)
-							callBack.onCompleted(BindLayoutCreater.class,instance);
-					}
-				});
-			} catch (Exception e) {
-				throw new RuntimeException(e);
-			}
-			
-		}else if(target.getClass()==Field.class){
+		if(target.getClass()==Field.class){
 			//加在字段上了
 			LayoutCreater creater=(LayoutCreater) context[0];
 			Field field= (Field) context[1];
@@ -53,14 +33,14 @@ public class BindLayoutCreaterInterpreter extends AnnotationPresenter{
 			try {
 				//这个View 可能是ListView,GridView,ViewPager等
 				View findViewById = (View) field.get(creater);
-				BindLayoutCreater itemLayoutCreater = getAnnotation(target, BindLayoutCreater.class);
+				BindItemDefiner definer = getAnnotation(target, BindItemDefiner.class);
 				//给配置了@BindLayoutCreater注解的视图中放入一些tag记录其子创建器的和其他需要的信息
 				findViewById.setTag(LayoutCreater.TAG_LAYOUT_CRETAER_PARENT, creater);
-				findViewById.setTag(LayoutCreater.TAG_LAYOUT_CRETAER_ITEM_CLASS, itemLayoutCreater.creater());
+				findViewById.setTag(LayoutCreater.TAG_DEFINER_ITEM_CLASS, definer.value());
 
 				//再给其创建请求数据的命令41
 				final View finalFindViewById = findViewById;
-                if(itemLayoutCreater!=null && target.getAnnotation(BindFieldName.class)!=null){
+                if(definer!=null && target.getAnnotation(BindFieldName.class)!=null){
                     //如果BindLayoutCreater没有配置itemLayoutCreater.requestName()，配置了BindFieldName注解，说明需要从父LayoutCreater的数据中取数据
 					creater.addDataListener(new LayoutCreater.DataListener() {
 						@Override

@@ -40,6 +40,10 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable-xxxhdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
     },
     {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\design_ic_visibility.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\drawable-xxxhdpi-v4\\design_ic_visibility.png"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable-xxxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
@@ -66,6 +70,10 @@
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\abc_text_select_handle_right_mtrl_dark.png",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable-xxxhdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\design_ic_visibility_off.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\drawable-xxxhdpi-v4\\design_ic_visibility_off.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxxhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",

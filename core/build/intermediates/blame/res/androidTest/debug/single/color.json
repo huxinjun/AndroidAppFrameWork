@@ -32,6 +32,10 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\color\\abc_tint_default.xml"
     },
     {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\design_error.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\color\\design_error.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_seek_thumb.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\color\\abc_tint_seek_thumb.xml"
     },
@@ -50,6 +54,10 @@
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_edittext.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\color\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\design_tint_password_toggle.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\color\\design_tint_password_toggle.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_hint_foreground_material_light.xml",

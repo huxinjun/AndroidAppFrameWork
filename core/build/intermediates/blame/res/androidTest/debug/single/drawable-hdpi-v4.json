@@ -80,6 +80,10 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable-hdpi-v4\\abc_list_focused_holo.9.png"
     },
     {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\a.png",
+        "source": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\a.png"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable-hdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
     },
@@ -94,6 +98,10 @@
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\design_ic_visibility.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\drawable-hdpi-v4\\design_ic_visibility.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png",
@@ -154,6 +162,10 @@
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\design_ic_visibility_off.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\drawable-hdpi-v4\\design_ic_visibility_off.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",

@@ -4,6 +4,10 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
     },
     {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable\\navigation_empty_icon.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\drawable\\navigation_empty_icon.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
@@ -28,8 +32,16 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable\\abc_btn_borderless_material.xml"
     },
     {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable\\design_fab_background.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\drawable\\design_fab_background.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable\\abc_btn_check_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable\\design_snackbar_background.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\drawable\\design_snackbar_background.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
@@ -64,6 +76,10 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
     },
     {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable\\design_password_eye.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\drawable\\design_password_eye.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_ab_back_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable\\abc_ic_ab_back_material.xml"
     },
@@ -90,6 +106,10 @@
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable\\abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable\\design_bottom_navigation_item_background.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\drawable\\design_bottom_navigation_item_background.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",

@@ -12,6 +12,10 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
     {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\design_ic_visibility.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\drawable-xhdpi-v4\\design_ic_visibility.png"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png"
     },
@@ -158,6 +162,10 @@
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d033d2386a9c5e82f94d0c5d6877d0472cb2516e\\output\\res\\drawable-xhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\design_ic_visibility_off.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\63cb9d0d2878f2ff369caa89d931e6e1da1e61ee\\output\\res\\drawable-xhdpi-v4\\design_ic_visibility_off.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\opensource\\AndroidAppFrameWork\\core\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_popup_background_mtrl_mult.9.png",
