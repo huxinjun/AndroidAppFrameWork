@@ -132,16 +132,26 @@ public interface IRequestPresenter extends IPresenter {
 		
 		/**当前请求是第几次请求*/
 		public int mExcuteCount;
-		
-		/**本地缓存数据*/
-		public Object mDiscResult;
-		
+
+
+
+
+		/**模板数据String*/
+		public String mTemplateStr;
+
+		/**本地缓存数据String*/
+		public String mDiscResultStr;
+
+		/**网络请求的数据String*/
+		public String mServerResultStr;
+
 		/**网络请求的数据*/
 		public Object mServerResult;
-		
-		/**数据代理描述类*/
-		public BeanProxyInfo mDataProxy;
-		
+
+		/**缓存的数据:可能是模板解析的,也可能是本地缓存的网络数据*/
+		public Object mCacheResult;
+
+
 		
 		@Override
 		protected Object clone() throws CloneNotSupportedException {
@@ -175,9 +185,8 @@ public interface IRequestPresenter extends IPresenter {
 					", mServerTimeOut=" + mServerTimeOut +"\n"+
 					", mRetryCount=" + mRetryCount +"\n"+
 					", mExcuteCount=" + mExcuteCount +"\n"+
-					", mDiscResult=" + mDiscResult +"\n"+
+					", mDiscResultStr=" + mDiscResultStr +"\n"+
 					", mServerResult=" + mServerResult +"\n"+
-					", mDataProxy=" + mDataProxy +
 					'}';
 		}
 	}

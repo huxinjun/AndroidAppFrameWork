@@ -13,6 +13,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.text.TextUtils;
 
+import com.app.ULog;
 import com.app.presenter.IAnnotationPresenter;
 import com.app.presenter.IAnnotationPresenterBridge;
 import com.app.presenter.IEntityProxyPresenter;
@@ -151,40 +152,42 @@ public abstract class RequestPresenter implements IRequestPresenter {
 
 			//是否请求模板数据
 			if(mInfo.isUseTempleteData){
-				String data=getTempleteData(mInfo.mTempleteDataPackage, mInfo.mTempleteDataFileName);
-				Object parse = getParser().parse(data, mInfo.mEntityType);
-				if(mInfo.mDiscResult!=null && mInfo.mCallBack!=null)
+				mInfo.mTemplateStr=getTempleteData(mInfo.mTempleteDataPackage, mInfo.mTempleteDataFileName);
+				if(!TextUtils.isEmpty(mInfo.mTemplateStr))
 					mHandler.post(new Runnable() {
 						@Override
 						public void run() {
-							mInfo.mCallBack.onCacheComming(mInfo.mDiscResult);
+							mInfo.mCacheResult = getParser().parse(mInfo.mTemplateStr, mInfo.mEntityType);
+							mInfo.mCallBack.onCacheComming(mInfo.mCacheResult);
 						}
 					});
 			}else
 				//检查是否需要使用磁盘缓存
 				if(mInfo.isUseDiscCache && mInfo.mCallBack!=null){
 					//获取本地缓存的数据
-					mInfo.mDiscResult = getLocalCacheEntity(mInfo);
-					if(mInfo.mDiscResult!=null)
+					ULog.out("缓存.获取:"+mInfo.mDiscResultStr);
+					mInfo.mDiscResultStr = getLocalCacheModel(mInfo);
+					if(!TextUtils.isEmpty(mInfo.mDiscResultStr))
 						mHandler.post(new Runnable() {
 							@Override
 							public void run() {
-								mInfo.mCallBack.onCacheComming(mInfo.mDiscResult);
+								mInfo.mCacheResult = getParser().parse(mInfo.mDiscResultStr, mInfo.mEntityType);
+								mInfo.mCallBack.onCacheComming(mInfo.mCacheResult);
 							}
 						});
 				}
 
-			result=getData(mInfo);
-			mInfo.mServerResult=result;
+			mInfo.mServerResult=getData(mInfo);
 			//检查本地和网络数据是否相同
-			if(mInfo.mServerResult!=null && !mInfo.mServerResult.equals(mInfo.mDiscResult) && mInfo.mCallBack!=null)
+			if(mInfo.mServerResult!=null && !mInfo.mServerResultStr.equals(mInfo.mDiscResultStr) && mInfo.mCallBack!=null)
 				//不同时会返回最新的数据
 			{
-				Object finalResult2 = result;
+				ULog.out("缓存.存储");
+				saveLocalCacheModel(mInfo);
 				mHandler.post(new Runnable() {
 					@Override
 					public void run() {
-						mInfo.mCallBack.onDataComming(finalResult2);
+						mInfo.mCallBack.onDataComming(mInfo.mServerResult);
 					}
 				});
 			}
@@ -261,9 +264,19 @@ public abstract class RequestPresenter implements IRequestPresenter {
 	 * @param mInfo
 	 * @return
 	 */
-	private Object getLocalCacheEntity(RequestInfo mInfo){
-		String md5 = getMd5Manager().getMd5(mInfo.toString());
-		return getPersistenter().getObject(md5, mInfo.mEntityType);
+	private String getLocalCacheModel(RequestInfo mInfo){
+		String name = getMd5Manager().getMd5(mInfo.toString());
+		return (String) getPersistenter().getObject(name, mInfo.mEntityType);
+	}
+	/**
+	 * 获取本地缓存的实体数据
+	 * 实体数据是以MD5(请求名称+参数toString)为文件名存储的
+	 * @param mInfo
+	 * @return
+	 */
+	private void saveLocalCacheModel(RequestInfo mInfo){
+		String name = getMd5Manager().getMd5(mInfo.toString());
+		getPersistenter().saveObject(name,mInfo.mServerResultStr);
 	}
 
 	public RequestInfo build(String requestName,ParamPool paramPool,DataCallBack callBack) {

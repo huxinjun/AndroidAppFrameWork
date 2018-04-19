@@ -116,6 +116,7 @@ public class HttpClientRequest extends RequestPresenter {
                 //转换为实体
                 ULog.out("请求的数据：" + result);
 
+                info.mServerResultStr=result;
                 Object parseObj = getParser().parse(result, info.mEntityType);
                 notifyRequestStatusListenner(info.mRequestName, RequestStatus.SUCCESS, result);
                 return parseObj;

@@ -1,10 +1,9 @@
 package com.app.presenter;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
-import com.app.presenter.impl.GlideImagePresenter;
+import com.app.presenter.impl.image.GlideImagePresenter;
 
 /**
  * 图片加载代理类

@@ -17,5 +17,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Interpreter(UseDiscCacheInterpreter.class)
 public @interface UseDiscCache {
-    boolean value() default false;
+    boolean value() default true;
 }

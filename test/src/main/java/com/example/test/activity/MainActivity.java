@@ -17,7 +17,7 @@ import com.app.presenter.IFragmentPresenter;
 import com.app.presenter.IFragmentPresenterBridge;
 import com.app.presenter.IImagePresenterBridge;
 import com.app.presenter.PresenterManager;
-import com.app.presenter.impl.ImageLoaderPresenter;
+import com.app.presenter.impl.image.ImageLoaderPresenter;
 import com.app.presenter.impl.layout.LayoutCreater;
 import com.example.test.R;
 import com.example.test.fragment.Fragment_1;

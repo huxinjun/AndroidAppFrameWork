@@ -1,4 +1,4 @@
-package com.app.presenter.impl;
+package com.app.presenter.impl.image;
 
 import android.content.Context;
 import android.graphics.Bitmap;

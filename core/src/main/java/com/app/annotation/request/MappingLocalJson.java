@@ -13,6 +13,6 @@ import java.lang.annotation.Target;
 @Interpreter(MappingLocalJsonInterpreter.class)
 public @interface MappingLocalJson {
 
-	boolean useTempleteJson() default false;
+	boolean useTempleteJson() default true;
 	String fileName();
 }

@@ -6,16 +6,21 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="010e6bd1-014f-4f1d-a5f5-32274eac7cde" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/GlideImagePresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/image/GlideImagePresenter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImageLoaderPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/image/ImageLoaderPresenter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutCreater.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutCreater.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/MappingLocalJson.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/MappingLocalJson.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/UseDiscCache.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/UseDiscCache.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IImagePresenterBridge.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IImagePresenterBridge.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java" afterPath="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/main/java/com/example/test/global/Urls.java" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/global/Urls.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java" afterPath="$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -77,46 +82,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SmartAbsListAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/SmartAbsListAdapter.java">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="85" column="8" lean-forward="false" selection-start-line="85" selection-start-column="8" selection-end-line="96" selection-end-column="9" />
+            <state relative-caret-position="126">
+              <caret line="30" column="20" lean-forward="false" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SmartRecyclerAdapter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/SmartRecyclerAdapter.java">
+      <file leaf-file-name="RequestPresenter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1365">
-              <caret line="137" column="74" lean-forward="false" selection-start-line="137" selection-start-column="74" selection-end-line="137" selection-end-column="74" />
+            <state relative-caret-position="115">
+              <caret line="171" column="37" lean-forward="true" selection-start-line="171" selection-start-column="37" selection-end-line="171" selection-end-column="37" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2864#3259#0" expanded="true" />
-                <element signature="e#3258#3259#0" expanded="true" />
-                <element signature="e#3805#3806#0" expanded="true" />
-                <element signature="e#3867#3868#0" expanded="true" />
-                <element signature="e#5859#5860#0" expanded="true" />
-                <element signature="e#5915#5916#0" expanded="true" />
+                <element signature="e#5683#5684#0" expanded="true" />
+                <element signature="e#5748#5749#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Fragment_2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java">
+      <file leaf-file-name="JSONPI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/easyjson/src/main/java/com/easyjson/core/JSONPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="126" column="65" lean-forward="true" selection-start-line="126" selection-start-column="65" selection-end-line="126" selection-end-column="65" />
-              <folding>
-                <element signature="class#Vp1Creater#0;class#Fragment_2#0" expanded="false" />
-                <element signature="e#2347#2554#0" expanded="true" />
-                <element signature="e#2553#2554#0" expanded="true" />
-                <element signature="class#Vp3Creater#0;class#Fragment_2#0" expanded="false" />
-                <element signature="class#Vp4Creater#0;class#Fragment_2#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="124">
+              <caret line="40" column="46" lean-forward="true" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EasyJson.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/easyjson/src/main/java/com/easyjson/EasyJson.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="92" column="49" lean-forward="false" selection-start-line="92" selection-start-column="49" selection-end-line="92" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersistentPresenter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/PersistentPresenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="54" column="47" lean-forward="false" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -124,9 +138,25 @@
       <file leaf-file-name="Urls.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/global/Urls.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="798">
-              <caret line="54" column="59" lean-forward="false" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
+            <state relative-caret-position="735">
+              <caret line="51" column="13" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fragment_2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="43" column="26" lean-forward="false" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+              <folding>
+                <element signature="class#Vp1Creater#0;class#Fragment_2#0" expanded="false" />
+                <element signature="e#2347#2554#0" expanded="true" />
+                <element signature="e#2553#2554#0" expanded="true" />
+                <element signature="class#Vp3Creater#0;class#Fragment_2#0" expanded="false" />
+                <element signature="class#Vp4Creater#0;class#Fragment_2#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -139,6 +169,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>getMd5Manager</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -3158,8 +3193,14 @@
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/SmartRecyclerAdapter.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/layout/LayoutCreater.java" />
         <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/global/Urls.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java" />
         <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java" />
+        <option value="$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_1.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/image/GlideImagePresenter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/UseDiscCache.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/MappingLocalJson.java" />
       </list>
     </option>
   </component>
@@ -3703,7 +3744,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="request" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3734,148 +3775,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="injector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ViewPagerInjector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="injector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="injector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RecyclerViewInjector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -3913,65 +3812,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="annotation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BindLayoutCreaterInterpreter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidAppFrameWork" />
+              <option name="myItemId" value="request" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="annotation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BindItemDefinerInterpreter" />
+              <option name="myItemId" value="UseDiscCache" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -4006,6 +3855,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="annotation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="request" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -4117,6 +3970,7 @@
   <component name="PropertiesComponent">
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="2.3.3" />
     <property name="device.picker.selection" value="AM49FYUGQC5LSOSW" />
+    <property name="SearchEverywhereHistoryKey" value="String&#9;PSI&#9;JAVA://android.support.design.R.string" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -4211,7 +4065,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1524138879181" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1524142404690" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -4259,7 +4113,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1524138879181" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1524142404690" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -4442,7 +4296,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1524138879182" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1524142404691" />
       </method>
     </configuration>
     <list size="1">
@@ -4495,7 +4349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524137984872</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="RecyclerView的footer数据bug">
+      <created>1524138904443</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1524138904443</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -4514,7 +4375,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66629463" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55022323" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.55022323" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4497768" sideWeight="0.5021322" order="12" side_tool="true" content_ui="tabs" />
@@ -4578,7 +4439,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="优化Presenter的context" />
     <MESSAGE value="添加RecyclerView的数据注入支持" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加RecyclerView的数据注入支持" />
+    <MESSAGE value="RecyclerView的footer数据bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="RecyclerView的footer数据bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -4594,112 +4456,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/ImageLoaderPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IImagePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1781">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/GlideImagePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IStoragePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-122">
-          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IStoragePresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IPersistentPresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IParserPresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/INetWorkPresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IMD5PresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/ILayoutPresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IImagePresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IFragmentPresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IEntityProxyPresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IActivityPresenterBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/SmartActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="89">
@@ -4772,22 +4528,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="74" column="178" lean-forward="false" selection-start-line="74" selection-start-column="178" selection-end-line="74" selection-end-column="178" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="48" column="38" lean-forward="false" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/creater/BindItemDefiner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -4808,14 +4548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="135" column="0" lean-forward="false" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -4903,7 +4635,7 @@
         <state relative-caret-position="315">
           <caret line="15" column="35" lean-forward="false" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -4913,17 +4645,9 @@
         <state relative-caret-position="281">
           <caret line="81" column="11" lean-forward="false" selection-start-line="81" selection-start-column="11" selection-end-line="81" selection-end-column="11" />
           <folding>
-            <element signature="e#33234#33235#0" expanded="true" />
-            <element signature="e#33267#33268#0" expanded="true" />
+            <element signature="e#33234#33235#0" expanded="false" />
+            <element signature="e#33267#33268#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/SmartAbsListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="85" column="8" lean-forward="false" selection-start-line="85" selection-start-column="8" selection-end-line="96" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4965,29 +4689,130 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/SmartRecyclerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1000">
-          <caret line="105" column="21" lean-forward="false" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="21" />
+        <state relative-caret-position="1491">
+          <caret line="137" column="74" lean-forward="false" selection-start-line="137" selection-start-column="74" selection-end-line="137" selection-end-column="74" />
           <folding>
-            <element signature="e#6525#6526#0" expanded="true" />
-            <element signature="e#6544#6545#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2864#3259#0" expanded="true" />
+            <element signature="e#3258#3259#0" expanded="true" />
+            <element signature="e#3805#3806#0" expanded="true" />
+            <element signature="e#3867#3868#0" expanded="true" />
+            <element signature="e#5859#5860#0" expanded="true" />
+            <element signature="e#5915#5916#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/SmartAbsListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="77" column="50" lean-forward="true" selection-start-line="77" selection-start-column="50" selection-end-line="77" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="655">
+          <caret line="121" column="5" lean-forward="true" selection-start-line="121" selection-start-column="5" selection-end-line="121" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/StorageRootInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="21" column="97" lean-forward="false" selection-start-line="21" selection-start-column="97" selection-end-line="21" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/StoragePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IStoragePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="35" column="30" lean-forward="false" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/image/GlideImagePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/image/ImageLoaderPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/activity/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="30" column="20" lean-forward="false" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenterBridge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="11" column="97" lean-forward="false" selection-start-line="11" selection-start-column="97" selection-end-line="11" selection-end-column="97" />
+        <state relative-caret-position="289">
+          <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IPersistentPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/build/generated/source/r/androidTest/debug/android/support/design/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="930" column="30" lean-forward="false" selection-start-line="930" selection-start-column="30" selection-end-line="930" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/MappingLocalJson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/MappingLocalJsonInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="27" column="63" lean-forward="false" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/fragment/Fragment_2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="126" column="65" lean-forward="true" selection-start-line="126" selection-start-column="65" selection-end-line="126" selection-end-column="65" />
+        <state relative-caret-position="336">
+          <caret line="43" column="26" lean-forward="false" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
           <folding>
             <element signature="class#Vp1Creater#0;class#Fragment_2#0" expanded="false" />
             <element signature="e#2347#2554#0" expanded="true" />
@@ -4998,26 +4823,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/global/Urls.java">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/annotation/request/UseDiscCacheInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="54" column="59" lean-forward="false" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
+        <state relative-caret-position="504">
+          <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/SmartRecyclerAdapter.java">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/IRequestPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1365">
-          <caret line="137" column="74" lean-forward="false" selection-start-line="137" selection-start-column="74" selection-end-line="137" selection-end-column="74" />
+        <state relative-caret-position="281">
+          <caret line="90" column="30" lean-forward="false" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/HttpClientRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="118" column="32" lean-forward="false" selection-start-line="118" selection-start-column="32" selection-end-line="118" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/annotation/request/UseDiscCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/global/Urls.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="51" column="13" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/easyjson/src/main/java/com/easyjson/core/JSONPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="40" column="46" lean-forward="true" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/easyjson/src/main/java/com/easyjson/EasyJson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="92" column="49" lean-forward="false" selection-start-line="92" selection-start-column="49" selection-end-line="92" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/PersistentPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="54" column="47" lean-forward="false" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/app/presenter/impl/request/RequestPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="171" column="37" lean-forward="true" selection-start-line="171" selection-start-column="37" selection-end-line="171" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2864#3259#0" expanded="true" />
-            <element signature="e#3258#3259#0" expanded="true" />
-            <element signature="e#3805#3806#0" expanded="true" />
-            <element signature="e#3867#3868#0" expanded="true" />
-            <element signature="e#5859#5860#0" expanded="true" />
-            <element signature="e#5915#5916#0" expanded="true" />
+            <element signature="e#5683#5684#0" expanded="true" />
+            <element signature="e#5748#5749#0" expanded="true" />
           </folding>
         </state>
       </provider>
