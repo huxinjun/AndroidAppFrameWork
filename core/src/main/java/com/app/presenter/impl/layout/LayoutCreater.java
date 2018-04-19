@@ -302,10 +302,10 @@ public abstract class LayoutCreater<T>{
      * @param data 数据
      */
     protected void setRecyclerViewFooterData(RecyclerView rcv,int footerIndex, Object data){
-        Object footerDatas = rcv.getTag(LayoutCreater.TAG_RECYCLERVIEW_HEADER_DATA);
+        Object footerDatas = rcv.getTag(LayoutCreater.TAG_RECYCLERVIEW_FOOTER_DATA);
         if(footerDatas==null){
             footerDatas=new ArrayList<>();
-            rcv.setTag(LayoutCreater.TAG_RECYCLERVIEW_HEADER_DATA,footerDatas);
+            rcv.setTag(LayoutCreater.TAG_RECYCLERVIEW_FOOTER_DATA,footerDatas);
         }
         List footerDataArr= (List) footerDatas;
         footerDataArr.add(footerIndex,data);

@@ -44,4 +44,15 @@ public class Urls {
     @ConnectionSet(connectionTimeOut = 5000, serverTimeOut = 1000, retryCount = 3)
     @RequestBaseUrl("")
     public static final String PATTERN_HOT_ROOM = "http://api.mengliaoba.cn/apiv5/live/liveshow.php?cmd=hotroom";
+
+    @Description("获取房间列表")
+    @EntityType(Rooms.class)
+    @Dialog(LoadingDialog.class)
+    @Parser(JsonParser.class)
+    @UseDiscCache
+    @MappingLocalJson(useTempleteJson = false, fileName = "")
+    @AccessSettings(accessMethod = RequestMethods.GET, persistence = false)
+    @ConnectionSet(connectionTimeOut = 5000, serverTimeOut = 1000, retryCount = 3)
+    @RequestBaseUrl("")
+    public static final String PATTERN_HOT_ROOM2 = "http://api.mengliaoba.cn/apiv5/live/liveshow.php?cmd=hotroom";
 }

@@ -123,6 +123,8 @@ public abstract class RequestPresenter implements IRequestPresenter {
 	@Override
 	public void notifyRequestStatusListenner(String requestName,RequestStatus status,Object data) {
 		RequestInfo requestInfo = mAllRequests.get(requestName);
+		if(requestInfo==null)
+			return;
 		synchronized (requestInfo.mListeners){
 			Iterator<RequestListener> requestListeners = requestInfo.mListeners.iterator();
 			while (requestListeners.hasNext()){
