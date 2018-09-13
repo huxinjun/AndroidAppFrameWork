@@ -355,9 +355,7 @@ public interface IRequestPresenter extends IPresenter {
 		 * 数据获取到了
 		 * @param object 数据
 		 */
-		public abstract void onDataComming(Object object);
-		
-		public void onCacheComming(Object object){};
+		public abstract void onDataComming(boolean isCache,Object object);
 	}
 
 	/**

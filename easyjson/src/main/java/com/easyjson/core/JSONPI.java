@@ -38,7 +38,8 @@ public class JSONPI {
 	 */
 	public static <T> T readBean(Class<T> clazz,File targetFile)
 	{
-		return readBeans(clazz, targetFile).get(0);
+		ArrayList<T> result = readBeans(clazz, targetFile);
+		return result==null||result.size()==0?null:result.get(0);
 	}
 	
 	
@@ -115,7 +116,6 @@ public class JSONPI {
 
 	/**
 	 * 将JavaBean对象写入本地文件中
-	 * @param obj
 	 * @return
 	 */
 	public static boolean writeBeans(ArrayList<?> beans,String path)
@@ -125,7 +125,6 @@ public class JSONPI {
 	}
 	/**
 	 * 将JavaBean对象写入本地文件中
-	 * @param obj
 	 * @return
 	 */
 	public static boolean writeBeans(ArrayList<?> beans,File targetFile)

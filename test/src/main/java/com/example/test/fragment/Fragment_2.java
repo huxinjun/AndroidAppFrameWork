@@ -71,7 +71,7 @@ public class Fragment_2 extends SmartFragment {
         public void onInitData() {
             PresenterManager.getInstance().findPresenter(getContext(), IRequestPresenterBridge.class).request(Urls.PATTERN_HOT_ROOM, null, new IRequestPresenter.DataCallBack() {
                 @Override
-                public void onDataComming(Object object) {
+                public void onDataComming(boolean isCache,Object object) {
                     setContentData((Rooms) object);
                 }
             });
@@ -141,7 +141,7 @@ public class Fragment_2 extends SmartFragment {
         public void onInitData() {
             PresenterManager.getInstance().findPresenter(getContext(), IRequestPresenterBridge.class).request(Urls.PATTERN_HOT_ROOM2, null, new IRequestPresenter.DataCallBack() {
                 @Override
-                public void onDataComming(Object object) {
+                public void onDataComming(boolean isCache,Object object) {
                     ULog.out("onDataComming：" + object);
                     setContentData((Rooms) object);
                 }

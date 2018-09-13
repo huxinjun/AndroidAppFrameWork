@@ -39,7 +39,7 @@ public class Fragment_1 extends SmartFragment {
 		public void onInitData() {
 			PresenterManager.getInstance().findPresenter(getContext(), IRequestPresenterBridge.class).request(Urls.PATTERN_ACCOUNTS_GET_ALL, null, new IRequestPresenter.DataCallBack() {
 				@Override
-				public void onDataComming(Object object) {
+				public void onDataComming(boolean isCache,Object object) {
 					setContentData((Accounts) object);
 				}
 			});
